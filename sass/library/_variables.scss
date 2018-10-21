@@ -1,0 +1,88 @@
+// -----------------------------------------------------------------------------
+// Font
+// -----------------------------------------------------------------------------
+$font-main-1            : "Oswald","Helvetica Neue",Helvetica,sans-serif !default;
+$font-main-2            : "Open Sans","Helvetica Neue",Helvetica,sans-serif !default;
+$font-main-3            : "Arsenal","Helvetica Neue",Helvetica,sans-serif !default;
+
+$special-element-font   : "Open Sans","Helvetica Neue",Helvetica,sans-serif !default;
+$menu-font              : "Oswald","Helvetica Neue",Helvetica,sans-serif !default;
+
+// -----------------------------------------------------------------------------
+// Text + Link
+// -----------------------------------------------------------------------------
+$text_color_normal          : #282828 !default;
+$link_color_hover           : #999 !default;
+$link_color_hover_special   : #23527c !default;
+
+// -----------------------------------------------------------------------------
+// Border
+// -----------------------------------------------------------------------------
+$border_color_light : #dbdbdb !default;
+$border_color_dark  : #282828 !default;
+$border_color_white : #fff !default;
+$border_color_alert : #f00 !default;
+
+// -----------------------------------------------------------------------------
+// Header
+// -----------------------------------------------------------------------------
+//Home 1:
+$header_home_1_top_text_color        : #282828 !default;
+$header_home_1_top_link_hover_color  : #999 !default;
+$header_home_1_top_title_color       : #282828 !default;
+$header_home_1_top_background_color  : #282828 !default;
+$header_home_1_main_text_color       : #282828 !default;
+$header_home_1_main_link_hover_color : #999 !default;
+$header_home_1_main_title_color      : #282828 !default;
+$header_home_1_main_background_color : #282828 !default;
+
+//Home 2:
+$header_home_2_top_text_color        : #fff !default;
+$header_home_2_top_link_hover_color  : #fff !default;
+$header_home_2_top_title_color       : #fff !default;
+$header_home_2_top_background_color  : #282828 !default;
+$header_home_2_main_text_color       : #282828 !default;
+$header_home_2_main_link_hover_color : #999 !default;
+$header_home_2_main_title_color      : #282828 !default;
+$header_home_2_main_background_color : #282828 !default;
+
+//Home 2:
+$header_home_3_top_text_color        : #646464 !default;
+$header_home_3_top_link_hover_color  : #646464 !default;
+$header_home_3_top_title_color       : #282828 !default;
+$header_home_3_top_background_color  : #282828 !default;
+$header_home_3_main_text_color       : #282828 !default;
+$header_home_3_main_link_hover_color : #999 !default;
+$header_home_3_main_title_color      : #282828 !default;
+$header_home_3_main_background_color : #282828 !default;
+
+// -----------------------------------------------------------------------------
+// Footer
+// -----------------------------------------------------------------------------
+//Home 1:
+$footer_text_color_home_1       : #282828 !default;
+$footer_link_hover_color_home_1 : #999 !default;
+$footer_title_color_home_1      : #282828 !default;
+
+//Home 2:
+$footer_text_color_home_2       : #fff !default;
+$footer_link_hover_color_home_2 : #fff !default;
+$footer_title_color_home_2      : #fff !default;
+
+//Home 2:
+$footer_text_color_home_3       : #646464 !default;
+$footer_link_hover_color_home_3 : #646464 !default;
+$footer_title_color_home_3      : #282828 !default;
+
+// -----------------------------------------------------------------------------
+// Screen sizes
+// -----------------------------------------------------------------------------
+$breakpoints: (
+    'min-small'   : ( min-width: 551px  ),
+    'min-medium'  : ( min-width: 801px  ),
+    'min-large'   : ( min-width: 1261px ),
+
+    'max-small'   : ( max-width: 550px  ),
+    'max-medium'  : ( max-width: 800px ),
+    'max-large'   : ( max-width: 1260px )
+) !default;

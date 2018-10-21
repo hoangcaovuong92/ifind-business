@@ -1,0 +1,117 @@
+.ifind-map-wrap {
+    //background: rgba(255, 255, 255, 0.5);
+    //border-radius: 10px;
+    padding-top: 25px;
+    margin-top: -50px;
+}
+
+.ifind-map-select-location {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    margin-top: 15px;
+    padding-bottom: 70px;
+
+    #select_location_map {
+        height: 100%;
+        width: 100%;
+
+        #infowindow-content {
+            display: inline;
+        }
+    }
+
+    #description {
+        font-size: 15px;
+        font-weight: 300;
+    }
+
+    #infowindow-content .title {
+        font-weight: bold;
+    }
+
+    #infowindow-content {
+        display: none;
+    }
+
+    //Info window start
+    #ifind-infoWindow-content {
+        color: #000;
+    }
+
+    #ifind-infoWindow-content {
+        .heading {
+            font-size: 15px;
+            font-weight: 400;
+            padding: 10px;
+            background-color: #48b5e9;
+            color: white;
+            margin: 1px;
+            border-radius: 2px 2px 0 0; /* In accordance with the rounding of the default infowindow corners. */
+        }
+        .ifind-business-desc-content{
+            padding: 10px;
+        }
+    }
+    .gm-style-iw {
+        top: 0 !important;
+        left: 0 !important;
+        border-radius: 2px 2px 0 0;
+        >div{
+            max-width: unset !important;
+            width: 100%;
+            >div{
+                overflow-x: hidden !important;
+                overflow-y: auto !important;
+            }
+        }
+     }
+     //Info window end
+
+    .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+    }
+
+    #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+    }
+
+    .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+
+        label {
+            font-size: 13px;
+            font-weight: 300;
+        }
+    }
+
+    #pac-input {
+        background-color: #fff;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+
+        &:focus {
+            border-color: #4d90fe;
+        }
+    }
+
+    #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+    }
+}

@@ -1,0 +1,87 @@
+body {
+	font-size:13px;
+	line-height:1.6666;
+	color:#282828;
+	overflow-x:hidden;
+	a{
+		&:hover,&:active,&:focus{
+			text-decoration: none;   
+			outline: none;
+			color: $link_color_hover;
+		}
+	}
+	select::-ms-expand {
+		display: none;
+	}
+	blockquote p {
+	    display: inline;
+	}	
+	blockquote, q {
+		quotes: none;
+	}
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+		content: '';
+		content: none;
+	}
+
+	ul, ol{
+		padding:0;
+		list-style: none;
+		ul, ol{
+			padding-left: 20px;
+		}
+	}
+	img{max-width:100%;}
+	table {
+		border-bottom: 1px solid #ededed;
+		border-collapse: collapse;
+		border-spacing: 0;
+		font-size: 14px;
+		line-height: 2;
+		margin: 0 0 20px;
+		width: 100%;
+		tbody th,td {
+			border-top: 1px solid #ededed;
+			padding:0;
+		}
+	}
+
+	label input[type="radio"], label input[type="checkbox"] {
+	    margin-top: 0px;
+	    vertical-align: middle;
+	}
+
+	button, 
+	.button, 
+	input#submit, 
+	input[type="submit"],
+	input[type="button"],
+	input[type="reset"],{
+		@extend %default_button;
+	}
+
+	input[type='text'],
+	input[type='email'],
+	input[type='password'],
+	input[type='tel'],
+	textarea {
+	    @extend %primary_text_color;
+		background-color:transparent;
+		border-style:solid;
+		border-width:1px;
+		border-color:$border_color_light;
+		@include transition;
+		height:35px;
+		border-radius:0px;
+		padding:0 20px;
+		width:100%;
+		&:hover,&:focus,&:active{
+			border-color:darken(#282828,20%);
+			outline: 0; 
+		}
+	}
+	textarea,.woocommerce #reviews #comment{ height:30px;}
+	textarea{min-height:190px; padding:20px;}
+	input.input-text{min-height:28px;}
+}

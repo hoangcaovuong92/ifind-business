@@ -1,0 +1,121 @@
+/* icon config for metabox */
+#wp_cp_custom_post_layout h2.ui-sortable-handle span:before,
+#wp_cp_custom_page_atts h2.ui-sortable-handle span:before,
+#wp_cp_custom_product_layout h2.ui-sortable-handle span:before,
+#wp_cp_custom_class_id_layout h2.ui-sortable-handle span:before {
+	content: "\f111";
+	font: 400 20px/1 dashicons;
+	speak: none;
+	display: inline-block;
+	margin-left: -1px;
+	padding-right: 3px;
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+}
+
+table.wd-custom-meta-box-width td input[type='text'],
+table.wd-custom-meta-box-width td input[type='email'] {
+	width: 25em;
+}
+
+.wd-layout-config-wrapper select,
+.wd-layout-config-wrapper input[type="text"] {
+	width: 100%;
+}
+
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+.ifind-map-select-location {
+	width: 100%;
+	height: 500px;
+}
+
+.ifind-map-select-location #select_location_map {
+	height: 100%;
+	width: 100%;
+}
+
+.ifind-map-select-location #select_location_map #infowindow-content {
+	display: inline;
+}
+
+.ifind-map-select-location #description {
+	font-size: 15px;
+	font-weight: 300;
+}
+
+.ifind-map-select-location #infowindow-content .title {
+	font-weight: bold;
+}
+
+.ifind-map-select-location #infowindow-content {
+	display: none;
+}
+
+.ifind-map-select-location .pac-card {
+	margin: 0;
+	border-radius: 2px 0 0 2px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	background-color: #fff;
+	left: 30%;
+}
+
+.ifind-map-select-location #pac-container {
+	padding-bottom: 12px;
+	margin-right: 12px;
+}
+
+.ifind-map-select-location .pac-controls {
+	display: inline-block;
+	padding: 5px 11px;
+}
+
+.ifind-map-select-location .pac-controls label {
+	font-size: 13px;
+	font-weight: 300;
+}
+
+.ifind-map-select-location #pac-input {
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: 300;
+	margin-left: 12px;
+	margin-top: 12px;
+	padding: 10px;
+	text-overflow: ellipsis;
+	width: 100%;
+}
+
+.ifind-map-select-location #pac-input:focus {
+	border-color: #4d90fe;
+}
+
+.ifind-map-select-location #title {
+	color: #fff;
+	background-color: #4d90fe;
+	font-size: 25px;
+	font-weight: 500;
+	padding: 6px 12px;
+}
+
+.wd-business-custom-meta-box .ifind-image-preview {
+	width: auto;
+	max-width: 300px;
+	display: block;
+	margin-bottom: 15px;
+}
+
+.ifind-checkbox-list,
+.ifind-radio-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.ifind-checkbox-item,
+.ifind-radio-item {
+	width: 25%;
+	margin-bottom: 10px;
+}

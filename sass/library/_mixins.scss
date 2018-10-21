@@ -1,0 +1,197 @@
+/// Manage responsive breakpoints
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+/// Usage : @include breakpoint('min/max', 'min|medium|large') {}
+@mixin breakpoint($pre: 'min', $breakpoint: 'medium') {
+	$breakpoint: "#{$pre}-#{$breakpoint}";
+    // If the key exists in the map
+	@if map-has-key($breakpoints, $breakpoint) {
+		$query: #{inspect(map-get($breakpoints, $breakpoint))};
+		// Prints a media query based on the value
+		@media #{$query}{
+			@content;
+		}
+	}
+}
+///Multiple breakpoint from min screen to max screen
+/// Usage : @include breakpoint_between('min|medium|large', 'min|medium|large') {}
+@mixin breakpoint_between($min: 'tablet', $max: 'desktop') {
+	$min: "min-#{$min}";
+	$max: "max-#{$max}";
+    // If the key exists in the map
+	@if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
+		$query: "#{inspect(map-get($breakpoints, $min))} and #{inspect(map-get($breakpoints, $max))}"; 
+		// Prints a media query based on the value
+		@media #{$query}{
+			@content;
+		}
+	}
+}
+
+/* Font size */
+@mixin font_size_icon($size){
+	span, i{
+        .lnr, .fa, &.lnr, &.fa{
+            font-size: $size;
+        }
+    }
+} /* @include font_size_icon($size); */
+
+@mixin font_size_heading($size){
+    h1, h2, h3, h4, h5, h6{
+        font-size: $size;
+    }
+} /* @include font_size_heading($size); */
+
+@mixin font_size_button($size){
+    button, .button{
+        font-size: $size;
+    }
+} /* @include font_size_button($size); */
+
+/* Change color when hover */
+@mixin change_hover_text_color($color, $color_hover, $important: 0){
+	@if $important == 1{
+		color: $color !important;
+	}@else{
+		color: $color;
+	}
+	text-decoration:none;
+	&:hover,
+	&:focus,
+	&:active {
+		@if $important == 1{
+			color: $color_hover !important;
+		}@else{
+			color: $color_hover;
+		}
+		text-decoration:none;
+	}
+} /* @include change_hover_text_color($color, $color_hover); */
+
+@mixin change_hover_background_color($color, $color_hover, $important: 0){
+	@if $important == 1{
+		background: $color !important;
+	}@else{
+		background: $color;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		@if $important == 1{
+			background: $color_hover !important;
+		}@else{
+			background: $color_hover;
+		}
+	}
+} /* @include change_hover_background_color($color, $color_hover); */
+
+@mixin change_hover_font_weight_color($font_weight, $font_weight_hover, $important: 0){
+	@if $important == 1{
+		font-weight: $font_weight !important;
+	}@else{
+		font-weight: $font_weight;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		@if $important == 1{
+			font-weight: $font_weight_hover !important;
+		}@else{
+			font-weight: $font_weight_hover;
+		}
+	}
+} /* @include change_hover_font_weight_color($color, $color_hover); */
+
+@mixin changeIcon($width, $height, $animal, $bkg-position){
+	width:$width;
+	height:$height;
+	background-image: url('images/#{$animal}.png');
+	background-position:$bkg-position;
+	background-repeat:no-repeat;
+}
+
+@mixin font-awesome($font_character, $font-size: ''){
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	//line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;	
+	content: str_insert(str_insert($font_character, "'", str_length($font_character)+1), "'", 1);
+	@if $font-size != ''{
+		font-size: $font-size;
+	}
+}
+@mixin font-linearicons($font_character, $font-size: ''){
+	display: inline-block;
+    font-family: 'Linearicons-Free';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: str_insert(str_insert($font_character, "'", str_length($font_character)+1), "'", 1);
+	@if $font-size != ''{
+		font-size: $font-size;
+	}
+}
+@mixin font-dashicons($font_character, $font-size: ''){
+	display: inline-block;
+	font-family: 'dashicons';
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;	
+	content : str_insert(str_insert($font_character, "'", str_length($font_character)+1), "'", 1); 
+	@if $font-size != ''{
+		font-size: $font-size;
+	}
+}
+
+/* Insert icon to button */
+@mixin icon-button-font-awesome($font, $font-size: 13px, $postion: 'before'){
+	@include border-radius(0);
+	font-size:13px;
+	padding:13px;
+	margin:0;
+	float:left;
+	text-align:center;
+	@include transition;
+	@if $postion == 'before' {
+	    &:before{
+			@include font-awesome($font, $font-size);
+			background: none !important;
+		}
+	} @else if $postion == 'after'{
+	   	&:after{
+			@include font-awesome($font, $font-size);
+			background: none !important;
+		}
+	}
+	
+}
+@mixin icon-button-font-linearicons($font, $font-size: 13px, $postion: 'before'){
+	@include border-radius(0);
+	font-size:13px;
+	padding:13px;
+	margin:0;
+	float:left;
+	@include transition;
+	text-align:center;
+	@if $postion == 'before' {
+	   	&:before{
+			@include font-linearicons($font, $font-size);
+			background: none !important;
+		}
+	} @else if $postion == 'after'{
+	   	&:after{
+			@include font-linearicons($font, $font-size);
+			background: none !important;
+		}
+	}
+}

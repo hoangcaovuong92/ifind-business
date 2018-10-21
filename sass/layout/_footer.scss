@@ -1,0 +1,10 @@
+.ifind-footer-main {
+    padding-top: 30px;
+    background: transparent;
+
+    .ifind-col {
+        @include flexbox;
+        @include justify-content(flex-end);
+        @include align-items(center);
+    }
+}

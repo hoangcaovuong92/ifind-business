@@ -1,0 +1,100 @@
+.ifind-slider {
+	width: 100%;
+}
+
+.slick-arrow {
+	border: none;
+	width: 35px;
+	height: 35px;
+	z-index: 9;
+	&::before {
+		font-size: 35px;
+	}
+	&:hover, &:active{
+		border: none;
+	}
+}
+
+.ifind-sliderPop-item, .ifind-smallSlider-item, .ifind-logoSlider-item {
+	img{
+		cursor: pointer;
+	}
+}
+
+.popupSlider {
+	@include opacity(0);
+	@include transition(all 600ms ease);
+	@include transform(translateX(100%));
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 99;
+
+	.ifind-sliderPop-item {
+		img {
+			width: 100%;
+		}
+	}
+
+	&.open {
+		@include opacity(1);
+		@include transform(translateX(0));
+	}
+}
+
+.ifind-smallSlider-container {
+	img {
+		width: 100%;
+	}
+
+	.slick-list {
+		border: 3px solid #000;
+    	border-radius: 20px;
+		//box-shadow: 1px 1px 10px -1px #C7F8F9;
+	}
+
+	.slick-arrow {
+		top: auto;
+		bottom: -60px;
+		&.slick-prev {
+			left: 5px;
+			right: auto;
+		}
+
+		&.slick-next {
+			left: 45px;
+		}
+	}
+}
+
+.logoSlider {
+	padding: 0 20px;
+	.slick-list{
+		margin-left: 15px;
+		margin-right: 15px;
+		border: 15px solid rgba(255, 255, 255, 0.4);
+	}
+	.ifind-logoSlider-item .inner {
+		@include flexbox; 
+		@include justify-content(center);
+		@include align-items(center);
+		a{
+			display: block;
+    		width: 100%;
+		}
+		img{
+			width: 100%;
+		}
+	}
+	.slick-arrow {
+		&.slick-prev {
+			left: -25px;
+		}
+
+		&.slick-next {
+			right: -25px;
+		}
+	}
+}
