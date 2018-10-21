@@ -70,7 +70,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 				reset_business_tab();
 			}
 
-			jQuery(document).on('mousemove', function (event) {
+			jQuery(document).on('mousemove touchstart click', function (event) {
 				if(!jQuery(popSliderBigWrap).hasClass('open')){
 					if (timer) clearTimeout(timer);
 					timer = setTimeout(function () {
