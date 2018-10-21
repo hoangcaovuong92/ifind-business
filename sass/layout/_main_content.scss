@@ -390,8 +390,8 @@ $business_border_width: 1px;
                 background-color: #ffffff;
                 border-radius: 0;
                 color: #000;
-                font-size: 20px;
-
+                font-size: 19px;
+                white-space: nowrap;
                 &:hover,
                 &:active,
                 :not(:hover) {

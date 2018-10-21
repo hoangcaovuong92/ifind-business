@@ -14,7 +14,7 @@
 <div id="wd-comments">
 	<?php 
 	$comment_number 		= get_comments_number() < 10 && get_comments_number() > 0 ? '0'.get_comments_number() : get_comments_number() ;
-	$comments_list_text 	= sprintf( _n( '%s comment', '%s comments', $comment_number, 'francois' ), $comment_number );
+	$comments_list_text 	= sprintf( _n( '%s comment', '%s comments', $comment_number, 'ifind' ), $comment_number );
 	$comment_list_status 	= (get_comments_number() > 0) ? true : false;
  
 	$comment_tabs		= array(
@@ -26,7 +26,7 @@
 		'comment_form'	=> array(
 				'status'	=> comments_open(),
 				'callback' 	=> 'tvlgiao_wpdance_comment_form',
-				'text'		=> esc_html__( 'POST A COMMENT', 'francois' ),
+				'text'		=> esc_html__( 'POST A COMMENT', 'ifind' ),
 			),
 	);
 

@@ -376,7 +376,7 @@ class Tax_Meta_Class {
         }else{
           echo 'http://i.imgur.com/g8Duj.png';
         }
-        echo '" alt="'.__('Remove','francois').'" title="'.__('Remove','francois').'" id="remove-'.$field['id'].'"></div>';
+        echo '" alt="'.__('Remove','ifind').'" title="'.__('Remove','ifind').'" id="remove-'.$field['id'].'"></div>';
         $c = $c + 1;
         
         }
@@ -389,7 +389,7 @@ class Tax_Meta_Class {
     }else{
       echo 'http://i.imgur.com/w5Tuc.png';
     }
-    echo '" alt="'.__('Add','francois').'" title="'.__('Add','francois').'" id="add-'.$field['id'].'"><br/></div>';
+    echo '" alt="'.__('Add','ifind').'" title="'.__('Add','ifind').'" id="add-'.$field['id'].'"><br/></div>';
     
     //create all fields once more for js function and catch with object buffer
     ob_start();
@@ -423,7 +423,7 @@ class Tax_Meta_Class {
     }else{
       echo 'http://i.imgur.com/g8Duj.png';
     }
-    echo '" alt="'.__('Remove','francois').'" title="'.__('Remove','francois').'" id="remove-'.$field['id'].'"></div>';
+    echo '" alt="'.__('Remove','ifind').'" title="'.__('Remove','ifind').'" id="remove-'.$field['id'].'"></div>';
     $counter = 'countadd_'.$field['id'];
     $js_code = ob_get_clean ();
     $js_code = str_replace("\n","",$js_code);
@@ -725,9 +725,9 @@ class Tax_Meta_Class {
     echo "<input type='hidden' name='{$name}[id]' value='{$value['id']}'/>";
     echo "<input type='hidden' name='{$name}[url]' value='{$value['url']}'/>";
     if ($has_image)
-    echo "<input class='{$multiple} button  simplePanelimageUploadclear' id='{$id}' value='".esc_attr__('Remove Image', 'francois')."' type='button'/>";
+    echo "<input class='{$multiple} button  simplePanelimageUploadclear' id='{$id}' value='".esc_attr__('Remove Image', 'ifind')."' type='button'/>";
     else
-    echo "<input class='{$multiple} button simplePanelimageUpload' id='{$id}' value='".esc_attr__('Upload Image', 'francois')."' type='button'/>";
+    echo "<input class='{$multiple} button simplePanelimageUpload' id='{$id}' value='".esc_attr__('Upload Image', 'ifind')."' type='button'/>";
     $this->show_field_end( $field, $meta );
   }
   

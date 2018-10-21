@@ -232,7 +232,7 @@ if (!class_exists('iFind_Location')) {
 					iFind_Admin_Metabox_Fields::get_map_field(array(
 						"title" => esc_html__( 'Location Address', 'ifind' ),
 						"desc" => "",
-						"placeholder" => __( 'Enter a location', 'francois' ),
+						"placeholder" => __( 'Enter a location', 'ifind' ),
 						"field_name" => "location[location_data]",
 						"value" => $meta_data['location_data'],
 					));
@@ -259,7 +259,7 @@ if (!class_exists('iFind_Location')) {
 					$data_array[$post->ID] = html_entity_decode( $post->post_title, ENT_QUOTES, 'UTF-8' ).$link;
 				}
 			}else{
-				$data_array[] = sprintf(__( "Please add data for \"%s\" before", 'wd_package' ), $post_type);
+				$data_array[] = sprintf(__( "Please add data for \"%s\" before", 'ifind' ), $post_type);
 			}
 			wp_reset_postdata();
 			return $data_array;

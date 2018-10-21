@@ -115,7 +115,7 @@ if(!function_exists ('ifind_get_list_posts')){
 				$data_array[$post->ID] = html_entity_decode( $post->post_title, ENT_QUOTES, 'UTF-8' ).$link;
 			}
 		}else{
-			//$data_array[] = sprintf(__( "Please add data for \"%s\" before", 'wd_package' ), $post_type);
+			//$data_array[] = sprintf(__( "Please add data for \"%s\" before", 'ifind' ), $post_type);
 		}
 		wp_reset_postdata();
 		return $data_array;

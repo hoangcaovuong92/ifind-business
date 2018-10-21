@@ -216,12 +216,12 @@ if (!class_exists('iFind_Admin_Metabox_Fields')) {
 
                     <a 	class="wd_media_lib_select_btn button button-primary button-large" 
                         data-image_value="<?php echo 'image-value-'.$random_id; ?>" 
-                        data-image_preview="image-preview-<?php echo $random_id; ?>"><?php esc_html_e('Select Image','francois'); ?></a>
+                        data-image_preview="image-preview-<?php echo $random_id; ?>"><?php esc_html_e('Select Image','ifind'); ?></a>
 
                     <a 	class="wd_media_lib_clear_btn button" 
                         data-image_value="<?php echo 'image-value-'.$random_id; ?>" 
                         data-image_preview="image-preview-<?php echo $random_id; ?>" 
-                        data-image_default=<?php echo $data['default']; ?>><?php esc_html_e('Reset','francois'); ?></a>
+                        data-image_default=<?php echo $data['default']; ?>><?php esc_html_e('Reset','ifind'); ?></a>
                 </td>
             </tr>
             <?php
@@ -261,21 +261,21 @@ if (!class_exists('iFind_Admin_Metabox_Fields')) {
                         <div class="pac-card" id="pac-card">
                             <div>
                                 <div id="title">
-                                    <?php echo __( 'Location Search', 'francois' ); ?>
+                                    <?php echo __( 'Location Search', 'ifind' ); ?>
                                 </div>
                                 <div id="type-selector" class="pac-controls" style="display: none;">
                                     <input type="radio" name="type" id="changetype-all" checked="checked">
-                                    <label for="changetype-all"><?php echo __( 'All', 'francois' ); ?></label>
+                                    <label for="changetype-all"><?php echo __( 'All', 'ifind' ); ?></label>
                                     <input type="radio" name="type" id="changetype-establishment">
-                                    <label for="changetype-establishment"><?php echo __( 'Establishments', 'francois' ); ?></label>
+                                    <label for="changetype-establishment"><?php echo __( 'Establishments', 'ifind' ); ?></label>
                                     <input type="radio" name="type" id="changetype-address">
-                                    <label for="changetype-address"><?php echo __( 'Addresses', 'francois' ); ?></label>
+                                    <label for="changetype-address"><?php echo __( 'Addresses', 'ifind' ); ?></label>
                                     <input type="radio" name="type" id="changetype-geocode">
-                                    <label for="changetype-geocode"><?php echo __( 'Geocodes', 'francois' ); ?></label>
+                                    <label for="changetype-geocode"><?php echo __( 'Geocodes', 'ifind' ); ?></label>
                                 </div>
                                 <div id="strict-bounds-selector" class="pac-controls" style="display: none;">
                                     <input type="checkbox" id="use-strict-bounds" value="">
-                                    <label for="use-strict-bounds"><?php echo __( 'Strict Bounds', 'francois' ); ?></label>
+                                    <label for="use-strict-bounds"><?php echo __( 'Strict Bounds', 'ifind' ); ?></label>
                                 </div>
                             </div>
                             <div id="pac-container">

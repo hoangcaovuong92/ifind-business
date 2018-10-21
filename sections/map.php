@@ -122,8 +122,8 @@ $list_business_location = ifind_get_list_business_location(get_the_ID());
                     calculateAndDisplayRoute(latlng, directionsService, directionsDisplay);
                 });
                 
-                //Close directions
-                jQuery('.directions-close').on('click', function(e) {
+                //Close directions, back
+                jQuery('.directions-close, .business-back-link').on('click', function(e) {
                     resetMapStatus();
                 });
 

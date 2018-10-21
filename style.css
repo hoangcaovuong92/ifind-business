@@ -1,5 +1,5 @@
 /*
-Theme Name: iFind Media
+Theme Name: iFind
 Theme URI: http://ifindmedia.com
 Author: tvlgiao
 Author URI: http://ifindmedia.com/services.html
@@ -2710,7 +2710,8 @@ body {
   background-color: #ffffff;
   border-radius: 0;
   color: #000;
-  font-size: 20px;
+  font-size: 19px;
+  white-space: nowrap;
 }
 
 /* line 395, D:/wamp64/www/wordpress/ifind/wp-content/themes/ifind/sass/layout/_main_content.scss */
