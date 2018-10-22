@@ -1,0 +1,1 @@
+<a class="business-back-link" href="#"><span class="arrow"><span></span></span><?php _e("Back", 'ifind'); ?></a>

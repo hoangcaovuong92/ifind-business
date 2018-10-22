@@ -63,6 +63,15 @@ body {
     left: -60px;
 }
 
+.fancybox-close {
+    position: fixed !important;
+    top: 0;
+    right: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: none !important;
+}
+
 
 .ifind-section {
     width: 100%;

@@ -10,6 +10,7 @@ jQuery(document).ready(function ($) {
 	business_tab_script();
 	image_popup_fancybox();
 	ifind_ajax_display_weather_today_info();
+	ifind_form_directions();
 	ifind_add_class_to_body();
 });
 
@@ -57,6 +58,7 @@ if (typeof business_tab_script != 'function') {
 
 			jQuery(category_banner_link).on('click', function(e) {
 				e.preventDefault();
+				jQuery('body').addClass('showing-info');
 				var category_id = jQuery(this).data('category-id');
 				jQuery(tab_wrap).show();
 
@@ -105,6 +107,9 @@ if (typeof reset_business_tab != 'function') {
 		jQuery('#map-directions').hide();
 		jQuery(tab_wrap).hide();
 		jQuery(category_banner_link).show();
+		jQuery('body').removeClass('showing-info');
+		jQuery('.map-directions-email-form').removeClass('open');
+		jQuery('.map-directions-email-form input[type="email"]').val('');
 	}
 }
 
@@ -113,7 +118,7 @@ if (typeof image_popup_fancybox != 'function') {
 		jQuery(".ifind-fancybox-image").fancybox({
 			openEffect  : 'fade',
 			closeEffect : 'fade',
-			margin      : [60, 0, 50, 0],
+			margin      : [0, 0, 0, 0],
 			padding 	: 7,
 			width 		: 1038,
 			height 		: 738,
@@ -123,7 +128,12 @@ if (typeof image_popup_fancybox != 'function') {
 			arrows      : false,
 			onComplete  : function() {
 			},
-			afterClose: function() {
+			afterClose	: function() {
+			},
+			afterLoad	: function() { 
+				setTimeout(() => {
+					jQuery(".fancybox-overlay").fadeOut().remove(); 
+				}, 10000);
 			}
 		});
 	}
@@ -153,7 +163,7 @@ if (typeof ifind_ajax_display_weather_today_info != 'function') {
 					action: "display_weather_today_info",
 					lat: jQuery('#ifind-location-position').data('lat'),
 					lng: jQuery('#ifind-location-position').data('lng'),
-				 },
+				},
 				beforeSend: function(){
 				},
 				success: function(data) {
@@ -163,6 +173,58 @@ if (typeof ifind_ajax_display_weather_today_info != 'function') {
 				}
 			});
 		}, option_object.ifind_weather_update_time);
+	}
+}
+
+if (typeof ifind_form_directions != 'function') { 
+	function ifind_form_directions(){
+		jQuery('#send-directions-form').validator();
+
+		jQuery('.map-directions-email-send').on('click', function(e) {
+			e.preventDefault();
+			jQuery('.map-directions-email-form').toggleClass('open');
+		});
+
+		jQuery('.map-directions-header, .map-directions-content').on('click', function(e) {
+			jQuery('.map-directions-email-form').removeClass('open');
+		});
+
+		jQuery('#send-directions-form').on('submit', function (e) {
+			// if the validator does not prevent form submit
+			var email = jQuery(this).find('input[name="email"]').val();
+			var title = jQuery(this).find('input[name="title"]').val();
+			var message = jQuery('#map-directions .map-directions-header').html();
+			message += jQuery('#map-directions .map-directions-content').html();
+			if (!e.isDefaultPrevented()) {
+				// POST values in the background the the script URL
+				jQuery.ajax({
+					type: "POST",
+					url: ajax_object.ajax_url,
+					data: { 
+						action: "send_directions_main",
+						email: email,
+						title: title,
+						message: message,
+					},
+					beforeSend: function(){
+						jQuery('.map-directions-email-form input[type="submit"]').addClass('disabled');
+					},
+					success: function (data){
+						jQuery('.map-directions-email-form input[type="email"]').val('');
+						if(data.type === 'success'){
+							jQuery('.map-directions-email-form').removeClass('open');
+						}
+						swal({
+							title: data.title,
+							type: data.type,
+							text: data.message,
+							timer: 6000
+						});
+					}
+				});
+				return false;
+			}
+		})
 	}
 }
 

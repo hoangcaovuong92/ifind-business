@@ -68,7 +68,7 @@ do_action('tvlgiao_wpdance_before_main_content'); ?>
 		</div>
 
 		<div class="ifind-col ifind-col-right ifind-col--large wow bounceInRight" data-wow-delay=".75s">
-	<?php get_template_part( 'sections/business_tab'); ?>
+	<?php get_template_part( 'sections/business-tab'); ?>
 		</div>
 	</section>
 

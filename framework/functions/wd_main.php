@@ -70,7 +70,8 @@ if(!function_exists ('ifind_get_list_category')){
 		$categories = get_terms( $taxonomy, $args );
 		if (!is_wp_error($categories) && count($categories) > 0) {
 			foreach ($categories as $category ) {
-				$list_categories[$category->term_id] = html_entity_decode( $category->name, ENT_QUOTES, 'UTF-8' ).' (' . $category->count . ' items)';
+				$list_categories[$category->term_id]['name'] = html_entity_decode( $category->name, ENT_QUOTES, 'UTF-8' ).' (' . $category->count . ' items)';
+				$list_categories[$category->term_id]['name'] = html_entity_decode( $category->name, ENT_QUOTES, 'UTF-8' ).' (' . $category->count . ' items)';
 			}
 		}
 		wp_reset_postdata();

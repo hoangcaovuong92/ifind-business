@@ -60,6 +60,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 				options = jQuery.extend(default_option, options); 
 				jQuery(popSliderBigWrap).addClass('open');
 				ifind_slider_call(popSliderListWrap, options);
+				jQuery(".fancybox-overlay").fadeOut().remove();
 			}
 
 			function big_popup_close(){
@@ -72,6 +73,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 
 			jQuery(document).on('mousemove touchstart click', function (event) {
 				if(!jQuery(popSliderBigWrap).hasClass('open')){
+					var time = (!jQuery('body').hasClass('showing-info')) ? timerShowPopup : timerShowPopup * 4;
 					if (timer) clearTimeout(timer);
 					timer = setTimeout(function () {
 						var startSlider = 0;
@@ -89,7 +91,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 							}
 						});
 
-					}, timerShowPopup);
+					}, time);
 				}else{
 					//big_popup_close();
 				}

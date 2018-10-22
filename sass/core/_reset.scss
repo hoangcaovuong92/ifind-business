@@ -58,7 +58,7 @@ body {
 	input[type="submit"],
 	input[type="button"],
 	input[type="reset"],{
-		@extend %default_button;
+		//@extend %default_button;
 	}
 
 	input[type='text'],

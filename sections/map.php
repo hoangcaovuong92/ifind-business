@@ -44,6 +44,8 @@ $list_business_location = ifind_get_list_business_location(get_the_ID());
                 var infowindow;
                 var stepDisplay;
                 var timer;
+                var mapZoomNormal = 12;
+                var mapZoomLarge = 17;
 
                 jQuery.each( jQuery('.business-geocoding-link'), function( i, el ) {
                     positions.push({
@@ -65,7 +67,7 @@ $list_business_location = ifind_get_list_business_location(get_the_ID());
                 
                 map = new google.maps.Map(document.getElementById('select_location_map'), {
                     center: locationLatlng,
-                    zoom: 12,
+                    zoom: mapZoomNormal,
                     fullscreenControl: false,
                 });
 
@@ -118,7 +120,9 @@ $list_business_location = ifind_get_list_business_location(get_the_ID());
                     
                     var lat = jQuery(this).data('lat');
                     var lng = jQuery(this).data('lng');
+                    var title = jQuery(this).attr('title');
                     var latlng = new google.maps.LatLng(lat, lng);
+                    jQuery('#send-directions-form').find('input[name="title"]').val(title);
                     calculateAndDisplayRoute(latlng, directionsService, directionsDisplay);
                 });
                 
@@ -135,7 +139,7 @@ $list_business_location = ifind_get_list_business_location(get_the_ID());
                 function displayInfoWindow(marker, content, infowindow){
                     google.maps.event.addListener(marker,'click', (function(marker, content, infowindow){ 
                         return function() {
-                            map.setZoom(17);
+                            map.setZoom(mapZoomLarge);
                             map.setCenter(marker.getPosition());
                             removeDirections(directionsDisplay);
                             infowindow.setContent(content);
@@ -149,7 +153,7 @@ $list_business_location = ifind_get_list_business_location(get_the_ID());
                 }
 
                 function resetMapStatus() {    
-                    map.setZoom(12);
+                    map.setZoom(mapZoomNormal);
                     map.setCenter(locationCenterMarker.getPosition());
                     removeDirections(directionsDisplay);
                 }
@@ -212,7 +216,7 @@ $list_business_location = ifind_get_list_business_location(get_the_ID());
                     var address = jQuery(this).data('address');
                     var latlng = new google.maps.LatLng(lat, lng);
                     removeDirections(directionsDisplay);
-                    map.setZoom(17);
+                    map.setZoom(mapZoomLarge);
                     map.setCenter(latlng);
                 });
 

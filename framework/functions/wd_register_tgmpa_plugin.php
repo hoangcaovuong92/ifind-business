@@ -32,6 +32,11 @@ if(!function_exists ('tvlgiao_wpdance_register_tgmpa_plugin')){
                 'slug'                  => 'loco-translate', // The plugin slug (typically the folder name)
                 'required'              => true, // If false, the plugin is only 'recommended' instead of required
             ),
+            array(
+                'name'                  => esc_html__('Post SMTP Mailer/Email Log', 'ifind'), // The plugin name
+                'slug'                  => 'post-smtp', // The plugin slug (typically the folder name)
+                'required'              => true, // If false, the plugin is only 'recommended' instead of required
+            ),
         ); //End plugins
         $tvlgiao_wpdance_config = array(
             'default_path'      => '',
