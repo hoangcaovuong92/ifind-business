@@ -64,6 +64,14 @@ Redux::setSection( $opt_name, array(
             'default'  => $wd_default_data['slider']['default']['timerShowPopup'],
         ),
         array(
+            'id'       => 'ifind_slider_timerShowPopupViewingInfo',
+            'type'     => 'text',
+            'title'    => __( 'Show Popup After (When watching information)', 'ifind' ),
+            'subtitle' => __( 'Waiting time before show large popup slider.', 'ifind' ),
+            'desc'     => __( 'Unit: ms (1000ms = 1s)', 'ifind' ),
+            'default'  => $wd_default_data['slider']['default']['timerShowPopupViewingInfo'],
+        ),
+        array(
             'id'       => 'ifind_slider_timerDelayPopup',
             'type'     => 'text',
             'title'    => __( 'Popup Delay', 'ifind' ),

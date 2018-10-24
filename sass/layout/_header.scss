@@ -12,29 +12,27 @@
     background-repeat: no-repeat;
     background-position: center;
     color: #000;
-    font-size: 15px;
-    padding: 15px;
-    width: 100%;
     margin: 0 auto;
     text-transform: capitalize;
+    font-size: 15px;
+    width: 100%;
+    height: 100%;
+    line-height: 1.6;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
     .today{
-        padding-top: 25px;
+        .ifind-weather-icon{
+            padding-top: 25px;
+        }
     }
     .ifind-weather-content{
         margin-top: -10px;
         span{
             display: block;
         }
-    }
-    @include breakpoint('min', 'medium') {
-        width: 100%;
-        height: 100%;
-        line-height: 1.6;
-        padding-top: 20px;
-        padding-bottom: 40px;
-        @include flexbox;
-        @include justify-content(center);
-        @include align-items(center);
     }
 }
 
@@ -52,9 +50,5 @@
 }
 .ifind-header-main{
     @include align-items(center);
-    padding-bottom: 45px;
-    margin-top: -30px;
-    .ifind-col-right{
-        padding-top: 25px;
-    }
+    padding-bottom: 90px;
 }

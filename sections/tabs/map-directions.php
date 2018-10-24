@@ -23,8 +23,8 @@
             <div class="map-directions-header">
                 <div class="map-directions-distance"><span><?php _e("Distance:", 'ifind'); ?></span> <b><span class="content"></span></b></div>
                 <div class="map-directions-duration"><span><?php _e("Duration:", 'ifind'); ?></span> <b><span class="content"></span></b></div>
-                <div class="map-directions-start-address"><span><?php _e("Start Address:", 'ifind'); ?></span> <b><span class="content"></span></b></div>
-                <div class="map-directions-end-address"><span><?php _e("End Address:", 'ifind'); ?></span> <b><span class="content"></span></b></div>
+                <div class="map-directions-start-address"><span><?php _e("Start:", 'ifind'); ?></span> <b><span class="content"></span></b></div>
+                <div class="map-directions-end-address"><span><?php _e("End:", 'ifind'); ?></span> <b><span class="content"></span></b></div>
             </div>
             <div class="map-directions-content"></div>
         </div>

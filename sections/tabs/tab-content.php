@@ -68,7 +68,7 @@
                                     <a href="#" class="business-direction-link" 
                                                 data-lat="<?php echo $business_lat; ?>" 
                                                 data-lng="<?php echo $business_lng; ?>"
-                                                title="<?php printf(__("Directions from %s to %s",'ifind'), htmlspecialchars($business_address), htmlspecialchars($location_address)); ?>" >
+                                                title="<?php printf(__("Directions from %s to %s",'ifind'), htmlspecialchars(get_the_title()), htmlspecialchars(get_the_title($business_id))); ?>" >
                                         <div class="heading"><?php _e("Directions",'ifind') ?></div>
                                         <img class="ifind-business-icon" src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/directions.png'; ?>">
                                         <div class="business-distance heading"></div>

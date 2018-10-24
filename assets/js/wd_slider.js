@@ -36,7 +36,9 @@ if (typeof ifind_big_popup_slider != 'function') {
 	function ifind_big_popup_slider() {
 		jQuery(document).ready(function () {
 			var timer;
-			var timerShowPopup = option_object.ifind_slider_timerShowPopup; //time show large popup slider
+			var timerShowPopup = 9999999; //time show large popup slider
+			//var timerShowPopup = option_object.ifind_slider_timerShowPopup; //time show large popup slider
+			var timerShowPopupViewingInfo = option_object.ifind_slider_timerShowPopupViewingInfo; //time show large popup slider
 			var timerDelayPopup = option_object.ifind_slider_timerDelayPopup; //time delay after slider break
 			var bigAutoplaySpeed = option_object.ifind_slider_bigAutoplaySpeed; //time autoplay large popup slider
 			var smallAutoplaySpeed = option_object.ifind_slider_smallAutoplaySpeed; //time autoplay small slider
@@ -45,13 +47,13 @@ if (typeof ifind_big_popup_slider != 'function') {
 
 			var popSliderBigWrap = '.popupSlider';
 			var popSliderListWrap = '.ifind-sliderPop-container';
-			var logoSliderListWrap = '.ifind-logoSlider-container';
-			var logoSliderItem = '.ifind-logoSlider-item';
+			var footerSliderListWrap = '.ifind-footerSlider-container';
+			var footerSliderItem = '.ifind-footerSlider-item';
 			var smallSliderListWrap = '.ifind-smallSlider-container';
 			var smallSliderItem = '.ifind-smallSlider-item';
 
 			ifind_slider_call(smallSliderListWrap, {arrows: true, autoplaySpeed: smallAutoplaySpeed});
-			ifind_slider_call(logoSliderListWrap, {arrows: true, autoplaySpeed: smallAutoplaySpeed, infinite: true, slidesToShow: numFooterSliderItems});
+			ifind_slider_call(footerSliderListWrap, {arrows: true, autoplaySpeed: smallAutoplaySpeed, infinite: true, slidesToShow: numFooterSliderItems});
 
 			function big_popup_open(options){
 				var default_option = {
@@ -73,7 +75,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 
 			jQuery(document).on('mousemove touchstart click', function (event) {
 				if(!jQuery(popSliderBigWrap).hasClass('open')){
-					var time = (!jQuery('body').hasClass('showing-info')) ? timerShowPopup : timerShowPopup * 4;
+					var time = (!jQuery('body').hasClass('showing-info')) ? timerShowPopup : timerShowPopupViewingInfo;
 					if (timer) clearTimeout(timer);
 					timer = setTimeout(function () {
 						var startSlider = 0;

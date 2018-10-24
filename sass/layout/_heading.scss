@@ -1,33 +1,31 @@
 .header-title {
     font-size: 25px;
-    margin-top: 15px;
-    margin-bottom: 10px;
     line-height: 1;
+}
+
+.ifind-map-wrap{
+    .header-title{
+        font-family: 'Pacifico', cursive;
+        color: #000;
+        font-size: 35px;
+    }
 }
 
 .header-page-name {
     font-family: 'Fredoka One', cursive;
     font-size: 35px;
-    margin-top: 15px;
-    margin-bottom: 10px;
     line-height: 1;
-
 }
 
 .header-slogan {
     font-family: 'Pacifico', cursive;
     font-size: 25px;
     font-style: italic;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    line-height: 1;
 }
 
 .header-page-info {
     font-family: 'Fredoka One', cursive;
     font-size: 28px;
-    margin-top: 15px;
-    margin-bottom: 10px;
     line-height: 1;
 }
 
@@ -40,10 +38,10 @@
     color: #000;
 }
 
-.ifind-map-wrap{
-    .header-title{
-        font-family: 'Pacifico', cursive;
-        color: #000;
-        font-size: 35px;
-    }
+.header-title, 
+.header-slogan,
+.header-page-info,
+.header-page-name{
+    margin-top: 15px;
+    margin-bottom: 10px;
 }

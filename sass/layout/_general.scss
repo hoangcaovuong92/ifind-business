@@ -2,8 +2,9 @@ body {
     color: #ffffff;
     font-family: Lato, cursive;
     font-weight: 500;
-    width: 1080px;
-    height: 1920px;
+    max-width: 1080px;
+    width: 100%;
+    max-height: 1920px;
     padding: 0;
     margin: 0 auto;
     -webkit-font-smoothing: antialiased;
@@ -18,7 +19,6 @@ body {
     //background: radial-gradient(#fff 1%, #057893 99%) no-repeat;
     //overflow: hidden;
 }
-
 
 // Scroll bar
 /* width */
@@ -46,85 +46,21 @@ body {
     } 
 }
 
-// Fancybox
-.fancybox-nav {
-    width: 60px;
-}
-
-.fancybox-nav span {
-    visibility: visible;
-}
-
-.fancybox-next {
-    right: -60px;
-}
-
-.fancybox-prev {
-    left: -60px;
-}
-
-.fancybox-close {
-    position: fixed !important;
-    top: 0;
-    right: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    background: none !important;
-}
-
-
 .ifind-section {
     width: 100%;
-
+    margin-left: 0;
+    margin-right: 0;
     &.ifind-section-flex {
         @include flexbox;
         @include flex-wrap(wrap);
     }
 
     .ifind-col {
-        width: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
         margin-bottom: 10px;
-        text-align: center;
+        text-align: left;
         z-index: 10;
     }
-
-    @include breakpoint('min', 'medium') {
-        .ifind-col {
-            width: 50%;
-            padding-left: 15px;
-            padding-right: 15px;
-            margin-bottom: 15px;
-            text-align: left;
-
-            &.ifind-col--full {
-                width: 100%;
-            }
-
-            &.ifind-col--small {
-                width: 35%;
-            }
-
-            &.ifind-col--large {
-                width: 65%;
-            }
-        }
-
-        .ifind-col-right {
-            text-align: center;
-        }
-
-        &.ifind-content-main {
-            .ifind-col {
-                &.ifind-col--small {
-                    width: 40%;
-                }
-
-                &.ifind-col--large {
-                    width: 60%;
-                }
-            }
-        }
+    .ifind-col-right {
+        text-align: center;
     }
 }

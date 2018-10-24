@@ -26,6 +26,7 @@ if(!function_exists ('tvlgiao_wpdance_get_data_package')){
 
 			case 'slider':
 				$data['timerShowPopup']	  		= wd_get_theme_option($pre.'slider_timerShowPopup', $wd_default_data['slider']['default']['timerShowPopup']);  
+				$data['timerShowPopupViewingInfo']	= wd_get_theme_option($pre.'slider_timerShowPopupViewingInfo', $wd_default_data['slider']['default']['timerShowPopupViewingInfo']);  
 				$data['timerDelayPopup']	  	= wd_get_theme_option($pre.'slider_timerDelayPopup', $wd_default_data['slider']['default']['timerDelayPopup']);  
 				$data['bigAutoplaySpeed']	  	= wd_get_theme_option($pre.'slider_bigAutoplaySpeed', $wd_default_data['slider']['default']['bigAutoplaySpeed']);  
 				$data['smallAutoplaySpeed']	  	= wd_get_theme_option($pre.'slider_smallAutoplaySpeed', $wd_default_data['slider']['default']['smallAutoplaySpeed']);  

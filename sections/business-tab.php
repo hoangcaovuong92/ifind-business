@@ -42,6 +42,7 @@ $list_business_id = $location_meta_data['list_business'];
 <script>
     // Fires whenever a player has finished loading
     function onPlayerReady(event) {
+        event.target.mute();
         event.target.playVideo();
     }
 

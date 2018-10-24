@@ -1,0 +1,25 @@
+// Fancybox
+.fancybox-nav {
+    width: 60px;
+}
+
+.fancybox-nav span {
+    visibility: visible;
+}
+
+.fancybox-next {
+    right: -60px;
+}
+
+.fancybox-prev {
+    left: -60px;
+}
+
+.fancybox-close {
+    position: fixed !important;
+    top: 0;
+    right: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: none !important;
+}

@@ -25,14 +25,14 @@ do_action('tvlgiao_wpdance_before_main_content'); ?>
 	<div id="ifind-location-position" data-max-distance="<?php echo $location_max_distance; ?>" data-lat="<?php echo $location_lat; ?>" data-lng="<?php echo $location_lng; ?>" style="display:none;"></div>
 	<?php get_template_part( 'sections/popup-slider'); ?>
 	<div id="ifind-header-wrap">
-		<section class="ifind-section ifind-section-flex ifind-header-top">
-			<div class="ifind-col ifind-col-left wow bounceInDown" data-wow-delay=".25s"">
+		<section class="row ifind-section ifind-section-flex ifind-header-top">
+			<div class="col-xs-7 ifind-col ifind-col-left wow bounceInDown" data-wow-delay=".25s"">
 				<div class="header-title"><?php esc_html_e( 'Wecome to', 'ifind' ); ?></div>
 				<h1 class="header-page-name"><?php the_title(); ?></h1>
 				<div class="header-slogan"><?php echo $location_meta_data['slogan']; ?></div>
 			</div>
 
-			<div class="ifind-col ifind-col-right wow bounceInDown" data-wow-delay=".25s">
+			<div class="col-xs-5 ifind-col ifind-col-right wow bounceInDown" data-wow-delay=".25s">
 				<?php if ($location_meta_data['office_hours']) { ?>
 					<div class="header-title"><?php esc_html_e( 'Office Hours:', 'ifind' ); ?></div>
 					<div class="header-page-info"><?php echo $location_meta_data['office_hours']; ?></div>
@@ -44,12 +44,12 @@ do_action('tvlgiao_wpdance_before_main_content'); ?>
 			</div>
 		</section>
 
-		<section class="ifind-section ifind-section-flex ifind-header-main">
-			<div class="ifind-col ifind-col-left wow bounceInLeft" data-wow-delay=".5s">
+		<section class="row ifind-section ifind-section-flex ifind-header-main">
+			<div class="col-xs-7 ifind-col ifind-col-left wow bounceInLeft" data-wow-delay=".5s">
 				<?php get_template_part( 'sections/small-slider'); ?>
 			</div>
 
-			<div class="ifind-col ifind-col-right wow bounceInRight" data-wow-delay=".5s">
+			<div class="col-xs-5 ifind-col ifind-col-right wow bounceInRight" data-wow-delay=".5s">
 				<div class="ifind-weather">
 					<?php echo ifind_display_weather_today_info($location_lat, $location_lng);?>
 				</div>
@@ -58,8 +58,8 @@ do_action('tvlgiao_wpdance_before_main_content'); ?>
 	</div>
 
 	<!-- Main content -->
-	<section class="ifind-section ifind-section-flex ifind-content-main">
-		<div class="ifind-col ifind-col-left ifind-col--small ifind-map-wrap wow bounceInLeft" data-wow-delay=".75s">
+	<section class="row ifind-section ifind-section-flex ifind-content-main">
+		<div class="col-xs-5 ifind-col ifind-col-left ifind-map-wrap wow bounceInLeft" data-wow-delay=".75s">
 			<div class="top-content">
 				<img data-wow-iteration="200" class="wow bounce" data-wow-delay="1s" src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/marker.png'; ?>" alt=""> 
 				<span class="header-title"><?php esc_html_e( 'You are here!', 'ifind' ) ?></span>
@@ -67,16 +67,14 @@ do_action('tvlgiao_wpdance_before_main_content'); ?>
 			<?php get_template_part( 'sections/map'); ?>
 		</div>
 
-		<div class="ifind-col ifind-col-right ifind-col--large wow bounceInRight" data-wow-delay=".75s">
+		<div class="col-xs-7 ifind-col ifind-col-right wow bounceInRight" data-wow-delay=".75s">
 	<?php get_template_part( 'sections/business-tab'); ?>
 		</div>
 	</section>
 
 	<!-- Footer -->
-	<section class="ifind-section ifind-footer-main wow fadeIn" data-wow-delay="1s">
-		<div class="ifind-col ifind-col--full">
-			<?php get_template_part( 'sections/footer-slider'); ?>
-		</div>
+	<section class="row ifind-section ifind-footer-main wow fadeIn" data-wow-delay="1s">
+		<?php get_template_part( 'sections/footer-slider'); ?>
 	</section>
 <?php 
 /**

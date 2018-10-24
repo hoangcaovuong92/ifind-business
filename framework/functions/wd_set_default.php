@@ -24,6 +24,7 @@ if(!function_exists ('tvlgiao_wpdance_get_theme_option_default_data')){
 			'slider'       => array(
 		        'default'       => array(
 					'timerShowPopup'    => 15000,
+					'timerShowPopupViewingInfo'    => 60000,
 					'timerDelayPopup'	=> 15000,
 					'bigAutoplaySpeed'	=> 10000,
 					'smallAutoplaySpeed' => 10000,
