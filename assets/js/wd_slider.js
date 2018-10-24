@@ -36,8 +36,8 @@ if (typeof ifind_big_popup_slider != 'function') {
 	function ifind_big_popup_slider() {
 		jQuery(document).ready(function () {
 			var timer;
-			var timerShowPopup = 9999999; //time show large popup slider
-			//var timerShowPopup = option_object.ifind_slider_timerShowPopup; //time show large popup slider
+			//var timerShowPopup = 9999999; //time show large popup slider
+			var timerShowPopup = option_object.ifind_slider_timerShowPopup; //time show large popup slider
 			var timerShowPopupViewingInfo = option_object.ifind_slider_timerShowPopupViewingInfo; //time show large popup slider
 			var timerDelayPopup = option_object.ifind_slider_timerDelayPopup; //time delay after slider break
 			var bigAutoplaySpeed = option_object.ifind_slider_bigAutoplaySpeed; //time autoplay large popup slider

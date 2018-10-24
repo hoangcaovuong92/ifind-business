@@ -29,12 +29,13 @@ $list_business_id = $location_meta_data['list_business'];
     require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/banner-image.php"; ?>
 
     <div id="ifind-business-tabs" class="wow fadeInUp" data-wow-duration="2s">	
-        <?php 
-        require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/back-link.php";
-        require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/map-directions.php";
-        require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/tab-nav.php";
-        require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/tab-content.php";
-        ?>
+        <div class="ifind-business-tabs-wrap">
+            <?php 
+            require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/back-link.php";
+            require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/map-directions.php";
+            require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/tab-nav.php";
+            require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/tab-content.php";
+            ?>
     </div>
 </div>
 
