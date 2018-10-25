@@ -164,8 +164,8 @@ $list_business_location = ifind_get_list_business_location(get_the_ID());
                 
                 function calculateAndDisplayRoute(latlng, directionsService, directionsDisplay) {    
                     directionsService.route({    
-                        origin: latlng,    
-                        destination: locationLatlng,    
+                        origin: locationLatlng,    
+                        destination: latlng,    
                         travelMode: 'DRIVING',     
                     }, function(response, status) {    
                         if (status === google.maps.DirectionsStatus.OK) {
@@ -177,12 +177,12 @@ $list_business_location = ifind_get_list_business_location(get_the_ID());
                     });    
                 }    
 
-                function showSteps(directionResult) {
+                function showSteps(directionResult, from, to) {
                     var myRoute = directionResult.routes[0].legs[0];
                     var distance = myRoute.distance.text;
                     var duration = myRoute.duration.text;
-                    var start_address = myRoute.start_address;
-                    var end_address = myRoute.end_address;
+                    var start_address = (from) ? from : myRoute.start_address;
+                    var end_address = (to) ? to : myRoute.end_address;
                     instructions = '<ol>';
                     var steps = '';
 

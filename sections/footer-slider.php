@@ -9,8 +9,10 @@ $business_metadata = ifind_business_custom_metadata(get_the_ID());
                     $business_info_banner = wp_get_attachment_image_url( $business_metadata['info_banner'], 'full' );
                     $youtube_video_id = $business_metadata['youtube_video_id'];
                     $youtube_video_url = 'http://www.youtube.com/embed/'.$youtube_video_id.'?enablejsapi=1&rel=0&modestbranding=0&wmode=opaque&showinfo=0&controls=0';
-                    $fancybox_class = ($youtube_video_id) ? 'ifind-fancybox-video' : 'ifind-fancybox-image';
-                    $fancybox_link = ($youtube_video_id) ? $youtube_video_url : $business_info_banner;
+                    //$fancybox_class = ($youtube_video_id) ? 'ifind-fancybox-video' : 'ifind-fancybox-image';
+                    //$fancybox_link = ($youtube_video_id) ? $youtube_video_url : $business_info_banner;
+                    $fancybox_class = 'ifind-fancybox-image';
+                    $fancybox_link = $business_info_banner;
                     ?>
                     <div class="ifind-footerSlider-item">
                         <div class="inner">

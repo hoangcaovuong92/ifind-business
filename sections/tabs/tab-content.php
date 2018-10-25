@@ -17,8 +17,12 @@
                         if (count($list_business_group_children) > 0) {
                             foreach ($list_business_group_children as $business_group_children_id => $value) {
                                 $list_business_children = ifind_get_list_posts('business', $list_business_id, 'business_group', $business_group_children_id);
-                                $term_children = get_term( $business_group_children_id, $taxonomy );
-                                echo '<li><a class="ifind-business-filter-item" data-icon="'.$map_marker_icon_url.'" href="#" data-filter-by="'.$term_children->slug.'">'.$term_children->name.' ('.count($list_business_children).')</a></li>';
+                                if(count($list_business_children)){
+                                    $term_children = get_term( $business_group_children_id, $taxonomy );
+                                    echo '<li><a class="ifind-business-filter-item" data-icon="'.$map_marker_icon_url.'" href="#" data-filter-by="';
+                                    echo $term_children->slug.'">'.$term_children->name.' ('.count($list_business_children).')';
+                                    echo '</a></li>';
+                                }
                             }
                         }
                     echo '</ul>';
@@ -68,7 +72,7 @@
                                     <a href="#" class="business-direction-link" 
                                                 data-lat="<?php echo $business_lat; ?>" 
                                                 data-lng="<?php echo $business_lng; ?>"
-                                                title="<?php printf(__("Directions from %s to %s",'ifind'), htmlspecialchars(get_the_title()), htmlspecialchars(get_the_title($business_id))); ?>" >
+                                                title="<?php printf(__("Directions from %s to %s",'ifind'), ifind_removeSpecialChapr(get_the_title()), ifind_removeSpecialChapr(get_the_title($business_id))); ?>" >
                                         <div class="heading"><?php _e("Directions",'ifind') ?></div>
                                         <img class="ifind-business-icon" src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/directions.png'; ?>">
                                         <div class="business-distance heading"></div>

@@ -82,3 +82,23 @@ if( !function_exists('ifind_send_directions_main_ajax') ){
 		die(); //stop "0" from being output
 	}
 }
+
+add_action('wp_ajax_nopriv_get_curent_secret_key', 'ifind_get_curent_secret_key_ajax');
+add_action('wp_ajax_get_curent_secret_key', 'ifind_get_curent_secret_key_ajax');
+if( !function_exists('ifind_get_curent_secret_key_ajax') ){
+	function ifind_get_curent_secret_key_ajax() { 
+		echo ifind_get_secret_key();
+		die(); //stop "0" from being output
+	}
+}
+
+// Ajax admin
+add_action('wp_ajax_nopriv_reset_secret_key', 'ifind_reset_secret_key_ajax');
+add_action('wp_ajax_reset_secret_key', 'ifind_reset_secret_key_ajax');
+if( !function_exists('ifind_reset_secret_key_ajax') ){
+	function ifind_reset_secret_key_ajax() { 
+		$new_secret_key = 'ifind-secret-key-'.ifind_generateRandomString();
+		ifind_update_secret_key($new_secret_key);
+		die(); //stop "0" from being output
+	}
+}

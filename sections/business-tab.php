@@ -26,8 +26,9 @@ $list_business_id = $location_meta_data['list_business'];
             $list_data[$term_id]['category_color'] = get_term_meta($term_id, 'category_color', true);
         }
     }
-    require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/banner-image.php"; ?>
-
+    require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/banner-image.php";
+    require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/send-mail-form.php"; ?>
+    
     <div id="ifind-business-tabs" class="wow fadeInUp" data-wow-duration="2s">	
         <div class="ifind-business-tabs-wrap">
             <?php 

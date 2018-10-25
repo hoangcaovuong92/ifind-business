@@ -4,6 +4,7 @@ Redux::setSection( $opt_name, array(
     'id'               => 'ifind_google_map_api_section',
     'desc'             => __( '', 'ifind' ),
     'customizer_width' => '400px',
+    'icon'             => 'el el-map-marker',
     'fields'     => array(
         array(
             'id'       => 'ifind_google_map_api_key',
@@ -29,6 +30,7 @@ Redux::setSection( $opt_name, array(
     'id'               => 'ifind_weather_api_section',
     'desc'             => __( '', 'ifind' ),
     'customizer_width' => '400px',
+    'icon'             => 'el el-cloud',
     'fields'     => array(
         array(
             'id'       => 'ifind_weather_api_key',
@@ -53,6 +55,7 @@ Redux::setSection( $opt_name, array(
     'title'            => __( 'Slider Settings', 'ifind' ),
     'id'               => 'ifind_time_settings',
     'desc'             => __( '', 'ifind' ),
+    'icon'             => 'el el-time',
     'customizer_width' => '400px',
     'fields'     => array(
         array(

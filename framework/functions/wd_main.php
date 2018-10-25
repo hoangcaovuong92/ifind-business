@@ -59,6 +59,37 @@ if(!function_exists ('ifind_fahrenheit_to_elsius')){
 	}
 }
 
+if(!function_exists ('ifind_removeSpecialChapr')){
+	function ifind_removeSpecialChapr($value){
+		$title = str_replace( array( '\'', '"', ',' , ';', '<', '>' ), ' ', $value);
+		return $title;
+	}
+}
+
+if(!function_exists ('ifind_get_secret_key')){
+	function ifind_get_secret_key(){
+		return get_option('ifind_secret_key', '');
+	}
+}
+if(!function_exists ('ifind_update_secret_key')){
+	function ifind_update_secret_key($value){
+		update_option('ifind_secret_key', $value);
+	}
+}
+
+if(!function_exists ('ifind_generateRandomString')){
+	function ifind_generateRandomString($length = 10) {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
+}
+
+
 // Get List terms of taxonomy
 if(!function_exists ('ifind_get_list_category')){
 	function ifind_get_list_category($taxonomy = 'category', $options = array()){
@@ -90,6 +121,7 @@ if(!function_exists ('ifind_get_list_business_location')){
 // Get List terms of taxonomy
 if(!function_exists ('ifind_get_list_posts')){
 	function ifind_get_list_posts($post_type, $list_post_id, $taxonomy, $term_id, $posts_per_page = -1){
+		global $post;
 		$args_default = array(
 			'post_type'			=> $post_type,
 			'post_status'		=> 'publish',
@@ -107,7 +139,6 @@ if(!function_exists ('ifind_get_list_posts')){
 		);
 		$args = wp_parse_args( $args, $args_default );
 		$data_array = array();
-		global $post;
 		$data = new WP_Query($args);
 		if( $data->have_posts() ){
 			while( $data->have_posts() ){

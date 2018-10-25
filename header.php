@@ -24,4 +24,5 @@
 			</div>
 		</div>
 	</div>
+	<div id="ifind-secret-key" data-secret-key="<?php echo ifind_get_secret_key(); ?>"></div>
 </header> <!-- END HEADER  -->

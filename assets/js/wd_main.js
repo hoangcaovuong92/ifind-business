@@ -9,9 +9,11 @@ jQuery(document).ready(function ($) {
 	google_map_script();
 	business_tab_script();
 	image_popup_fancybox();
-	ifind_ajax_display_weather_today_info();
 	ifind_form_directions();
 	ifind_add_class_to_body();
+	ifind_virtual_keyboard();
+	ifind_ajax_display_weather_today_info();
+	ifind_ajax_auto_reload_browser();
 });
 
 //****************************************************************//
@@ -33,6 +35,52 @@ if (typeof google_map_script != 'function') {
 			}else{
 				jQuery(item).html('~'+distance+'km');
 			}
+		});
+	}
+}
+
+if (typeof ifind_virtual_keyboard != 'function') {
+	function ifind_virtual_keyboard() {
+		jQuery('.softkeys').softkeys({
+			target : jQuery('.softkeys').data('target'),
+			layout : [
+				[
+					['`','~'],
+					['1','!'],
+					['2','@'],
+					['3','#'],
+					['4','$'],
+					['5','%'],
+					['6','^'],
+					['7','&amp;'],
+					['8','*'],
+					['9','('],
+					['0',')'],
+					['-', '_'],
+					['=','+'],
+					'delete'
+				],
+				[
+					'q','w','e','r','t','y','u','i','o','p',
+					['[','{'],
+					[']','}']
+				],
+				[
+					'capslock',
+					'a','s','d','f','g','h','j','k','l',
+					[';',':'],
+					["'",'&quot;'],
+					['\\','|']
+				],
+				[
+					'shift',
+					'z','x','c','v','b','n','m',
+					[',','&lt;'],
+					['.','&gt;'],
+					['/','?'],
+					['@']
+				]
+			]
 		});
 	}
 }
@@ -132,7 +180,7 @@ if (typeof image_popup_fancybox != 'function') {
 			},
 			afterLoad	: function() { 
 				setTimeout(() => {
-					jQuery(".fancybox-overlay").fadeOut().remove(); 
+					jQuery(".fancybox-close").click();
 				}, 10000);
 			}
 		});
@@ -225,6 +273,32 @@ if (typeof ifind_form_directions != 'function') {
 				return false;
 			}
 		})
+		jQuery('.send-directions-form-close').on('click', function(e) {
+			e.preventDefault();
+			jQuery('.map-directions-email-form').removeClass('open');
+		});
+	}
+}
+
+if (typeof ifind_ajax_auto_reload_browser != 'function') {
+	function ifind_ajax_auto_reload_browser() {
+		setInterval(function () {
+			var current_secret_key = jQuery('#ifind-secret-key').data('secret-key');
+			jQuery.ajax({
+				type: "POST",
+				url: ajax_object.ajax_url,
+				data: { 
+					action: "get_curent_secret_key",
+				},
+				beforeSend: function(){
+				},
+				success: function (data){
+					if (data !== current_secret_key) {
+						location.reload();
+					};
+				}
+			});
+		}, 10000);
 	}
 }
 
