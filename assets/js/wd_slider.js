@@ -45,15 +45,28 @@ if (typeof ifind_big_popup_slider != 'function') {
 			var numSliderBreak = option_object.ifind_slider_numSliderBreak; //slider will break after number slide
 			var numFooterSliderItems = option_object.ifind_slider_numFooterSliderItems; //slide number of footer slider
 
-			var popSliderBigWrap = '.popupSlider';
+			var popSliderBigWrap = '#popupSlider';
 			var popSliderListWrap = '.ifind-sliderPop-container';
 			var footerSliderListWrap = '.ifind-footerSlider-container';
 			var footerSliderItem = '.ifind-footerSlider-item';
 			var smallSliderListWrap = '.ifind-smallSlider-container';
 			var smallSliderItem = '.ifind-smallSlider-item';
 
-			ifind_slider_call(smallSliderListWrap, {arrows: true, autoplaySpeed: smallAutoplaySpeed});
-			ifind_slider_call(footerSliderListWrap, {arrows: true, autoplaySpeed: smallAutoplaySpeed, infinite: true, slidesToShow: numFooterSliderItems});
+			ifind_slider_call(smallSliderListWrap, {
+				arrows: true, 
+				autoplaySpeed: smallAutoplaySpeed,
+				swipe: 'false',
+				swipeToSlide: 'false',
+				touchMove: 'false',
+				draggable: 'false',
+				accessibility: 'false',
+			});
+			ifind_slider_call(footerSliderListWrap, {
+				arrows: true, 
+				autoplaySpeed: smallAutoplaySpeed, 
+				infinite: true, 
+				slidesToShow: numFooterSliderItems
+			});
 
 			function big_popup_open(options){
 				var default_option = {
@@ -61,14 +74,44 @@ if (typeof ifind_big_popup_slider != 'function') {
 				}
 				options = jQuery.extend(default_option, options); 
 				jQuery(popSliderBigWrap).addClass('open');
+				jQuery.fancybox(popSliderBigWrap, {
+					openEffect  : 'fade',
+					closeEffect : 'fade',
+					margin      : [0, 0, 0, 0],
+					padding 	: 0,
+					width 		: 1080,
+					height 		: 1920,
+					fitToView 	: true,
+					autoSize 	: false,
+					closeBtn    : true,
+					arrows      : false,
+					helpers : {
+						overlay : {
+							css : {
+								'background' : 'rgba(58, 42, 45, 0)'
+							}
+						}
+					},
+					onComplete  : function() {
+					},
+					beforeShow: function(){
+						//jQuery("body").css({'overflow-y':'hidden'});
+					},
+					afterClose: function(){
+						big_popup_close();
+						//jQuery("body").css({'overflow-y':'visible'});
+					},
+					afterLoad	: function() {
+					}
+				});
 				ifind_slider_call(popSliderListWrap, options);
-				jQuery(".fancybox-overlay").fadeOut().remove();
 			}
 
 			function big_popup_close(){
 				if (jQuery(popSliderListWrap).hasClass('slick-initialized')) {
 					jQuery(popSliderListWrap).slick('unslick');
 				}
+				ifind_fancybox_close();
 				jQuery(popSliderBigWrap).removeClass('open');
 				reset_business_tab();
 			}
@@ -105,7 +148,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 			});
 
 			jQuery(popSliderListWrap).on('click', function () {
-				big_popup_close()
+				big_popup_close();
 			});
 		});
 	}

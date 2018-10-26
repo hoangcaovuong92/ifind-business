@@ -3,8 +3,6 @@
 //****************************************************************//
 jQuery(document).ready(function ($) {
 	"use strict";
-	var window_width = jQuery(window).width();
-	//Sidebar collapse
 	wow_js_script();
 	google_map_script();
 	business_tab_script();
@@ -161,6 +159,15 @@ if (typeof reset_business_tab != 'function') {
 	}
 }
 
+if (typeof ifind_fancybox_close != 'function') { 
+	function ifind_fancybox_close(){
+		jQuery(".fancybox-close").click();
+		jQuery('.fancybox-overlay').click();
+		jQuery.fancybox.close();
+	}
+}
+
+
 if (typeof image_popup_fancybox != 'function') {
 	function image_popup_fancybox() {
 		jQuery(".ifind-fancybox-image").fancybox({
@@ -174,15 +181,70 @@ if (typeof image_popup_fancybox != 'function') {
 			autoSize 	: false,
 			closeBtn    : true,
 			arrows      : false,
+			helpers : {
+				overlay : {
+					css : {
+						'background' : 'rgba(58, 42, 45, 0.5)'
+					},
+				}
+			},
 			onComplete  : function() {
 			},
-			afterClose	: function() {
+			beforeShow: function(){
+				//jQuery("body").css({'overflow-y':'hidden'});
+			},
+			afterClose: function(){
+				//jQuery("body").css({'overflow-y':'visible'});
 			},
 			afterLoad	: function() { 
-				setTimeout(() => {
-					jQuery(".fancybox-close").click();
-				}, 10000);
+				var timer;
+				jQuery(document).on('mousemove touchstart click', function (event) {
+					event.preventDefault();
+					if (timer) clearTimeout(timer);
+					timer = setTimeout(function () {
+						ifind_fancybox_close();
+						reset_business_tab();
+					}, 10000);
+				});
 			}
+		});
+
+		jQuery('.map-directions-email-send').on('click', function(e) {
+			e.preventDefault();
+			jQuery.fancybox('#map-directions-email', {
+				openEffect  : 'fade',
+				closeEffect : 'fade',
+				margin      : [0, 0, 0, 0],
+				padding 	: 0,
+				width 		: 1080,
+				height 		: 1920,
+				fitToView 	: true,
+				autoSize 	: true,
+				closeBtn    : false,
+				arrows      : false,
+				helpers : {
+					overlay : {
+						css : {
+							'background' : 'rgba(58, 42, 45, 0.8)'
+						},
+					}
+				},
+				onComplete  : function() {
+				},
+				beforeShow: function(){
+					//jQuery("body").css({'overflow-y':'hidden'});
+				},
+				afterLoad	: function() { 
+					var timerShowPopupViewingInfo = option_object.ifind_slider_timerShowPopupViewingInfo; //time show large popup slider
+					setTimeout(() => {
+						jQuery(".fancybox-overlay").click();
+					}, timerShowPopupViewingInfo);
+				}
+			});
+			jQuery('.send-directions-form-close').on('click', function(e) {
+				e.preventDefault();
+				ifind_fancybox_close();
+			});
 		});
 	}
 }
@@ -228,15 +290,6 @@ if (typeof ifind_form_directions != 'function') {
 	function ifind_form_directions(){
 		jQuery('#send-directions-form').validator();
 
-		jQuery('.map-directions-email-send').on('click', function(e) {
-			e.preventDefault();
-			jQuery('.map-directions-email-form').toggleClass('open');
-		});
-
-		jQuery('.map-directions-header, .map-directions-content').on('click', function(e) {
-			jQuery('.map-directions-email-form').removeClass('open');
-		});
-
 		jQuery('#send-directions-form').on('submit', function (e) {
 			// if the validator does not prevent form submit
 			var email = jQuery(this).find('input[name="email"]').val();
@@ -273,10 +326,6 @@ if (typeof ifind_form_directions != 'function') {
 				return false;
 			}
 		})
-		jQuery('.send-directions-form-close').on('click', function(e) {
-			e.preventDefault();
-			jQuery('.map-directions-email-form').removeClass('open');
-		});
 	}
 }
 
@@ -294,7 +343,7 @@ if (typeof ifind_ajax_auto_reload_browser != 'function') {
 				},
 				success: function (data){
 					if (data !== current_secret_key) {
-						location.reload();
+						location.reload(true);
 					};
 				}
 			});
@@ -305,5 +354,8 @@ if (typeof ifind_ajax_auto_reload_browser != 'function') {
 if (typeof ifind_add_class_to_body != 'function') { 
 	function ifind_add_class_to_body(){
 		jQuery('body').addClass('loaded');
+		setTimeout(() => {
+			jQuery('.header-page-name').trigger('click');
+		}, 3000);
 	}
 }

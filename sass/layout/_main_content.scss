@@ -66,27 +66,10 @@
 }
 
 $business_border_width: 1px;
-.map-directions-email{
+#map-directions-email{
+    display: none;
+    padding: 10px 20px 20px;
     .map-directions-email-form{
-        position: fixed;
-        left: 0px;
-        right: 0px;
-        top: 0;
-        bottom: 0;
-        background: rgba(52, 58, 64, .9);
-        border-bottom: $business_border_width solid #ccc;
-        z-index: 10;
-        @include opacity(0);
-        @include transition(all 100ms ease-in);
-        @include transform(translateY(-100%));
-        &.open{
-            @include flexbox; 
-            @include justify-content(center);
-            @include align-items(center);
-            @include transform(translateY(0));
-            @include opacity(1);
-            height: 100%;
-        }
         #send-directions-form{
             @include flexbox; 
             @include justify-content(center);
@@ -108,14 +91,15 @@ $business_border_width: 1px;
                 }
                 .help-block .list-unstyled{
                     margin-bottom: 0;
-                    color: yellow;
+                    color: red;
+                    text-align: center;
                 }
             }
         }
         .send-directions-form-close{
             cursor: pointer;
             position: absolute;
-            top: 25px;
+            bottom: 25px;
             left: auto;
             right: 25px;
             display: flex;
@@ -127,8 +111,8 @@ $business_border_width: 1px;
             border-radius: 50%;
             border: $business_border_width solid #999;
             z-index: 10;
-            color: #433a3a;
-            background: #fff;
+            color: #fff;
+            background: #433a3a;
             @include box-shadow(1px, 1px, 1px, #000);
             @include box-sizing(border-box);
             @include transition(all 100ms ease-in);

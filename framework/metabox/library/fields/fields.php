@@ -212,7 +212,7 @@ if (!class_exists('iFind_Admin_Metabox_Fields')) {
                 </th>
                 <td>
                     <img class="ifind-image-preview" id="image-preview-<?php echo $random_id; ?>" src="<?php echo ($data['value'] && is_numeric($data['value'])) ? esc_url(wp_get_attachment_url($data['value'])) : $data['default']; ?>"  width="100%" />
-                    <input type="hidden" name="<?php echo $data['field_name']; ?>" id="<?php echo 'image-value-'.$random_id; ?>" value="<?php echo ($data['value'] && is_numeric($data['value'])) ? esc_attr($data['value'] ) : $data['default']; ?>" />
+                    <input type="hidden" name="<?php echo $data['field_name']; ?>" id="<?php echo 'image-value-'.$random_id; ?>" value="<?php echo ($data['value'] && is_numeric($data['value'])) ? esc_attr($data['value'] ) : ""; ?>" />
 
                     <a 	class="wd_media_lib_select_btn button button-primary button-large" 
                         data-image_value="<?php echo 'image-value-'.$random_id; ?>" 

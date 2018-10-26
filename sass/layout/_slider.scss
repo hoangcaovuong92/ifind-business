@@ -21,26 +21,12 @@
 	}
 }
 
-.popupSlider {
-	@include opacity(0);
-	@include transition(all 600ms ease);
-	@include transform(translateX(100%));
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	z-index: 99;
-
+#popupSlider {
+	display: none;
 	.ifind-sliderPop-item {
 		img {
 			width: 100%;
 		}
-	}
-
-	&.open {
-		@include opacity(1);
-		@include transform(translateX(0));
 	}
 }
 
