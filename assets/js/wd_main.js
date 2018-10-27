@@ -342,7 +342,7 @@ if (typeof ifind_ajax_auto_reload_browser != 'function') {
 				beforeSend: function(){
 				},
 				success: function (data){
-					if (data !== current_secret_key) {
+					if (data && data !== current_secret_key) {
 						location.reload(true);
 					};
 				}

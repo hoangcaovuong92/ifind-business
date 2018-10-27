@@ -69,6 +69,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 			});
 
 			function big_popup_open(options){
+				console.log('popup opened');
 				var default_option = {
 					autoplaySpeed: bigAutoplaySpeed,
 				}
@@ -85,7 +86,8 @@ if (typeof ifind_big_popup_slider != 'function') {
 					autoSize 	: false,
 					closeBtn    : true,
 					arrows      : false,
-					helpers : {
+					scrolling	: false,
+					helpers 	: {
 						overlay : {
 							css : {
 								'background' : 'rgba(58, 42, 45, 0)'
@@ -98,8 +100,8 @@ if (typeof ifind_big_popup_slider != 'function') {
 						//jQuery("body").css({'overflow-y':'hidden'});
 					},
 					afterClose: function(){
-						big_popup_close();
 						//jQuery("body").css({'overflow-y':'visible'});
+						jQuery(popSliderBigWrap).removeClass('open');
 					},
 					afterLoad	: function() {
 					}
@@ -108,6 +110,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 			}
 
 			function big_popup_close(){
+				console.log('popup closed');
 				if (jQuery(popSliderListWrap).hasClass('slick-initialized')) {
 					jQuery(popSliderListWrap).slick('unslick');
 				}
@@ -117,37 +120,42 @@ if (typeof ifind_big_popup_slider != 'function') {
 			}
 
 			jQuery(document).on('mousemove touchstart click', function (event) {
-				if(!jQuery(popSliderBigWrap).hasClass('open')){
-					var time = (!jQuery('body').hasClass('showing-info')) ? timerShowPopup : timerShowPopupViewingInfo;
-					if (timer) clearTimeout(timer);
-					timer = setTimeout(function () {
+				console.log('popup opening: ' + jQuery(popSliderBigWrap).hasClass('open'));
+				var time = (!jQuery('body').hasClass('showing-info')) ? timerShowPopup : timerShowPopupViewingInfo;
+				if (timer) clearTimeout(timer);
+				timer = setTimeout(function () {
+					if(!jQuery(popSliderBigWrap).hasClass('open')){
+					
 						var startSlider = 0;
+						console.log('popup after waiting opened');
 						big_popup_open();
-						
+					}else{
 						// On before slide change
 						jQuery(popSliderListWrap).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 							if ((currentSlide + 1) % numSliderBreak === 0 || nextSlide === 0 ) {
+								console.log('popup breaked');
 								startSlider = nextSlide;
 								big_popup_close();
 
 								setTimeout(function () {
+									console.log('popup after break opened');
 									big_popup_open({initialSlide: startSlider});
 								}, timerDelayPopup);
 							}
 						});
+					}
 
-					}, time);
-				}else{
-					//big_popup_close();
-				}
+				}, time);
 			});
 
 			jQuery(smallSliderItem).on('click', function (e) {
+				console.log('popup after click small slider opened');
 				var slideIndex = jQuery(this).index();
 				big_popup_open({initialSlide: slideIndex - 1});
 			});
 
 			jQuery(popSliderListWrap).on('click', function () {
+				console.log('popup clicked');
 				big_popup_close();
 			});
 		});
