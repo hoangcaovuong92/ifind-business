@@ -142,7 +142,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 									big_popup_open({initialSlide: startSlider});
 								}, timerDelayPopup);
 							}
-						});
+						}); 
 					}
 
 				}, time);

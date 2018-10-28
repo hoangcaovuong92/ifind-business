@@ -181,7 +181,8 @@ if (typeof image_popup_fancybox != 'function') {
 			autoSize 	: false,
 			closeBtn    : true,
 			arrows      : false,
-			helpers : {
+			type      	: 'image',
+			helpers 	: {
 				overlay : {
 					css : {
 						'background' : 'rgba(58, 42, 45, 0.5)'

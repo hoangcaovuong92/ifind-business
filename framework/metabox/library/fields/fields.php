@@ -193,6 +193,51 @@ if (!class_exists('iFind_Admin_Metabox_Fields')) {
             <?php
         }
 
+        static function get_qrcode_field($data = array()){
+            $default = array(
+                "title" => "",
+                "desc" => "",
+                "placeholder" => "",
+                "field_name" => "no_name_available",
+                "value" => array(
+                    'qr_type' => 'url',
+                    'qr_content' => ''
+                ),
+            );
+            $random_id 	= mt_rand();
+            $data = wp_parse_args($data, $default);
+            $qr_type = $data['value']['qr_type'];
+            $qr_content = $data['value']['qr_content'];
+            ?>
+            <tr>
+                <th scope="row">
+                    <label><?php echo $data['title']; ?>:</label>
+                    <p class="description"><?php echo $data['desc']; ?></p>
+                </th>
+                <td class="ifind-qrcode-wrap">
+                    <div class="ifind-qrcode-col">
+                        <label><?php esc_html_e('Type','ifind'); ?>:</label>
+                        <select name="<?php echo $data['field_name']; ?>[qr_type]">
+                            <option value="url" <?php echo ($qr_type === 'url') ? 'selected' : ''; ?>><?php esc_html_e('URL','ifind'); ?></option>
+                            <option value="text" <?php echo ($qr_type === 'text') ? 'selected' : ''; ?>><?php esc_html_e('TEXT','ifind'); ?></option>
+                            <option value="email" <?php echo ($qr_type === 'email') ? 'selected' : ''; ?>><?php esc_html_e('EMAIL','ifind'); ?></option>
+                            <option value="sms" <?php echo ($qr_type === 'sms') ? 'selected' : ''; ?>><?php esc_html_e('SMS','ifind'); ?></option>
+                            <option value="contact" <?php echo ($qr_type === 'contact') ? 'selected' : ''; ?>><?php esc_html_e('CONTACT','ifind'); ?></option>
+                            <option value="content" <?php echo ($qr_type === 'content') ? 'selected' : ''; ?>><?php esc_html_e('CONTENT','ifind'); ?></option>
+                        </select>
+                    </div>
+                    <div class="ifind-qrcode-col">
+                        <label><?php esc_html_e('CONTENT','ifind'); ?>:</label>
+                        <input type="text" class="wd-full-width" 
+                                name="<?php echo $data['field_name']; ?>[qr_content]" 
+                                value="<?php echo htmlspecialchars($qr_content); ?>" 
+                                placeholder="<?php echo $data['placeholder']; ?>"/>
+                    </div>
+                </td>
+            </tr>
+            <?php
+        }
+
         static function get_image_field($data = array()){
             $default = array(
                 "title" => "",

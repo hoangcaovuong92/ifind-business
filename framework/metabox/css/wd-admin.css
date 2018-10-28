@@ -119,3 +119,17 @@ table.wd-custom-meta-box-width td input[type='email'] {
 	width: 25%;
 	margin-bottom: 10px;
 }
+
+.ifind-qrcode-wrap{
+	display: flex;
+}
+
+.ifind-qrcode-col{
+	flex: 1;
+	padding: 5px;
+}
+
+.ifind-qrcode-col select, .ifind-qrcode-col input{
+	display: block;
+	width: 100%;
+}

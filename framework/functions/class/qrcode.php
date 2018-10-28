@@ -9,7 +9,7 @@ include "qrcode.php";
  // create text QR code
  $qc->TEXT("TechiesBadi");
  // render QR code  
- $qc->QRCODE(400,"qrcode.png");
+ $qc->QRCODE('link', 400,"qrcode.png");
 
 Like this you can generate the remainig Qrcodes.
 
@@ -43,7 +43,7 @@ if (!class_exists('QrCode')) {
             $this->data = $text;
         }
         // It generates the Email type of Qr code
-         public function EMAIL($email = null, $subject = null, $message = null) {
+        public function EMAIL($email = null, $subject = null, $message = null) {
             $this->data = "MATMSG:TO:{$email};SUB:{$subject};BODY:{$message};;";
          }
         //It generates the Phone numner type of Qr Code
@@ -51,41 +51,67 @@ if (!class_exists('QrCode')) {
             $this->data = "TEL:{$phone}";
         }
         //It generates the Sms type of Qr code
-         public function SMS($phone = null, $msg = null) {
+        public function SMS($phone = null, $msg = null) {
             $this->data = "SMSTO:{$phone}:{$msg}";
          }
         //It generates the VCARD type of Qr code
-         public function CONTACT($name = null, $address = null, $phone = null, $email = null) {
+        public function CONTACT($name = null, $address = null, $phone = null, $email = null) {
             $this->data = "MECARD:N:{$name};ADR:{$address};TEL:{$phone};EMAIL:{$email};;";
          }
         // It Generates the Image type of Qr Code
-         public function CONTENT($type = null, $size = null, $content = null) {
+        public function CONTENT($type = null, $size = null, $content = null) {
             $this->data = "CNTS:TYPE:{$type};LNG:{$size};BODY:{$content};;";
          }
-        // Saving the Qr code image  
-         public function QRCODE($size = 400, $filename = null) {
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $this->apiUrl);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, "chs={$size}x{$size}&cht=qr&chl=" . urlencode($this->data));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-            $img = curl_exec($ch);
-            curl_close($ch);
-            if($img) {
-                if($filename) {
-                    if(!preg_match("#\.png$#i", $filename)) {
-                        $filename .= ".png";
+        // Saving the Qr code image 
+        // $data_return: link | save_file | display
+        public function QRCODE($data_return = 'link', $size = 400, $filename = 'default.png') {
+            if ($data_return === 'link') {
+                $link = add_query_arg('chs', $size.'x'.$size, $this->apiUrl);
+                $link = add_query_arg('cht', 'qr', $link);
+                $link = add_query_arg('chl', urlencode($this->data), $link);
+                return $link;
+            }else{
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $this->apiUrl);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, "chs={$size}x{$size}&cht=qr&chl=" . urlencode($this->data));
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HEADER, false);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+                $img = curl_exec($ch);
+                curl_close($ch);
+                if($img) {
+                    if($data_return === 'save_file') {
+                        if(!preg_match("#\.png$#i", $filename)) {
+                            $filename .= ".png";
+                        }
+                        return file_put_contents($filename, $img);
+                    } else {
+                        header("Content-type: image/png");
+                        print $img;
+                        return true;
                     }
-                    return file_put_contents($filename, $img);
-                } else {
-                    header("Content-type: image/png");
-                    print $img;
-                    return true;
                 }
+                return false;
             }
-            return false;
-         }
+        }
+
+        public function SETCONTENT($qr_type, $qr_content){
+            if ($qr_type === 'url') {
+                $this->URL($qr_content);
+            }elseif ($qr_type === 'text') {
+                $this->TEXT($qr_content);
+            }elseif ($qr_type === 'email') {
+                $this->EMAIL($qr_content);
+            }elseif ($qr_type === 'phone') {
+                $this->PHONE($qr_content);
+            }elseif ($qr_type === 'sms') {
+                $this->SMS($qr_content);
+            }elseif ($qr_type === 'contact') {
+                $this->CONTACT($qr_content);
+            }elseif ($qr_type === 'content') {
+                $this->CONTENT($qr_content);
+            }
+        }
     }
 }

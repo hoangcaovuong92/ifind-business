@@ -159,7 +159,7 @@ $business_border_width: 1px;
     .ifind-business-list {
         overflow: auto;
         height: 100%;
-        min-height: 583px;
+        min-height: 579px;
         border-top: none;
         
     }
@@ -403,8 +403,6 @@ $business_border_width: 1px;
         }
 
         .ifind-business-logo {
-            width: 18%;
-
             img {
                 width: 75px;
             }
@@ -412,7 +410,7 @@ $business_border_width: 1px;
 
         .ifind-business-desc {
             text-align: left;
-            width: 42%;
+            width: 40%;
             .ifind-business-desc-content{
                 line-height: 1.4;
                 font-size: 13px;
@@ -420,13 +418,15 @@ $business_border_width: 1px;
         }
 
         .ifind-business-direction,
-        .ifind-business-geocoding {
-            width: 20%;
+        .ifind-business-geocoding,
+        .ifind-business-qrcode {
+            padding-left: 10px;
+            min-width: 85px;
         }
     }
 
     .ifind-business-icon {
-        width: 50px;
+        width: 40px;
     }
 
     .business-back-link {

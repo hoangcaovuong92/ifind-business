@@ -46,6 +46,13 @@
                             $business_address = $business_metadata['location_data']['address'];
                             $list_category_filter = 'all';
                             $list_category = get_the_terms( $business_id, 'business_group' );
+                            //QR Code
+                            $qr_type = $business_metadata['qrcode']['qr_type'];
+                            $qr_content = $business_metadata['qrcode']['qr_content'];
+                            $qr_code = new QRCODE();
+                            $qr_code->SETCONTENT($qr_type, $qr_content);
+                            $qr_link = $qr_code->QRCODE();
+
                             if (count($list_category) > 0) {
                                 foreach ($list_category as $category) {
                                     $list_category_filter .= ' '.$category->slug;
@@ -88,6 +95,13 @@
                                         <div class="heading"><?php _e("Show On",'ifind') ?></div>
                                         <img class="ifind-business-icon" src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/marker.png'; ?>">
                                         <div class="heading"><?php _e("Map",'ifind') ?></div>
+                                    </a>
+                                </div>
+                                <div class="ifind-business-qrcode">
+                                    <a class="fancybox fancybox.iframe ifind-fancybox-image" href="<?php echo $qr_link; ?>">
+                                        <div class="heading"><?php _e("QR Code",'ifind') ?></div>
+                                        <img class="ifind-business-icon" src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/qrcode.png'; ?>">
+                                        <div class="heading"><?php _e("Scan",'ifind') ?></div>
                                     </a>
                                 </div>
                             </div>
