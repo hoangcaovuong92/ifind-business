@@ -82,7 +82,7 @@ if (!class_exists('iFind_Location')) {
 					'has_archive' 			=> false,
 					'rewrite' 				=>  array('slug'  =>  $this->post_type, 'with_front' =>  true),
 					'show_in_nav_menus' 	=> false,
-					'menu_icon'				=> 'dashicons-star-filled',
+					'menu_icon'				=> 'dashicons-location-alt',
 					'menu_position'			=> 5,
 				));	
 				flush_rewrite_rules();

@@ -26,7 +26,13 @@ do_action('tvlgiao_wpdance_before_main_content'); ?>
 	<?php get_template_part( 'sections/popup-slider'); ?>
 	<div id="ifind-header-wrap">
 		<section class="row ifind-section ifind-header-top">
-			<div class="col-xs-7 ifind-col ifind-col-left wow bounceInDown" data-wow-delay=".25s"">
+			<?php if( class_exists('GTranslate') ){ ?>
+				<div class="ifind-gtranslate">
+					<?php echo do_shortcode( '[GTranslate]' ); ?>
+				</div>
+			<?php } ?>
+			<div class="col-xs-7 ifind-col ifind-col-left wow bounceInDown <?php echo ( class_exists('GTranslate') ) ? 'gtranslate-show' : '' ?>" data-wow-delay=".25s"">
+				
 				<div class="header-title"><?php esc_html_e( 'Wecome to', 'ifind' ); ?></div>
 				<h1 class="header-page-name"><?php the_title(); ?></h1>
 				<div class="header-slogan"><?php echo $location_meta_data['slogan']; ?></div>

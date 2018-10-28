@@ -1,7 +1,7 @@
  <!-- Display Text Directions -->
  <div id="map-directions">
     <div class="map-directions-wrap">
-        <span class="directions-close"><?php _e('x','ifind'); ?></span>
+        <span class="directions-close"><span class="arrow"><span></span></span><?php _e("Back", 'ifind'); ?></span>
         <div id="map-directions-content-wrap">
             <a class="btn btn-primary map-directions-email-send" href="#map-directions-email" content="<p>">
                 <?php _e("Email me directions", 'ifind'); ?>

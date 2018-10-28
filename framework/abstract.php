@@ -132,6 +132,7 @@ if (!class_exists('ifindThemeSetting')) {
 		protected function init_arr_functions(){
 			$this->arr_functions = array(
 				'class/class-tgm-plugin-activation',
+				'class/qrcode',
 				'wd_main',
 				'wd_set_default',
 				'wd_get_customize_data',

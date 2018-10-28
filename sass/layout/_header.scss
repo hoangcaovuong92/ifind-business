@@ -46,7 +46,9 @@
         top: 0;
         width: 100%;
     }
-    
+    .ifind-col-left.gtranslate-show{
+        margin-top: 30px;
+    }
 }
 .ifind-header-main{
     @include align-items(center);
