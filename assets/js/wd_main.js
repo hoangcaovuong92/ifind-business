@@ -17,6 +17,12 @@ jQuery(document).ready(function ($) {
 //****************************************************************//
 /*							FUNCTIONS							  */
 //****************************************************************//
+if (typeof ifind_debug_mode != 'function') {
+	function ifind_debug_mode() {
+		return false;
+	}
+}
+
 if (typeof google_map_script != 'function') {
 	function google_map_script() {
 		var position2_lat = jQuery('#ifind-location-position').data('lat');
@@ -104,7 +110,10 @@ if (typeof business_tab_script != 'function') {
 
 			jQuery(category_banner_link).on('click', function(e) {
 				e.preventDefault();
-				jQuery('body').addClass('showing-info');
+				jQuery('body').addClass('working');
+				if (ifind_debug_mode()) {
+					console.log('body working');
+				}
 				var category_id = jQuery(this).data('category-id');
 				jQuery(tab_wrap).show();
 
@@ -148,14 +157,19 @@ if (typeof business_tab_script != 'function') {
 
 if (typeof reset_business_tab != 'function') {
 	function reset_business_tab() {
-		var category_banner_link = '.business-group-banner-link';
-		var tab_wrap = '#ifind-business-tabs';
-		jQuery('#map-directions').hide();
-		jQuery(tab_wrap).hide();
-		jQuery(category_banner_link).show();
-		jQuery('body').removeClass('showing-info');
-		jQuery('.map-directions-email-form').removeClass('open');
-		jQuery('.map-directions-email-form input[type="email"]').val('');
+		if (!jQuery('body').hasClass('video-playing')) {
+			var category_banner_link = '.business-group-banner-link';
+			var tab_wrap = '#ifind-business-tabs';
+			jQuery('#map-directions').hide();
+			jQuery(tab_wrap).hide();
+			jQuery(category_banner_link).show();
+			jQuery('body').removeClass('working');
+			if (ifind_debug_mode()) {
+				console.log('body stoped work');
+			}
+			jQuery('.map-directions-email-form').removeClass('open');
+			jQuery('.map-directions-email-form input[type="email"]').val('');
+		}
 	}
 }
 

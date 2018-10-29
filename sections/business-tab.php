@@ -46,6 +46,8 @@ $list_business_id = $location_meta_data['list_business'];
     function onPlayerReady(event) {
         event.target.mute();
         event.target.playVideo();
+        jQuery('body').addClass('video-playing');
+        //console.log('video playing');
     }
 
     // Fires when the player's state changes.
@@ -53,6 +55,8 @@ $list_business_id = $location_meta_data['list_business'];
         // Go to the next video after the current one is finished playing
         if (event.data === 0 || event.data === 2) {
             jQuery.fancybox.close();
+            jQuery('body').removeClass('video-playing');
+            //console.log('video stopped');
         } 
     }
 
@@ -89,7 +93,9 @@ $list_business_id = $location_meta_data['list_business'];
                         });
                     },
                     afterClose: function() {
-                    }
+                    },
+                    afterLoad	: function() {
+					}
                 });
 
             jQuery(fancybox_video).on("click", function(){

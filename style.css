@@ -1993,7 +1993,7 @@ body {
 }
 
 .ifind-header-top .ifind-col-left.gtranslate-show {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .ifind-header-main {
@@ -2002,7 +2002,26 @@ body {
   -webkit-align-items: center;
   -moz-align-items: center;
   align-items: center;
-  padding-bottom: 90px;
+  padding-bottom: 80px;
+}
+
+.switcher {
+  width: 225px !important;
+}
+
+.switcher .option, .switcher .selected {
+  width: 100% !important;
+  max-width: unset;
+}
+
+.switcher .option a, .switcher .selected a {
+  font-size: 20px;
+  width: 100% !important;
+  padding: 7px 10px !important;
+}
+
+.switcher .selected a {
+  background-position-x: 205px !important;
 }
 
 #main-content {
@@ -2372,7 +2391,7 @@ body {
 }
 
 #ifind-business-tabs #map-directions .map-directions-wrap .map-directions-header > div .content {
-  font-size: 18px;
+  font-size: 17px;
   font-style: italic;
 }
 
@@ -2768,13 +2787,16 @@ body {
   text-transform: capitalize;
   width: 100%;
   color: #000;
-  white-space: nowrap;
+}
+
+.header-slogan,
+.header-page-name {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .header-title,
-.header-slogan,
-.header-page-info,
-.header-page-name {
+.header-page-info {
   margin-top: 15px;
   margin-bottom: 10px;
 }

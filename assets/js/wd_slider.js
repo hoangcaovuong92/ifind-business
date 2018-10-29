@@ -69,7 +69,9 @@ if (typeof ifind_big_popup_slider != 'function') {
 			});
 
 			function big_popup_open(options){
-				console.log('popup opened');
+				if (ifind_debug_mode()) {
+					console.log('popup opened');
+				}
 				var default_option = {
 					autoplaySpeed: bigAutoplaySpeed,
 				}
@@ -120,42 +122,53 @@ if (typeof ifind_big_popup_slider != 'function') {
 			}
 
 			jQuery(document).on('mousemove touchstart click', function (event) {
-				console.log('popup opening: ' + jQuery(popSliderBigWrap).hasClass('open'));
-				var time = (!jQuery('body').hasClass('showing-info')) ? timerShowPopup : timerShowPopupViewingInfo;
+				if (ifind_debug_mode()) {
+					console.log('popup opening: ' + jQuery(popSliderBigWrap).hasClass('open'));
+				}
+				var time = (!jQuery('body').hasClass('working')) ? timerShowPopup : timerShowPopupViewingInfo;
 				if (timer) clearTimeout(timer);
 				timer = setTimeout(function () {
 					if(!jQuery(popSliderBigWrap).hasClass('open')){
 					
 						var startSlider = 0;
-						console.log('popup after waiting opened');
+						if (ifind_debug_mode()) {
+							console.log('popup after waiting opened');
+						}
 						big_popup_open();
 					}else{
 						// On before slide change
 						jQuery(popSliderListWrap).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 							if ((currentSlide + 1) % numSliderBreak === 0 || nextSlide === 0 ) {
-								console.log('popup breaked');
+								if (ifind_debug_mode()) {
+									console.log('popup breaked');
+								}
 								startSlider = nextSlide;
 								big_popup_close();
 
 								setTimeout(function () {
-									console.log('popup after break opened');
+									if (ifind_debug_mode()) {
+										console.log('popup after break opened');
+									}
 									big_popup_open({initialSlide: startSlider});
 								}, timerDelayPopup);
 							}
 						}); 
 					}
-
 				}, time);
 			});
 
 			jQuery(smallSliderItem).on('click', function (e) {
-				console.log('popup after click small slider opened');
+				if (ifind_debug_mode()) {
+					console.log('popup after click small slider opened');
+				}
 				var slideIndex = jQuery(this).index();
 				big_popup_open({initialSlide: slideIndex - 1});
 			});
 
 			jQuery(popSliderListWrap).on('click', function () {
-				console.log('popup clicked');
+				if (ifind_debug_mode()) {
+					console.log('popup clicked');
+				}
 				big_popup_close();
 			});
 		});
