@@ -57,10 +57,12 @@
                                 foreach ($list_category as $category) {
                                     $list_category_filter .= ' '.$category->slug;
                                 }
-                            }
-                            ?>
+                            } ?>
                             <div class="ifind-business-item <?php echo $list_category_filter; ?>">
-                                <div class="ifind-business-logo">
+                                <div class="ifind-counter-item ifind-business-logo"
+                                    data-business-id="<?php echo $business_id; ?>" 
+                                    data-location-id="<?php echo get_the_ID(); ?>"
+                                    data-counter-position="logo">
                                     <?php 
                                     $fancybox_class = ($youtube_video_id) ? 'ifind-fancybox-video' : 'ifind-fancybox-image';
                                     $fancybox_link = ($youtube_video_id) ? $youtube_video_url : $business_info_banner;

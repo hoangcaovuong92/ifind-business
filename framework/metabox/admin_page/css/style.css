@@ -1,0 +1,16 @@
+#wd-parkage-admin-page-setting .card{
+	max-width: initial;
+	min-width: initial;
+}
+#wd-parkage-admin-page-setting .submit-button, #wd-parkage-admin-page-setting .social-button{
+	text-align: center;
+}
+#wd-parkage-admin-page-setting .submit-button{
+	margin-top: 25px;
+}
+#wd-parkage-admin-page-setting .wd-package-admin-page-form th{
+	width: 20%; text-align: right;
+}
+#wd-parkage-admin-page-setting .wd-package-admin-page-form td{
+	width: 30%;
+}

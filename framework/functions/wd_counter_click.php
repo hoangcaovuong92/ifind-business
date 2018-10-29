@@ -6,52 +6,67 @@
  * -Email  : hoangcaovuong92@gmail.com.
  */
 
-if( !function_exists('ifind_get_click_counter') ){
-	function ifind_get_click_counter( $post_id = 0, $echo = true ){
-		global $post;
-		if( !$post_id && isset($post->ID) ){
-			$post_id = $post->ID;
+if( !function_exists('ifind_set_click_counter') ){
+	function ifind_set_click_counter( $location_id, $business_id, $click_info ){
+		if( ifind_is_robot() ){
+			return;
+		}
+		$meta_key = '_ifind_click_counter';
+		$data = get_post_meta($business_id, $meta_key, true);
+		if (is_array($data)) {
+			array_push($data, $click_info);
+		}else{
+			$data = array();
+			array_push($data, $click_info);
 		}
 
-		$count_key = '_ifind_click_counter';
-		$count = get_post_meta($post_id, $count_key, true);
-		if( $count == '' ){
-			delete_post_meta($post_id, $count_key);
-			add_post_meta($post_id, $count_key, '0');
-			$count = '0';
-		}
-
-		if( $echo ){
-			echo esc_html($count);
-		}
-		else{
-			return $count;
+		if( $data ){
+			$result = update_post_meta($business_id, $meta_key, $data, false);
 		}
 	}
 }
 
-add_action('wp_ajax_nopriv_set_click_counter', 'ifind_set_click_counter');
-add_action('wp_ajax_set_click_counter', 'ifind_set_click_counter');
-if( !function_exists('ifind_set_click_counter') ){
-	function ifind_set_click_counter( $post_id = 0, $banner_position ){
-		global $post;
-		if( !$post_id ){
-			$post_id = $post->ID;
-		}	
-		
-		if( ifind_is_robot() ){
-			return;
+// $ouput_type: table | array
+if( !function_exists('ifind_get_click_counter') ){
+	function ifind_get_click_counter( $business_id, $ouput_type = 'array', $echo = false ){
+		$meta_key = '_ifind_click_counter';
+		$data = get_post_meta($business_id, $meta_key, true);
+		if ($ouput_type === 'table') { ?>
+			<?php ob_start(); ?>
+			<h2><?php printf(esc_html__( 'Statistics for %s', 'ifind' ), get_the_title($business_id)); ?></h2>
+			<div class="ifind-statistics-result">
+				<?php
+				if (is_array($data) && count($data) > 0) { ?>
+					<p><?php printf(esc_html__( 'There are %d records', 'ifind' ), count($data)); ?></p>
+					<table style="width: 100%" border="1" class="ifind-table ifind-table-click-counter">
+						<tr>
+							<th><?php esc_html_e('Position','ifind'); ?></th>
+							<th><?php esc_html_e('Time','ifind'); ?></th>
+							<th><?php esc_html_e('Location','ifind'); ?></th>
+							<th><?php esc_html_e('IP Address','ifind'); ?></th>
+						</tr>
+						<?php foreach ($data as $click_info) { ?>
+							<tr>
+								<td><?php echo $click_info['position'] ?></td>
+								<td><?php echo ifind_convert_timestamp_to_time($click_info['timestamp']); ?></td>
+								<td><?php echo get_the_title($click_info['location_id']) ?></td>
+								<td><?php echo $click_info['ip_address'] ?></td>
+							</tr>
+						<?php } ?>
+					</table>
+				<?php } else { ?>
+					<p><?php esc_html_e( 'No record exists!', 'ifind' ); ?></p>
+				<?php } ?>
+			</div>
+			<?php 
+			$data = ob_get_contents();
+			ob_end_clean();
 		}
-		
-		$count_key = '_ifind_click_counter';
-		$count = get_post_meta($post_id, $count_key, true);
-		if( $count == '' ){
-			$count = 0;
-			delete_post_meta($post_id, $count_key);
-			add_post_meta($post_id, $count_key, '1');
-		}else{
-			$count++;
-			update_post_meta($post_id, $count_key, $count,false);
+		if( $echo ){
+			echo $data;
+		}
+		else{
+			return $data;
 		}
 	}
 }

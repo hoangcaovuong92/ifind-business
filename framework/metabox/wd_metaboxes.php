@@ -28,6 +28,10 @@ if (!class_exists('iFind_Admin_Metaboxes')) {
 				require_once TVLGIAO_WPDANCE_THEME_METABOX.'/library/fields/fields.php';
 			}
 
+			if(file_exists(TVLGIAO_WPDANCE_THEME_METABOX."/admin_page/admin_page.php")){
+				require_once TVLGIAO_WPDANCE_THEME_METABOX."/admin_page/admin_page.php";
+			}
+
 			// Custom Post type
 			foreach ($this->list_post_type as $file) {
 				if (file_exists(TVLGIAO_WPDANCE_THEME_METABOX.'/metaboxes/'.$file.'/'.$file.'.php')) {

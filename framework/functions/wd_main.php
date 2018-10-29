@@ -89,6 +89,87 @@ if(!function_exists ('ifind_generateRandomString')){
 	}
 }
 
+if(!function_exists ('ifind_get_timestamp_by_timezone')){
+	function ifind_get_current_timestamp_by_timezone($timezone = 'Australia/Brisbane') {
+		$date = new DateTime(null, new DateTimeZone($timezone));
+		return ($date->getTimestamp() + $date->getOffset());
+	}
+}
+
+if(!function_exists ('ifind_convert_timestamp_to_time')){
+	function ifind_convert_timestamp_to_time($timestamp, $datetimeFormat = 'Y-m-d H:i:s') {
+		$date = new \DateTime();
+		// If you must have use time zones
+		// $date = new \DateTime('now', new \DateTimeZone('Europe/Helsinki'));
+		$date->setTimestamp($timestamp);
+		return $date->format($datetimeFormat);
+	}
+}
+
+
+// timezone for one NY co-ordinate : echo ifind_get_nearest_timezone(40.772222,-74.164581);
+// more faster and accurate if you can pass the country code : echo ifind_get_nearest_timezone(40.772222, -74.164581, 'US');
+if(!function_exists ('ifind_get_nearest_timezone')){
+	function ifind_get_nearest_timezone($cur_lat, $cur_long, $country_code = '') {
+		$timezone_ids = ($country_code) ? DateTimeZone::listIdentifiers(DateTimeZone::PER_COUNTRY, $country_code)
+										: DateTimeZone::listIdentifiers();
+
+		if($timezone_ids && is_array($timezone_ids) && isset($timezone_ids[0])) {
+
+			$time_zone = '';
+			$tz_distance = 0;
+
+			//only one identifier?
+			if (count($timezone_ids) == 1) {
+				$time_zone = $timezone_ids[0];
+			} else {
+
+				foreach($timezone_ids as $timezone_id) {
+					$timezone = new DateTimeZone($timezone_id);
+					$location = $timezone->getLocation();
+					$tz_lat   = $location['latitude'];
+					$tz_long  = $location['longitude'];
+
+					$theta    = $cur_long - $tz_long;
+					$distance = (sin(deg2rad($cur_lat)) * sin(deg2rad($tz_lat))) 
+					+ (cos(deg2rad($cur_lat)) * cos(deg2rad($tz_lat)) * cos(deg2rad($theta)));
+					$distance = acos($distance);
+					$distance = abs(rad2deg($distance));
+					// echo '<br />'.$timezone_id.' '.$distance; 
+
+					if (!$time_zone || $tz_distance > $distance) {
+						$time_zone   = $timezone_id;
+						$tz_distance = $distance;
+					} 
+
+				}
+			}
+			return  $time_zone;
+		}
+		return 'unknown';
+	}
+}
+
+
+// Function to get the client IP address
+function ifind_get_client_ip() {
+    $ipaddress = '';
+    if (getenv('HTTP_CLIENT_IP'))
+        $ipaddress = getenv('HTTP_CLIENT_IP');
+    else if(getenv('HTTP_X_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+    else if(getenv('HTTP_X_FORWARDED'))
+        $ipaddress = getenv('HTTP_X_FORWARDED');
+    else if(getenv('HTTP_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_FORWARDED_FOR');
+    else if(getenv('HTTP_FORWARDED'))
+       $ipaddress = getenv('HTTP_FORWARDED');
+    else if(getenv('REMOTE_ADDR'))
+        $ipaddress = getenv('REMOTE_ADDR');
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
+}
 
 // Get List terms of taxonomy
 if(!function_exists ('ifind_get_list_category')){
@@ -122,7 +203,7 @@ if(!function_exists ('ifind_get_list_business_location')){
 if(!function_exists ('ifind_get_list_posts')){
 	function ifind_get_list_posts($post_type, $list_post_id, $taxonomy, $term_id, $posts_per_page = -1){
 		global $post;
-		$args_default = array(
+		$args = array(
 			'post_type'			=> $post_type,
 			'post_status'		=> 'publish',
 			'post__in' 			=> $list_post_id,
@@ -137,7 +218,6 @@ if(!function_exists ('ifind_get_list_posts')){
 				)
 			)
 		);
-		$args = wp_parse_args( $args, $args_default );
 		$data_array = array();
 		$data = new WP_Query($args);
 		if( $data->have_posts() ){

@@ -12,6 +12,7 @@ jQuery(document).ready(function ($) {
 	ifind_virtual_keyboard();
 	ifind_ajax_display_weather_today_info();
 	ifind_ajax_auto_reload_browser();
+	ifind_ajax_update_business_click_counter();
 });
 
 //****************************************************************//
@@ -277,6 +278,34 @@ if (typeof wow_js_script != 'function') {
 	}
 }
 
+// Ajax Update counter click
+if (typeof ifind_ajax_update_business_click_counter != 'function') {
+	function ifind_ajax_update_business_click_counter() {
+		jQuery('.ifind-counter-item').on('click', function (e) {
+			var business_id = jQuery(this).data('business-id');
+			var location_id = jQuery(this).data('location-id');
+			var counter_position = jQuery(this).data('counter-position');
+			var timezone = jQuery('#ifind-location-position').data('timezone');
+			jQuery.ajax({
+				type: 'POST',
+				url: ajax_object.ajax_url,
+				data: { 
+					action: "update_business_click_counter",
+					business_id: business_id,
+					location_id: location_id,
+					counter_position: counter_position,
+					timezone: timezone,
+				},
+				beforeSend: function(){
+				},
+				success: function(data) {
+					console.log(data);
+				}
+			});
+		});
+	}
+}
+
 // Ajax Update weather
 if (typeof ifind_ajax_display_weather_today_info != 'function') { 
 	function ifind_ajax_display_weather_today_info() {
@@ -317,7 +346,7 @@ if (typeof ifind_form_directions != 'function') {
 					type: "POST",
 					url: ajax_object.ajax_url,
 					data: { 
-						action: "send_directions_main",
+						action: "send_directions_mail",
 						email: email,
 						title: title,
 						message: message,

@@ -138,7 +138,7 @@ if (!class_exists('ifindThemeSetting')) {
 				'wd_get_customize_data',
 				'wd_ajax_function',
 				'wd_register_tgmpa_plugin',
-				'wd_counter_views'
+				'wd_counter_click'
 			);
 		}
 		

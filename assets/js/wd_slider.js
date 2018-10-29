@@ -112,7 +112,9 @@ if (typeof ifind_big_popup_slider != 'function') {
 			}
 
 			function big_popup_close(){
-				console.log('popup closed');
+				if (ifind_debug_mode()) {
+					console.log('popup closed');
+				}
 				if (jQuery(popSliderListWrap).hasClass('slick-initialized')) {
 					jQuery(popSliderListWrap).slick('unslick');
 				}

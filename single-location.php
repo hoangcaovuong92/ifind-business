@@ -20,9 +20,10 @@ do_action('tvlgiao_wpdance_before_main_content'); ?>
 	$location_lng = $location_meta_data['location_data']['lng'];
 	$location_address = $location_meta_data['location_data']['address'];
 	$location_max_distance = $location_meta_data['max_distance'];
+	$location_time_zone = ifind_get_nearest_timezone($location_lat, $location_lng);
 	?>
 	<!-- Header -->
-	<div id="ifind-location-position" data-max-distance="<?php echo $location_max_distance; ?>" data-lat="<?php echo $location_lat; ?>" data-lng="<?php echo $location_lng; ?>" style="display:none;"></div>
+	<div id="ifind-location-position" data-timezone="<?php echo $location_time_zone; ?>" data-max-distance="<?php echo $location_max_distance; ?>" data-lat="<?php echo $location_lat; ?>" data-lng="<?php echo $location_lng; ?>" style="display:none;"></div>
 	<?php get_template_part( 'sections/popup-slider'); ?>
 	<div id="ifind-header-wrap">
 		<section class="row ifind-section ifind-header-top">
