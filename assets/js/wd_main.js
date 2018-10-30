@@ -387,7 +387,8 @@ if (typeof ifind_ajax_auto_reload_browser != 'function') {
 				},
 				success: function (data){
 					if (data && data !== current_secret_key) {
-						location.reload(true);
+						window.location.href = window.location.href.withParam('secret_key', data);
+						//location.reload(true);
 					};
 				}
 			});
@@ -403,3 +404,68 @@ if (typeof ifind_add_class_to_body != 'function') {
 		}, 3000);
 	}
 }
+
+// Usage:
+//
+// ('http://www.example.com').withParam('foo', 'bar');
+// -> http://www.example.com?foo=bar
+//
+// ('http://www.example.com').withParam('foo');
+// -> http://www.example.com?foo
+//
+// Credit: Lessan Vaezi
+//         (See: http://stackoverflow.com/a/487084/23341)
+
+String.prototype.withParam = function (name, value){
+	var url = this,
+		parameterName = name,
+		parameterValue = value || '',
+		atStart,
+		cl,
+		urlParts,
+		urlhash,
+		sourceUrl,
+		newQueryString,
+		parameters,
+		parameterParts,
+		i,
+		replaceDuplicates = true;
+
+	if (url.indexOf('#') > 0) {
+		cl = url.indexOf('#');
+		urlhash = url.substring(url.indexOf('#'),url.length);
+	}
+	else {
+		urlhash = '';
+		cl = url.length;
+	}
+
+	sourceUrl = url.substring(0, cl);
+
+	urlParts = sourceUrl.split('?');
+	newQueryString = '';
+
+	if (urlParts.length > 1) {
+		parameters = urlParts[1].split('&');
+		for (i = 0; (i < parameters.length); i++) {
+			parameterParts = parameters[i].split('=');
+			if (!(replaceDuplicates && parameterParts[0] === parameterName)) {
+				if (newQueryString === '')
+					newQueryString = '?';
+				else
+					newQueryString += '&';
+				newQueryString += parameterParts[0] + '=' + (parameterParts[1] ? parameterParts[1] : '');
+			}
+		}
+	}
+
+	if (newQueryString === '')
+		newQueryString = '?';
+
+	if (newQueryString !== '' && newQueryString != '?')
+		newQueryString += '&';
+
+	newQueryString += parameterName + '=' + (parameterValue ? parameterValue : '');
+
+	return urlParts[0] + newQueryString + urlhash;
+};
