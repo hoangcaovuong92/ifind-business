@@ -3,10 +3,12 @@
 //****************************************************************//
 jQuery(document).ready(function ($) {
 	"use strict";
-	wow_js_script();
-	google_map_script();
-	business_tab_script();
-	image_popup_fancybox();
+	ifind_reset_system();
+	ifind_wow_js_script();
+	ifind_google_map_script();
+	ifind_business_tab_script();
+	ifind_image_popup_fancybox();
+	ifind_validator_form();
 	ifind_form_directions();
 	ifind_add_class_to_body();
 	ifind_virtual_keyboard();
@@ -19,13 +21,16 @@ jQuery(document).ready(function ($) {
 /*							FUNCTIONS							  */
 //****************************************************************//
 if (typeof ifind_debug_mode != 'function') {
-	function ifind_debug_mode() {
-		return false;
+	function ifind_debug_mode(mess) {
+		var debug = false;
+		if (debug) {
+			console.log(mess);
+		}
 	}
 }
 
-if (typeof google_map_script != 'function') {
-	function google_map_script() {
+if (typeof ifind_google_map_script != 'function') {
+	function ifind_google_map_script() {
 		var position2_lat = jQuery('#ifind-location-position').data('lat');
 		var position2_lng = jQuery('#ifind-location-position').data('lng');
 		var max_distance = jQuery('#ifind-location-position').data('max-distance');
@@ -99,8 +104,8 @@ if (typeof google_map_calcDistance != 'function') {
 	}
 }
 
-if (typeof business_tab_script != 'function') {
-	function business_tab_script() {
+if (typeof ifind_business_tab_script != 'function') {
+	function ifind_business_tab_script() {
 		jQuery( document ).ready(function() {
 			var category_banner_link = '.business-group-banner-link';
 			var tab_wrap = '#ifind-business-tabs';
@@ -112,9 +117,7 @@ if (typeof business_tab_script != 'function') {
 			jQuery(category_banner_link).on('click', function(e) {
 				e.preventDefault();
 				jQuery('body').addClass('working');
-				if (ifind_debug_mode()) {
-					console.log('body working');
-				}
+				ifind_debug_mode('body working');
 				var category_id = jQuery(this).data('category-id');
 				jQuery(tab_wrap).show();
 
@@ -145,7 +148,7 @@ if (typeof business_tab_script != 'function') {
 
 			jQuery('.business-back-link').on('click', function(e) {
 				e.preventDefault();
-				reset_business_tab();
+				ifind_reset_system();
 			});
 
 			jQuery('.directions-close').on('click', function(e) {
@@ -156,8 +159,8 @@ if (typeof business_tab_script != 'function') {
 	}
 }
 
-if (typeof reset_business_tab != 'function') {
-	function reset_business_tab() {
+if (typeof ifind_reset_system != 'function') {
+	function ifind_reset_system() {
 		if (!jQuery('body').hasClass('video-playing')) {
 			var category_banner_link = '.business-group-banner-link';
 			var tab_wrap = '#ifind-business-tabs';
@@ -165,11 +168,15 @@ if (typeof reset_business_tab != 'function') {
 			jQuery(tab_wrap).hide();
 			jQuery(category_banner_link).show();
 			jQuery('body').removeClass('working');
-			if (ifind_debug_mode()) {
-				console.log('body stoped work');
-			}
+			
 			jQuery('.map-directions-email-form').removeClass('open');
 			jQuery('.map-directions-email-form input[type="email"]').val('');
+			ifind_debug_mode('reset system!');
+			setTimeout(() => {
+				if (typeof doGTranslate == 'function') {
+					doGTranslate('en|en');
+				}	
+			}, 3000);
 		}
 	}
 }
@@ -183,8 +190,8 @@ if (typeof ifind_fancybox_close != 'function') {
 }
 
 
-if (typeof image_popup_fancybox != 'function') {
-	function image_popup_fancybox() {
+if (typeof ifind_image_popup_fancybox != 'function') {
+	function ifind_image_popup_fancybox() {
 		jQuery(".ifind-fancybox-image").fancybox({
 			openEffect  : 'fade',
 			closeEffect : 'fade',
@@ -219,7 +226,7 @@ if (typeof image_popup_fancybox != 'function') {
 					if (timer) clearTimeout(timer);
 					timer = setTimeout(function () {
 						ifind_fancybox_close();
-						reset_business_tab();
+						ifind_reset_system();
 					}, 10000);
 				});
 			}
@@ -257,16 +264,71 @@ if (typeof image_popup_fancybox != 'function') {
 					}, timerShowPopupViewingInfo);
 				}
 			});
-			jQuery('.send-directions-form-close').on('click', function(e) {
-				e.preventDefault();
-				ifind_fancybox_close();
+		});
+
+		jQuery('.ifind-fancybox-close').on('click', function(e) {
+			e.preventDefault();
+			ifind_fancybox_close();
+		});
+
+		jQuery('.fancybox-contact-us').on('click', function(e) {
+			e.preventDefault();
+			var qr_link = jQuery(this).attr('href');
+			var email_to = jQuery(this).data('business-email');
+			var cc_to = jQuery('#ifind-location-position').data('location-email');
+			jQuery.ajax({
+				type: 'POST',
+				url: ajax_object.ajax_url,
+				data: { 
+					action: "get_contact_form",
+					email_to: email_to,
+					cc_to: cc_to,
+					qr_link: qr_link
+				},
+				beforeSend: function(){
+				},
+				success: function(contact_form) {
+					jQuery.fancybox({
+						content: contact_form,
+						openEffect  : 'fade',
+						closeEffect : 'fade',
+						margin      : [0, 0, 0, 0],
+						padding 	: 0,
+						width 		: 1080,
+						height 		: 1920,
+						fitToView 	: true,
+						autoSize 	: true,
+						closeBtn    : false,
+						arrows      : false,
+						helpers : {
+							overlay : {
+								css : {
+									'background' : 'rgba(58, 42, 45, 0.8)'
+								},
+							}
+						},
+						title: 'We will call you as soon as possible!',
+						onComplete  : function() {
+						},
+						beforeShow: function(){
+							//jQuery("body").css({'overflow-y':'hidden'});
+						},
+						afterLoad	: function() { 
+							ifind_validator_form();
+							var timerShowPopupViewingInfo = option_object.ifind_slider_timerShowPopupViewingInfo; //time show large popup slider
+							setTimeout(() => {
+								jQuery(".fancybox-overlay").click();
+							}, timerShowPopupViewingInfo);
+						}
+					});
+				}
 			});
 		});
 	}
 }
 
-if (typeof wow_js_script != 'function') {
-	function wow_js_script() {
+if (typeof ifind_wow_js_script != 'function') {
+	function ifind_wow_js_script() {
 		wow = new WOW({
 			animateClass: 'animated',
 			offset: 100,
@@ -330,10 +392,14 @@ if (typeof ifind_ajax_display_weather_today_info != 'function') {
 	}
 }
 
+if (typeof ifind_validator_form != 'function') { 
+	function ifind_validator_form(){
+		jQuery('.ifind-validator-form').validator();
+	}
+}
+
 if (typeof ifind_form_directions != 'function') { 
 	function ifind_form_directions(){
-		jQuery('#send-directions-form').validator();
-
 		jQuery('#send-directions-form').on('submit', function (e) {
 			// if the validator does not prevent form submit
 			var email = jQuery(this).find('input[name="email"]').val();

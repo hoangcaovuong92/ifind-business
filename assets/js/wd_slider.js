@@ -24,6 +24,7 @@ if (typeof ifind_slider_call != 'function') {
 			speed: 900,
 			infinite: true,
 			touchThreshold: 100,
+			pauseOnHover:false
 		}
 
 		options = jQuery.extend(default_option, options);
@@ -47,6 +48,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 
 			var popSliderBigWrap = '#popupSlider';
 			var popSliderListWrap = '.ifind-sliderPop-container';
+			var popSliderItem = '.ifind-sliderPop-item';
 			var footerSliderListWrap = '.ifind-footerSlider-container';
 			var footerSliderItem = '.ifind-footerSlider-item';
 			var smallSliderListWrap = '.ifind-smallSlider-container';
@@ -69,9 +71,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 			});
 
 			function big_popup_open(options){
-				if (ifind_debug_mode()) {
-					console.log('popup opened');
-				}
+				ifind_debug_mode('popup opened');
 				var default_option = {
 					autoplaySpeed: bigAutoplaySpeed,
 				}
@@ -86,7 +86,7 @@ if (typeof ifind_big_popup_slider != 'function') {
 					height 		: 1920,
 					fitToView 	: true,
 					autoSize 	: false,
-					closeBtn    : true,
+					closeBtn    : false,
 					arrows      : false,
 					scrolling	: false,
 					helpers 	: {
@@ -112,65 +112,64 @@ if (typeof ifind_big_popup_slider != 'function') {
 			}
 
 			function big_popup_close(){
-				if (ifind_debug_mode()) {
-					console.log('popup closed');
-				}
+				ifind_debug_mode('popup closed');
 				if (jQuery(popSliderListWrap).hasClass('slick-initialized')) {
 					jQuery(popSliderListWrap).slick('unslick');
 				}
 				ifind_fancybox_close();
-				jQuery(popSliderBigWrap).removeClass('open');
-				reset_business_tab();
+				jQuery(popSliderBigWrap).removeClass('open popup-breaking');
 			}
 
 			jQuery(document).on('mousemove touchstart click', function (event) {
-				if (ifind_debug_mode()) {
-					console.log('popup opening: ' + jQuery(popSliderBigWrap).hasClass('open'));
-				}
+				ifind_debug_mode('popup opening: ' + jQuery(popSliderBigWrap).hasClass('open'));
 				var time = (!jQuery('body').hasClass('working')) ? timerShowPopup : timerShowPopupViewingInfo;
 				if (timer) clearTimeout(timer);
 				timer = setTimeout(function () {
-					if(!jQuery(popSliderBigWrap).hasClass('open')){
-					
-						var startSlider = 0;
-						if (ifind_debug_mode()) {
-							console.log('popup after waiting opened');
+					if (!jQuery('body').hasClass('video-playing')) {
+						ifind_debug_mode('popup break status:'+jQuery(popSliderBigWrap).hasClass('popup-breaking'));
+						if(!jQuery(popSliderBigWrap).hasClass('popup-breaking') && !jQuery(popSliderBigWrap).hasClass('open')){
+							var startSlider = 0;
+							ifind_debug_mode('popup opened after waiting '+(time/1000)+' seconds! Open at slider index: '+startSlider);
+							big_popup_open();
 						}
-						big_popup_open();
-					}else{
 						// On before slide change
 						jQuery(popSliderListWrap).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 							if ((currentSlide + 1) % numSliderBreak === 0 || nextSlide === 0 ) {
-								if (ifind_debug_mode()) {
-									console.log('popup breaked');
-								}
+								ifind_debug_mode('popup breaked');
 								startSlider = nextSlide;
 								big_popup_close();
+								ifind_reset_system();
+								jQuery(popSliderBigWrap).addClass('popup-breaking');
+								ifind_debug_mode('popup break status:'+jQuery(popSliderBigWrap).hasClass('popup-breaking'));
 
 								setTimeout(function () {
-									if (ifind_debug_mode()) {
-										console.log('popup after break opened');
+									if(jQuery(popSliderBigWrap).hasClass('popup-breaking')){
+										ifind_debug_mode('popup after break opened at slider index: '+startSlider);
+										big_popup_open({initialSlide: startSlider});
 									}
-									big_popup_open({initialSlide: startSlider});
 								}, timerDelayPopup);
 							}
 						}); 
+					}else{
+						ifind_debug_mode('Video playing status:'+jQuery('body').hasClass('video-playing'));
 					}
 				}, time);
 			});
 
 			jQuery(smallSliderItem).on('click', function (e) {
-				if (ifind_debug_mode()) {
-					console.log('popup after click small slider opened');
-				}
+				ifind_debug_mode('popup after click small slider opened');
 				var slideIndex = jQuery(this).index();
 				big_popup_open({initialSlide: slideIndex - 1});
 			});
 
-			jQuery(popSliderListWrap).on('click', function () {
-				if (ifind_debug_mode()) {
-					console.log('popup clicked');
-				}
+			jQuery(popSliderItem).on('click', function () {
+				ifind_debug_mode('popup clicked');
+				big_popup_close();
+				ifind_reset_system();
+			});
+
+			jQuery('body').on('click', function () {
+				ifind_debug_mode('body clicked!');
 				big_popup_close();
 			});
 		});

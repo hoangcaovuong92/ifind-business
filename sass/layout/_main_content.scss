@@ -32,8 +32,8 @@
             height: 90px;
         }
         @include breakpoint('min', 'medium') {
-            top: -88px;
-            height: 129px;
+            top: -84px;
+            height: 137px;
         }
     }
     .ifind-col{
@@ -397,7 +397,8 @@ $business_border_width: 1px;
 
         .ifind-business-direction,
         .ifind-business-geocoding,
-        .ifind-business-qrcode {
+        .ifind-business-qrcode,
+        .ifind-business-contact {
             padding-left: 10px;
             min-width: 85px;
         }
@@ -425,11 +426,4 @@ $business_border_width: 1px;
         background-color: #fff;
         padding: 0;
     }
-}
-
-.ifind-gtranslate{
-    position: absolute;
-    left: 15px;
-    top: 10px;
-    z-index: 11;
 }

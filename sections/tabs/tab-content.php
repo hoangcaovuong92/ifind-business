@@ -41,6 +41,7 @@
                             $youtube_video_url = 'http://www.youtube.com/embed/'.$youtube_video_id.'?enablejsapi=1&rel=0&modestbranding=0&wmode=opaque&showinfo=0&controls=0';
                             $business_desc = $business_metadata['office_address'] ? '<div class="ifind-business-office-address">'.$business_metadata['office_address'].'</div>' : '';
                             $business_desc .= $business_metadata['office_phone'] ? '<div class="ifind-business-office-phone">'.$business_metadata['office_phone'].'</div>' : '';
+                            $business_email = $business_metadata['email_address'];
                             $business_lat = $business_metadata['location_data']['lat'];
                             $business_lng = $business_metadata['location_data']['lng'];
                             $business_address = $business_metadata['location_data']['address'];
@@ -51,7 +52,7 @@
                             $qr_content = $business_metadata['qrcode']['qr_content'];
                             $qr_code = new QRCODE();
                             $qr_code->SETCONTENT($qr_type, $qr_content);
-                            $qr_link = $qr_code->QRCODE();
+                            $qr_link = $qr_code->QRCODE('link', 400);
 
                             if (count($list_category) > 0) {
                                 foreach ($list_category as $category) {
@@ -99,13 +100,21 @@
                                         <div class="heading"><?php _e("Map",'ifind') ?></div>
                                     </a>
                                 </div>
-                                <div class="ifind-business-qrcode">
-                                    <a class="fancybox fancybox.iframe ifind-fancybox-image" href="<?php echo $qr_link; ?>">
-                                        <div class="heading"><?php _e("QR Code",'ifind') ?></div>
-                                        <img class="ifind-business-icon" src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/qrcode.png'; ?>">
-                                        <div class="heading"><?php _e("Scan",'ifind') ?></div>
+
+                                <div class="ifind-business-contact">
+                                    <a class="fancybox-contact-us" data-business-email="<?php echo $business_email; ?>" href="<?php echo $qr_link; ?>">
+                                        <div class="heading"><?php _e("Contact",'ifind') ?></div>
+                                        <img class="ifind-business-icon" src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/contact.png'; ?>">
+                                        <div class="heading"><?php _e("Us",'ifind') ?></div>
                                     </a>
                                 </div>
+                                <!-- <div class="ifind-business-qrcode">
+                                    <a class="fancybox fancybox.iframe ifind-fancybox-image" href="<?php //echo $qr_link; ?>">
+                                        <div class="heading"><?php //_e("QR Code",'ifind') ?></div>
+                                        <img class="ifind-business-icon" src="<?php //echo TVLGIAO_WPDANCE_THEME_IMAGES.'/qrcode.png'; ?>">
+                                        <div class="heading"><?php //_e("Scan",'ifind') ?></div>
+                                    </a>
+                                </div> -->
                             </div>
                         <?php
                         }

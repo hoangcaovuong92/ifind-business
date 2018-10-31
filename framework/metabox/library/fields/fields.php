@@ -219,11 +219,11 @@ if (!class_exists('iFind_Admin_Metabox_Fields')) {
                         <label><?php esc_html_e('Type','ifind'); ?>:</label>
                         <select name="<?php echo $data['field_name']; ?>[qr_type]">
                             <option value="url" <?php echo ($qr_type === 'url') ? 'selected' : ''; ?>><?php esc_html_e('URL','ifind'); ?></option>
-                            <option value="text" <?php echo ($qr_type === 'text') ? 'selected' : ''; ?>><?php esc_html_e('TEXT','ifind'); ?></option>
+                            <!-- <option value="text" <?php echo ($qr_type === 'text') ? 'selected' : ''; ?>><?php esc_html_e('TEXT','ifind'); ?></option>
                             <option value="email" <?php echo ($qr_type === 'email') ? 'selected' : ''; ?>><?php esc_html_e('EMAIL','ifind'); ?></option>
                             <option value="sms" <?php echo ($qr_type === 'sms') ? 'selected' : ''; ?>><?php esc_html_e('SMS','ifind'); ?></option>
                             <option value="contact" <?php echo ($qr_type === 'contact') ? 'selected' : ''; ?>><?php esc_html_e('CONTACT','ifind'); ?></option>
-                            <option value="content" <?php echo ($qr_type === 'content') ? 'selected' : ''; ?>><?php esc_html_e('CONTENT','ifind'); ?></option>
+                            <option value="content" <?php echo ($qr_type === 'content') ? 'selected' : ''; ?>><?php esc_html_e('CONTENT','ifind'); ?></option> -->
                         </select>
                     </div>
                     <div class="ifind-qrcode-col">

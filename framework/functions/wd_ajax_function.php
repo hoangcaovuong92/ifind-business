@@ -204,3 +204,50 @@ if( !function_exists('ifind_send_statistics_mail_ajax') ){
 		die(); //stop "0" from being output
 	}
 }
+
+
+add_action('wp_ajax_nopriv_get_contact_form', 'ifind_get_contact_form_ajax');
+add_action('wp_ajax_get_contact_form', 'ifind_get_contact_form_ajax');
+if( !function_exists('ifind_get_contact_form_ajax') ){
+	function ifind_get_contact_form_ajax() { 
+		$email_to = $_REQUEST['email_to'];
+		$cc_to = $_REQUEST['cc_to'];
+		$qr_link = ($_REQUEST['qr_link']); ?>
+
+		<div id="ifind-contact-form" class="ifind-contact-form">
+			<?php if ($email_to) { ?>
+				<form id="ifind-contact-form-form" class="ifind-validator-form" method="post" action="" role="form">
+					<div class="form-group">
+						<input type="text" name="fullname" class="form-control input-lg" 
+								placeholder="<?php _e("Please enter your fullname *", 'ifind'); ?>" autocomplete="off" 
+								required="required" 
+								data-error="<?php _e("Fullname is required.", 'ifind'); ?>">
+						<input type="email" name="email" class="form-control input-lg" 
+								placeholder="<?php _e("Please enter your email *", 'ifind'); ?>" autocomplete="off" 
+								required="required" 
+								data-error="<?php _e("Valid email is required.", 'ifind'); ?>">
+						<input type="text" name="phone" class="form-control input-lg" 
+								placeholder="<?php _e("Please enter your phone number *", 'ifind'); ?>" autocomplete="off" 
+								required="required" 
+								data-error="<?php _e("Valid phone number is required.", 'ifind'); ?>">
+						<div class="help-block with-errors"></div>
+						<div class="softkeys" data-target="input[name='email']"></div>
+						<input type="hidden" name="email_to" value="<?php echo $email_to; ?>">
+						<input type="hidden" name="cc_to" value="<?php echo $cc_to; ?>">
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn btn-success btn-lg" value="<?php _e("Send", 'ifind'); ?>">
+					</div>
+				</form>
+			<?php } ?>
+			<?php if ($qr_link) { ?>
+				<div class="ifind-qr-code">
+					<img src="<?php echo $qr_link; ?>" alt="">
+				</div>
+			<?php } ?>
+			<div class="ifind-fancybox-close ifind-contact-form-close"><?php _e('x','ifind'); ?></div>
+		</div>
+		<?php
+		die(); //stop "0" from being output
+	}
+}

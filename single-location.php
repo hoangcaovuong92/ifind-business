@@ -20,21 +20,23 @@ do_action('tvlgiao_wpdance_before_main_content'); ?>
 	$location_lng = $location_meta_data['location_data']['lng'];
 	$location_address = $location_meta_data['location_data']['address'];
 	$location_max_distance = $location_meta_data['max_distance'];
+	$location_email = $location_meta_data['email_address'];
 	$location_time_zone = ifind_get_nearest_timezone($location_lat, $location_lng);
 	?>
 	<!-- Header -->
-	<div id="ifind-location-position" data-timezone="<?php echo $location_time_zone; ?>" data-max-distance="<?php echo $location_max_distance; ?>" data-lat="<?php echo $location_lat; ?>" data-lng="<?php echo $location_lng; ?>" style="display:none;"></div>
+	<div id="ifind-location-position" 
+		data-timezone="<?php echo $location_time_zone; ?>" 
+		data-location-email="<?php echo $location_email; ?>" 
+		data-max-distance="<?php echo $location_max_distance; ?>" 
+		data-lat="<?php echo $location_lat; ?>" 
+		data-lng="<?php echo $location_lng; ?>" style="display:none;"></div>
 	<?php get_template_part( 'sections/popup-slider'); ?>
 	<div id="ifind-header-wrap">
 		<section class="row ifind-section ifind-header-top">
-			<?php if( class_exists('GTranslate') ){ ?>
-				<div class="ifind-gtranslate">
-					<?php echo do_shortcode( '[GTranslate]' ); ?>
-				</div>
-			<?php } ?>
-			<div class="col-xs-7 ifind-col ifind-col-left wow bounceInDown <?php echo ( class_exists('GTranslate') ) ? 'gtranslate-show' : '' ?>" data-wow-delay=".25s"">
+			
+			<div class="col-xs-7 ifind-col ifind-col-left wow bounceInDown" data-wow-delay=".25s"">
 				
-				<div class="header-title"><?php esc_html_e( 'Wecome to', 'ifind' ); ?></div>
+				<div class="header-title"><?php esc_html_e( 'Welcome to', 'ifind' ); ?></div>
 				<h1 class="header-page-name"><?php the_title(); ?></h1>
 				<div class="header-slogan"><?php echo $location_meta_data['slogan']; ?></div>
 			</div>
@@ -51,15 +53,20 @@ do_action('tvlgiao_wpdance_before_main_content'); ?>
 			</div>
 		</section>
 
-		<section class="row ifind-section ifind-header-main">
+		<section class="row ifind-section ifind-header-main <?php echo ( class_exists('GTranslate') ) ? 'gtranslate-show' : '' ?>">
 			<div class="col-xs-7 ifind-col ifind-col-left wow bounceInLeft" data-wow-delay=".5s">
 				<?php get_template_part( 'sections/small-slider'); ?>
+				<?php if( class_exists('GTranslate') ){ ?>
+					<div class="ifind-gtranslate">
+						<?php echo do_shortcode( '[GTranslate]' ); ?>
+					</div>
+				<?php } ?>
 			</div>
-
 			<div class="col-xs-5 ifind-col ifind-col-right wow bounceInRight" data-wow-delay=".5s">
 				<div class="ifind-weather">
 					<?php echo ifind_display_weather_today_info($location_lat, $location_lng);?>
 				</div>
+				
 			</div>
 		</section>
 	</div>

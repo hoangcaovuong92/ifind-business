@@ -120,6 +120,7 @@ if (!class_exists('iFind_Location')) {
 					'slogan'	=> '',
 					'office_hours'	=> '',
 					'contact_number'	=> '',
+					'email_address'	=> '',
 					'max_distance'	=> '',
 					'location_data'	=> array(
 						'lat'	=> 1,
@@ -164,6 +165,14 @@ if (!class_exists('iFind_Location')) {
 						"placeholder" => "",
 						"field_name" => $this->post_type."[contact_number]",
 						"value" => $meta_data['contact_number'],
+					));
+
+					iFind_Admin_Metabox_Fields::get_text_field(array(
+						"title" => esc_html__( 'Email Address', 'ifind' ),
+						"desc" => esc_html__( 'Email address of the office.', 'ifind' ),
+						"placeholder" => esc_html__( 'Exam: hoangcaovuong92@gmail.com', 'ifind' ),
+						"field_name" => $this->post_type."[email_address]",
+						"value" => $meta_data['email_address'],
 					));
 
 					iFind_Admin_Metabox_Fields::get_text_field(array(

@@ -48,12 +48,16 @@
 		top: auto;
 		bottom: -60px;
 		&.slick-prev {
-			left: 5px;
-			right: auto;
+			// left: 5px;
+			// right: auto;
+			right: 45px;
+			left: auto;
 		}
 
 		&.slick-next {
-			left: 45px;
+			//left: 45px;
+			right: 5px;
+			left: auto;
 		}
 	}
 }

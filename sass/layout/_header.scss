@@ -18,8 +18,8 @@
     width: 100%;
     height: 100%;
     line-height: 1.6;
-    padding-top: 20px;
-    padding-bottom: 40px;
+    padding-top: 15px;
+    padding-bottom: 33px;
     @include flexbox;
     @include justify-content(center);
     @include align-items(center);
@@ -53,20 +53,49 @@
 .ifind-header-main{
     @include align-items(center);
     padding-bottom: 80px;
+    &.gtranslate-show{
+        padding-bottom: 70px;
+    }
 }
 
-.switcher {
-    width: 225px !important;
-    .option, .selected{
-        width: 100% !important;
-        max-width: unset;
-        a{
-            font-size: 20px;
+.ifind-gtranslate{
+    margin-top: 5px;
+    z-index: 11;
+    background: url(assets/images/bg_text.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    height: 45px;
+    text-align: center;
+    margin-top: 5px;
+    width: 85%;
+    @include flexbox; 
+    @include justify-content(center);
+    @include align-items(center);
+
+    a.glink{
+        width: 60px;
+        padding: 3px 10px;
+        display: inline-block;
+        img{
             width: 100% !important;
-            padding: 7px 10px !important;
+            height: auto !important;
+            opacity: 1 !important;
         }
     }
-    .selected a{
-        background-position-x: 205px !important;
+    .switcher {
+        width: 225px !important;
+        .option, .selected{
+            width: 100% !important;
+            max-width: unset;
+            a{
+                font-size: 20px;
+                width: 100% !important;
+                padding: 7px 10px !important;
+            }
+        }
+        .selected a{
+            background-position-x: 205px !important;
+        }
     }
 }

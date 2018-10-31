@@ -127,6 +127,7 @@ if (!class_exists('iFind_Business')) {
 				$this->post_type		=> array(
 					'office_address'	=> '',
 					'office_phone'		=> '',
+					'email_address'		=> '',
 					'qrcode'			=> array(
 						'qr_type' 			=> 'url',
 						'qr_content' 		=> ''
@@ -170,6 +171,14 @@ if (!class_exists('iFind_Business')) {
 						"placeholder" => esc_html__( 'Exam: (07) 5473 3776', 'ifind' ),
 						"field_name" => $this->post_type."[office_phone]",
 						"value" => $meta_data['office_phone'],
+					));
+
+					iFind_Admin_Metabox_Fields::get_text_field(array(
+						"title" => esc_html__( 'Email Address', 'ifind' ),
+						"desc" => esc_html__( 'Email address of the office.', 'ifind' ),
+						"placeholder" => esc_html__( 'Exam: hoangcaovuong92@gmail.com', 'ifind' ),
+						"field_name" => $this->post_type."[email_address]",
+						"value" => $meta_data['email_address'],
 					));
 
 					iFind_Admin_Metabox_Fields::get_qrcode_field(array(
