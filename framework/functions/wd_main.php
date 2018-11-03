@@ -191,6 +191,26 @@ if(!function_exists ('ifind_get_list_category')){
 	}
 }
 
+// Get list video file to header
+add_action('wp_head','ifind_include_list_video_id_to_header',5); 
+if(!function_exists ('ifind_include_list_video_id_to_header')){
+	function ifind_include_list_video_id_to_header(){
+		$location_metadata = ifind_get_list_business_location(get_the_ID());
+		$list_business = $location_metadata['list_business'];
+		$list_video_link = array();
+		if (count($list_business) > 0) {
+			foreach ($list_business as $business_id) {
+				$video_file = ifind_get_post_custom_metadata($business_id, 'business', 'video_file');
+				if ($video_file) { 
+					?>
+					<link rel="preload" as="video" href="<?php echo esc_url($video_file); ?>" />
+				<?php }
+			}
+		}
+	}
+}
+
+
 // Get List terms of taxonomy
 if(!function_exists ('ifind_get_list_business_location')){
 	function ifind_get_list_business_location($location_id){
@@ -208,7 +228,9 @@ if(!function_exists ('ifind_get_list_posts')){
 			'post_status'		=> 'publish',
 			'post__in' 			=> $list_post_id,
 			'posts_per_page' 	=> $posts_per_page,
-			'tax_query' => array(
+		);
+		if ($taxonomy && $term_id) {
+			$args['tax_query'] = array(
 				array(
 					'taxonomy' => $taxonomy,
 					'field' => 'id', //get by slug or term_id
@@ -216,8 +238,8 @@ if(!function_exists ('ifind_get_list_posts')){
 					'include_children' => true,
 			  		'operator' => 'IN'
 				)
-			)
-		);
+			);
+		}
 		$data_array = array();
 		$data = new WP_Query($args);
 		if( $data->have_posts() ){

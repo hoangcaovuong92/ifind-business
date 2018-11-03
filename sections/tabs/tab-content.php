@@ -39,6 +39,7 @@
                             $business_info_banner = wp_get_attachment_image_url( $business_metadata['info_banner'], 'full' );
                             $youtube_video_id = $business_metadata['youtube_video_id'];
                             $youtube_video_url = 'http://www.youtube.com/embed/'.$youtube_video_id.'?enablejsapi=1&rel=0&modestbranding=0&wmode=opaque&showinfo=0&controls=0';
+                            $business_video_file = $business_metadata['video_file'];
                             $business_desc = $business_metadata['office_address'] ? '<div class="ifind-business-office-address">'.$business_metadata['office_address'].'</div>' : '';
                             $business_desc .= $business_metadata['office_phone'] ? '<div class="ifind-business-office-phone">'.$business_metadata['office_phone'].'</div>' : '';
                             $business_email = $business_metadata['email_address'];
@@ -65,11 +66,14 @@
                                     data-location-id="<?php echo get_the_ID(); ?>"
                                     data-counter-position="logo">
                                     <?php 
-                                    $fancybox_class = ($youtube_video_id) ? 'ifind-fancybox-video' : 'ifind-fancybox-image';
+                                    $fancybox_class = ($youtube_video_id) ? 'ifind-fancybox-video-youtube' : 'ifind-fancybox-image';
+                                    $fancybox_class = ($business_video_file) ? 'ifind-fancybox-video-file' : $fancybox_class;
                                     $fancybox_link = ($youtube_video_id) ? $youtube_video_url : $business_info_banner;
                                     ?>
                                     
-                                    <a class="fancybox fancybox.iframe <?php echo $fancybox_class; ?> business-logo-link" href="<?php echo $fancybox_link; ?>" content="<p>">
+                                    <a class="fancybox fancybox.iframe <?php echo $fancybox_class; ?> business-logo-link" 
+                                        href="<?php echo $fancybox_link; ?>" content="<p>"
+                                        data-video-file="<?php echo esc_url($business_video_file); ?>">
                                         <?php echo $business_logo; ?>
                                         <div class="heading"><?php _e("More info", 'ifind'); ?></div>
                                     </a>

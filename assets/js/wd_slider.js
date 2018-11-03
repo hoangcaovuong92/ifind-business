@@ -169,8 +169,10 @@ if (typeof ifind_big_popup_slider != 'function') {
 			});
 
 			jQuery('body').on('click', function () {
-				ifind_debug_mode('body clicked!');
-				big_popup_close();
+				if (jQuery(popSliderBigWrap).hasClass('popup-breaking')) {
+					ifind_debug_mode('body clicked!');
+					big_popup_close();
+				}
 			});
 		});
 	}

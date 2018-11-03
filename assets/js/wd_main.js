@@ -8,6 +8,7 @@ jQuery(document).ready(function ($) {
 	ifind_google_map_script();
 	ifind_business_tab_script();
 	ifind_image_popup_fancybox();
+	ifind_video_player();
 	ifind_validator_form();
 	ifind_form_directions();
 	ifind_add_class_to_body();
@@ -178,6 +179,79 @@ if (typeof ifind_reset_system != 'function') {
 				}	
 			}, 3000);
 		}
+	}
+}
+
+if (typeof ifind_video_player != 'function') { 
+	function ifind_video_player(){
+		// Later on, after some condition has been met, set video source to the
+		// preloaded video URL.
+		var video_wrap = jQuery('#ifind-video-player-wrap');
+		var video = jQuery('#ifind-video-player');
+		var button_target = jQuery('.ifind-fancybox-video-file');
+		jQuery(button_target).on('click', function (e) {
+			e.preventDefault();
+			video.attr('src', jQuery(this).data('video-file'));
+			jQuery.fancybox(video_wrap, {
+                openEffect  : 'fade',
+                closeEffect : 'fade',
+                padding     : 0,
+                margin      : [-60, 0, 0, 0],
+                fitToView   : false,
+                autoSize    : false,
+                width       : '100%',
+                height      : '100%',
+                closeBtn    : true,
+				arrows      : false,
+                scrolling   : 'hidden',
+				helpers: {
+					overlay: {
+						locked: true 
+					}
+				},
+                beforeShow  : function() {
+					// After the show-slide-animation has ended - play the vide in the current slide
+					this.content.find(video).trigger('play')
+					jQuery('body').addClass('video-playing');
+					// Attach the ended callback to trigger the fancybox.next() once the video has ended.
+					this.content.find(video).on('ended', function() {
+					  jQuery.fancybox.next();
+					});
+					ifind_debug_mode('Playing video!!');
+                },
+                afterClose: function() {
+					ifind_debug_mode('Video after close');
+					jQuery('body').removeClass('video-playing');
+					ifind_debug_mode('Closed video!!');
+                },
+                afterLoad	: function() {
+					video.get(0).addEventListener("playing", function() {
+						ifind_debug_mode('Playing event triggered');
+					});
+			
+					// Pause event
+					video.get(0).addEventListener("pause", function() { 
+						ifind_debug_mode('Pause event triggered');
+					});
+			
+					// Seeking event
+					video.get(0).addEventListener("seeking", function() { 
+						ifind_debug_mode('Seeking event triggered');
+					});
+			
+					// Volume changed event
+					video.get(0).addEventListener("volumechange", function(e) { 
+						ifind_debug_mode('Volumechange event triggered');
+					});
+			
+					// Volume changed event
+					video.get(0).addEventListener("ended", function(e) { 
+						ifind_debug_mode('ended event triggered');
+						ifind_fancybox_close();
+					});
+                }
+            });
+		});
 	}
 }
 
@@ -361,7 +435,7 @@ if (typeof ifind_ajax_update_business_click_counter != 'function') {
 				beforeSend: function(){
 				},
 				success: function(data) {
-					console.log(data);
+					//console.log(data);
 				}
 			});
 		});

@@ -260,13 +260,59 @@ if (!class_exists('iFind_Admin_Metabox_Fields')) {
                     <input type="hidden" name="<?php echo $data['field_name']; ?>" id="<?php echo 'image-value-'.$random_id; ?>" value="<?php echo ($data['value'] && is_numeric($data['value'])) ? esc_attr($data['value'] ) : ""; ?>" />
 
                     <a 	class="wd_media_lib_select_btn button button-primary button-large" 
+                        data-type="image"
                         data-image_value="<?php echo 'image-value-'.$random_id; ?>" 
-                        data-image_preview="image-preview-<?php echo $random_id; ?>"><?php esc_html_e('Select Image','ifind'); ?></a>
+                        data-image_preview="image-preview-<?php echo $random_id; ?>">
+                        <?php esc_html_e('Select Image File','ifind'); ?>
+                    </a>
 
                     <a 	class="wd_media_lib_clear_btn button" 
                         data-image_value="<?php echo 'image-value-'.$random_id; ?>" 
                         data-image_preview="image-preview-<?php echo $random_id; ?>" 
-                        data-image_default=<?php echo $data['default']; ?>><?php esc_html_e('Reset','ifind'); ?></a>
+                        data-image_default=<?php echo $data['default']; ?>>
+                        <?php esc_html_e('Reset','ifind'); ?>
+                    </a>
+                </td>
+            </tr>
+            <?php
+        }
+
+        static function get_video_file_field($data = array()){
+            $default = array(
+                "title" => "",
+                "desc" => "",
+                "placeholder" => "",
+                "field_name" => "no_name_available",
+                "value" => "",
+                "default" => TVLGIAO_WPDANCE_THEME_IMAGES."/default.jpg",
+            );
+            $random_id 	= mt_rand();
+            $data = wp_parse_args($data, $default);
+            ?>
+            <tr>
+                <th scope="row">
+                    <label><?php echo $data['title']; ?>:</label>
+                    <p class="description"><?php echo $data['desc']; ?></p>
+                </th>
+                <td>
+                    <input type="text" class="wd-full-width"
+                            name="<?php echo $data['field_name']; ?>" 
+                            id="<?php echo 'image-value-'.$random_id; ?>" 
+                            value="<?php echo esc_url($data['value'] ) ?>" />
+
+                    <a 	class="wd_media_lib_select_btn button button-primary button-large" 
+                        data-type="video"
+                        data-image_value="<?php echo 'image-value-'.$random_id; ?>" 
+                        data-image_preview="image-preview-<?php echo $random_id; ?>">
+                        <?php esc_html_e('Select Video File','ifind'); ?>
+                    </a>
+
+                    <a 	class="wd_media_lib_clear_btn button" 
+                        data-image_value="<?php echo 'image-value-'.$random_id; ?>" 
+                        data-image_preview="image-preview-<?php echo $random_id; ?>" 
+                        data-image_default=<?php echo $data['default']; ?>>
+                        <?php esc_html_e('Reset','ifind'); ?>
+                    </a>
                 </td>
             </tr>
             <?php

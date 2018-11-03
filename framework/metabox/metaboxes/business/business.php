@@ -141,6 +141,7 @@ if (!class_exists('iFind_Business')) {
 					'small_banner'		=> '',
 					'large_banner'		=> '',
 					'info_banner'		=> '',
+					'video_file'		=> '',
 					'youtube_video_id'	=> '',
 				),
 			);
@@ -222,6 +223,13 @@ if (!class_exists('iFind_Business')) {
 						"desc" => esc_html__( 'Recommend size: 1036x736 px. Banner appears when click logo image.', 'ifind' ),
 						"field_name" => $this->post_type."[info_banner]",
 						"value" => $meta_data['info_banner'],
+					));
+					iFind_Admin_Metabox_Fields::get_video_file_field(array(
+						"title" => esc_html__( 'Video File', 'ifind' ),
+						"desc" => esc_html__( 'Video appears when click logo image instead of info banner.', 'ifind' ),
+						"placeholder" => esc_html__( "Exam: www.ifindsystem.com/test.mp4", 'ifind' ),
+						"field_name" => $this->post_type."[video_file]",
+						"value" => $meta_data['video_file'],
 					));
 					iFind_Admin_Metabox_Fields::get_text_field(array(
 						"title" => esc_html__( 'Youtube Video ID', 'ifind' ),

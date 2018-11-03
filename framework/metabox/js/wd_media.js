@@ -28,6 +28,7 @@ if (typeof wd_media_select != 'function') {
 	        var file_frame_bridal;
 	        var img_value_field     = jQuery(this).data('image_value');
 	        var img_preview_field   = jQuery(this).data('image_preview'); 
+	        var type   				= jQuery(this).data('type'); 
 
 	        if ( file_frame_bridal ) {
 	            file_frame_bridal.open();
@@ -49,9 +50,14 @@ if (typeof wd_media_select != 'function') {
 	        });
 
 	        file_frame_bridal.on( 'select', function() {
-	            var attachment = file_frame_bridal.state().get('selection').first().toJSON();
-	            jQuery('#'+img_value_field).val(attachment.id);
-	            jQuery('#'+img_preview_field).attr("src",attachment.url); 
+				var attachment = file_frame_bridal.state().get('selection').first().toJSON();
+				if (type === 'image') {
+					jQuery('#'+img_value_field).val(attachment.id);
+					jQuery('#'+img_preview_field).attr("src",attachment.url); 
+				}else if(type === 'video'){
+					jQuery('#'+img_value_field).val(attachment.url);
+				}
+
 	        });
 			 
 	        file_frame_bridal.open();

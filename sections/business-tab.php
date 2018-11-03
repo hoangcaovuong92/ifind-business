@@ -36,6 +36,7 @@ $list_business_id = $location_meta_data['list_business'];
             require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/map-directions.php";
             require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/tab-nav.php";
             require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/tab-content.php";
+            require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/video-player.php";
             ?>
     </div>
 </div>
@@ -64,39 +65,39 @@ $list_business_id = $location_meta_data['list_business'];
     function onYouTubePlayerAPIReady() {
         // Initialise the fancyBox after the DOM is loaded
         jQuery(document).ready(function() {
-            var fancybox_video = ".ifind-fancybox-video";
+            var fancybox_video = ".ifind-fancybox-video-youtube";
             jQuery(fancybox_video).fancybox({
-                    openEffect  : 'fade',
-                    closeEffect : 'fade',
-                    padding     : 0,
-                    margin      : [-60, 0, 0, 0],
-                    fitToView   : false,
-                    autoSize    : false,
-                    width       : '100%',
-                    height      : '100%',
-                    closeBtn    : false,
-                    arrows      : false,
-                    mobile : {
-                        margin      : [0, 0, 0, 0]
-                    },
-                    beforeShow  : function() {
-                        // Find the iframe ID
-                        var id = jQuery.fancybox.inner.find('iframe').attr('id');
-                        
-                        // Create video player object and add event listeners
-                        var player = new YT.Player(id, {
-                            playerVars: { 'autoplay': 1, 'controls': 0 },
-                            events: {
-                                'onReady': onPlayerReady,
-                                'onStateChange': onPlayerStateChange
-                            }
-                        });
-                    },
-                    afterClose: function() {
-                    },
-                    afterLoad	: function() {
-					}
-                });
+                openEffect  : 'fade',
+                closeEffect : 'fade',
+                padding     : 0,
+                margin      : [-60, 0, 0, 0],
+                fitToView   : false,
+                autoSize    : false,
+                width       : '100%',
+                height      : '100%',
+                closeBtn    : false,
+                arrows      : false,
+                mobile : {
+                    margin      : [0, 0, 0, 0]
+                },
+                beforeShow  : function() {
+                    // Find the iframe ID
+                    var id = jQuery.fancybox.inner.find('iframe').attr('id');
+                    
+                    // Create video player object and add event listeners
+                    var player = new YT.Player(id, {
+                        playerVars: { 'autoplay': 1, 'controls': 0 },
+                        events: {
+                            'onReady': onPlayerReady,
+                            'onStateChange': onPlayerStateChange
+                        }
+                    });
+                },
+                afterClose: function() {
+                },
+                afterLoad	: function() {
+                }
+            });
 
             jQuery(fancybox_video).on("click", function(){
                 // Launch fancyBox
