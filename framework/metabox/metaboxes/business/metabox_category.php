@@ -31,7 +31,18 @@ if (is_admin()) {
 	// ));
 	$taxonomy_meta->addImage('banner_image',array(
 		'name' => esc_html__( 'Banner Image', 'ifind' ),
-		'desc' => esc_html__( 'Recommend size: 558x228 px. Display on business tabs.', 'ifind' )
+		'desc' => esc_html__( 'Recommend size: 750x300 px. Display on business tabs.', 'ifind' )
+	));
+
+	$taxonomy_meta->addImage('avatar_image',array(
+		'name' => esc_html__( 'Avatar Image', 'ifind' ),
+		'desc' => esc_html__( 'Recommend size: 150x150 px. Display on business tabs.', 'ifind' )
+	));
+
+	$taxonomy_meta->addText('font_icon_class',array(
+		'name' => esc_html__( 'Font Icon Class', 'ifind' ),
+		'desc' => esc_html__( 'Exam: fa fa-pagelines', 'ifind' ),
+		'std'  => 'fa fa-globe'
 	));
 
 	$taxonomy_meta->addText('order_index',array(

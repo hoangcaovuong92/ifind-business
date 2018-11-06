@@ -288,6 +288,51 @@ a:hover, a:focus, a:active {
   }
 }
 
+@-webkit-keyframes shine {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+@-moz-keyframes shine {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+@-ms-keyframes shine {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+@-o-keyframes shine {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+
 /* sass\layout\menu\_desktop.scss */
 @-webkit-keyframes fadeInDown {
   0% {
@@ -2003,11 +2048,7 @@ body {
   -webkit-align-items: center;
   -moz-align-items: center;
   align-items: center;
-  padding-bottom: 80px;
-}
-
-.ifind-header-main.gtranslate-show {
-  padding-bottom: 70px;
+  padding-bottom: 85px;
 }
 
 .ifind-gtranslate {
@@ -2142,7 +2183,7 @@ body {
 }
 
 .ifind-list-business {
-  margin-top: -30px;
+  margin-top: -10px;
 }
 
 #map-directions-email {
@@ -2602,7 +2643,7 @@ body {
 }
 
 .ifind-footer-main {
-  padding-top: 10px;
+  padding-top: 30px;
   background: transparent;
 }
 
@@ -2869,4 +2910,415 @@ a[href^=tel] {
   width: 100vw !important;
   height: 100vh !important;
   background: none !important;
+}
+
+.ifind-business-title-banner.style-2 .ifind-business-title-banner-item {
+  position: relative;
+}
+
+.ifind-business-title-banner.style-2 .ifind-business-title-banner-item .business-group-banner-link {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  padding: 2%;
+  font-size: 40px;
+  letter-spacing: 7px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  border: 1px solid #fff;
+  line-height: 40px;
+  outline: none;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 10px;
+}
+
+.ifind-business-title-banner.style-2 .ifind-business-title-banner-item .business-group-banner-link span {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  padding: 10px 0;
+}
+
+.ifind-business-title-banner.style-2 .ifind-business-title-banner-item:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.75) 65%);
+}
+
+.ifind-business-title-banner.style-2 .ifind-business-title-banner-item .business-group-banner-link {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+.ifind-business-title-banner.style-2 .ifind-business-title-banner-item:before {
+  background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.75) 65%);
+}
+
+.ifind-business-title-banner.style-3 .main-timeline {
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline:before {
+  content: "";
+  width: 10px;
+  height: 100%;
+  background: #303334;
+  position: absolute;
+  top: 0;
+  left: 5%;
+  transform: translateX(-50%);
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline {
+  width: 95%;
+  float: right;
+  padding: 0 0 0 15px;
+  position: relative;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:before,
+.ifind-business-title-banner.style-3 .main-timeline .timeline:after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 10px solid #303334;
+  background: #fe9505;
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:after {
+  width: 90px;
+  height: 90px;
+  border: none;
+  background: linear-gradient(to right, transparent 70%, #4d4d4d 70%);
+  left: -50px;
+  z-index: 0;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline-content {
+  display: inline-block;
+  background: #999;
+  border-radius: 15px;
+  overflow: hidden;
+  -webkit-clip-path: polygon(100% 0, 100% 100%, 7% 100%, 0 50%, 7% 0);
+  clip-path: polygon(100% 0, 100% 100%, 7% 100%, 0 50%, 7% 0);
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline-icon {
+  display: block;
+  font-size: 70px;
+  color: #fe9505;
+  position: absolute;
+  top: 50%;
+  left: 13%;
+  transform: translateY(-50%);
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline-content:hover {
+  text-decoration: none;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .inner-content {
+  width: 70%;
+  float: right;
+  padding: 20px;
+  background: #fe9505;
+  position: relative;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 0 5px 0;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .description {
+  font-size: 15px;
+  color: #000;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(2n) .timeline-content {
+  -webkit-clip-path: polygon(0 0, 0 100%, 90% 100%, 100% 50%, 90% 0);
+  clip-path: polygon(0 0, 0 100%, 90% 100%, 100% 50%, 90% 0);
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(2n) .timeline-icon {
+  left: auto;
+  right: 13%;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(2n) .inner-content {
+  float: left;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(2n):before,
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(2n) .inner-content {
+  background: #ec407a;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(2n) .timeline-icon {
+  color: #EC407A;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(3n):before,
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(3n) .inner-content {
+  background: #25c6da;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(3n) .timeline-icon {
+  color: #25c6da;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(4n):before,
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(4n) .inner-content {
+  background: #41a4f5;
+}
+
+.ifind-business-title-banner.style-3 .main-timeline .timeline:nth-child(4n) .timeline-icon {
+  color: #41a4f5;
+}
+
+.ifind-business-title-banner.style-4 {
+  margin-right: -15px;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline {
+  margin-left: 50px;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline .timeline {
+  width: 100%;
+  padding: 40px 0 20px;
+  box-shadow: -10px 0 10px -16px #000 inset;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline .timeline .timeline-content {
+  min-height: 182px;
+  color: #fff;
+  background: linear-gradient(165deg, #C1386D 49%, #CE3F6A 50%);
+  background-size: cover !important;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  -moz-align-items: flex-end;
+  align-items: flex-end;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  padding: 20px 10px 20px 20px;
+  border-radius: 20px 0 0 20px;
+  box-shadow: -10px 0 10px -10px #000 inset;
+  border: 10px solid rgba(0, 0, 0, 0.4);
+  border-right: 0 solid transparent;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline .timeline .timeline-content .timeline-icon {
+  height: 150px;
+  width: 150px;
+  background: linear-gradient(165deg, rgba(197, 25, 31, 0.5), rgba(221, 122, 169, 0.5));
+  background-size: cover !important;
+  border: 4px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  right: auto;
+  left: -60px;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline .timeline .timeline-content .timeline-icon i {
+  font-size: 80px;
+  text-shadow: 1px 1px 0 #CCC, 2px 2px 0 #CCC, 3px 3px 0 #444, 4px 4px 0 #444, 5px 5px 0 #444, 6px 6px 0 #444;
+  /* end of 4 level deep dark shadow */
+}
+
+.ifind-business-title-banner.style-4 .main-timeline .timeline .timeline-content:before, .ifind-business-title-banner.style-4 .main-timeline .timeline .timeline-content:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline .timeline .timeline-content:after {
+  background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 75%);
+}
+
+.ifind-business-title-banner.style-4 .main-timeline .timeline .title {
+  position: relative;
+  z-index: 1;
+  padding: 15px;
+  font-size: 35px;
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  line-height: 30px;
+  outline: none;
+  white-space: nowrap;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #444, 2px 2px 0 #444, 3px 3px 0 #444, 4px 4px 0 #444;
+  /* end of 4 level deep dark shadow */
+  /*stitching*/
+  outline: 1px dashed #98abb9;
+  outline-offset: -5px;
+  background-color: #556068;
+  /*shadow*/
+  -webkit-box-shadow: 2px 2px 2px #000;
+  -moz-box-shadow: 2px 2px 2px #000;
+  box-shadow: 2px 2px 2px #000;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline .timeline .description {
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline .timeline .timeline-year {
+  font-size: 35px;
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  right: auto;
+  left: 15px;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline.active {
+  margin-left: 0;
+  margin-right: 15px;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline.active .timeline {
+  width: 100%;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline.active .timeline .timeline-content {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 20px 20px 0px 0px;
+  border-right: 10px solid rgba(255, 255, 255, 0.5);
+}
+
+.ifind-business-title-banner.style-4 .main-timeline.active .timeline .timeline-content:before, .ifind-business-title-banner.style-4 .main-timeline.active .timeline .timeline-content:after {
+  border-radius: 20px 20px 0px 0px;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline.active .timeline .timeline-content .timeline-icon {
+  right: auto;
+  left: 25px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -khtml-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 120px;
+  width: 120px;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline.active .timeline .timeline-content .timeline-icon i {
+  font-size: 50px;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline.active .timeline .timeline-content .title {
+  margin-right: 15px;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline.active .timeline .timeline-content .title i {
+  display: none;
+}
+
+.ifind-business-title-banner.style-4 .main-timeline:nth-child(4n+2) .timeline .timeline-content {
+  background: linear-gradient(165deg, #428bb2 49%, #509BC4 50%);
+}
+
+.ifind-business-title-banner.style-4 .main-timeline:nth-child(4n+2) .timeline .timeline-content .timeline-icon {
+  background: linear-gradient(165deg, rgba(87, 178, 223, 0.5) 49%, rgba(77, 185, 228, 0.5) 50%);
+}
+
+.ifind-business-title-banner.style-4 .main-timeline:nth-child(4n+3) .timeline .timeline-content {
+  background: linear-gradient(165deg, #EE9B3D 49%, #f7a042 50%);
+}
+
+.ifind-business-title-banner.style-4 .main-timeline:nth-child(4n+3) .timeline .timeline-content .timeline-icon {
+  background: linear-gradient(165deg, rgba(248, 178, 49, 0.5) 49%, rgba(255, 207, 60, 0.5) 50%);
+}
+
+.ifind-business-title-banner.style-4 .main-timeline:nth-child(4n+4) .timeline .timeline-content {
+  background: linear-gradient(165deg, #A24F8B 49%, #9e4284 50%);
+}
+
+.ifind-business-title-banner.style-4 .main-timeline:nth-child(4n+4) .timeline .timeline-content .timeline-icon {
+  background: linear-gradient(165deg, rgba(114, 24, 98, 0.5) 49%, rgba(150, 43, 130, 0.5) 50%);
+}
+
+#ifind-qr-code {
+  text-align: center;
 }

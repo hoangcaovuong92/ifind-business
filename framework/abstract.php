@@ -110,6 +110,8 @@ if (!class_exists('ifindThemeSetting')) {
 			//set_post_thumbnail_size( 640, 440, true );
 			add_image_size('map_logo', 40, 40, false);
 			add_image_size('small_banner', 1080, 360, true);
+			add_image_size('tab_banner_image', 750, 300, true);
+			add_image_size('tab_avatar_image', 150, 150, true);
 		}
 
 		public function send_mail_set_content_type(){
@@ -197,6 +199,7 @@ if (!class_exists('ifindThemeSetting')) {
 			wp_enqueue_style('slick-theme-css', 		TVLGIAO_WPDANCE_THEME_EXTEND_LIBS.'/slick/slick-theme.css');
 			wp_enqueue_style('wowjs-css', 				TVLGIAO_WPDANCE_THEME_EXTEND_LIBS.'/wowjs/css/animate.css');
 			wp_enqueue_style('softkey-css', 			TVLGIAO_WPDANCE_THEME_EXTEND_LIBS.'/softkey/softkeys-0.0.1.css');
+			wp_enqueue_style('jquery.steps-css', 		TVLGIAO_WPDANCE_THEME_EXTEND_LIBS.'/jquery.steps/jquery.steps.css');
 			
 			// CSS OF THEME
 			wp_enqueue_style('wd-theme-desc-css', 		TVLGIAO_WPDANCE_THEME_URI.'/style.css');
@@ -212,11 +215,13 @@ if (!class_exists('ifindThemeSetting')) {
 			wp_enqueue_script('slick-core', 			TVLGIAO_WPDANCE_THEME_EXTEND_LIBS.'/slick/slick.min.js',array('jquery'),false,true);
 			wp_enqueue_script('wowjs-js', 				TVLGIAO_WPDANCE_THEME_EXTEND_LIBS.'/wowjs/js/wow.min.js',array('jquery'),false,true);
 			wp_enqueue_script('softkey-js', 			TVLGIAO_WPDANCE_THEME_EXTEND_LIBS.'/softkey/softkeys-0.0.1.js',array('jquery'),false,true);
+			wp_enqueue_script('jquery.steps-js', 		TVLGIAO_WPDANCE_THEME_EXTEND_LIBS.'/jquery.steps/jquery.steps.min.js',array('jquery'),false,true);
 
 			
 			wp_enqueue_script('wd-main-js', 			TVLGIAO_WPDANCE_THEME_JS.'/wd_main.js', array('jquery'), false, true);
 			wp_localize_script('wd-main-js', 			'ajax_object', $ajax_object_vars);
 			wp_localize_script('wd-main-js', 			'option_object', $tvlgiao_wpdance_theme_options);
+			wp_localize_script('wd-main-js', 			'list_business_video', ifind_include_list_video_id_to_header());
 
 			wp_enqueue_script('wd-slider-js', 			TVLGIAO_WPDANCE_THEME_JS.'/wd_slider.js', array('jquery'), false, true);
 			wp_localize_script('wd-slider-js', 			'option_object', $tvlgiao_wpdance_theme_options);

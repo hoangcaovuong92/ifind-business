@@ -51,7 +51,7 @@
                             //QR Code
                             $qr_type = $business_metadata['qrcode']['qr_type'];
                             $qr_content = $business_metadata['qrcode']['qr_content'];
-                            $qr_code = new QRCODE();
+                            $qr_code = new ifind_QrCode();
                             $qr_code->SETCONTENT($qr_type, $qr_content);
                             $qr_link = $qr_code->QRCODE('link', 400);
 

@@ -192,21 +192,21 @@ if(!function_exists ('ifind_get_list_category')){
 }
 
 // Get list video file to header
-add_action('wp_head','ifind_include_list_video_id_to_header',5); 
+//add_action('wp_head','ifind_include_list_video_id_to_header',5); 
 if(!function_exists ('ifind_include_list_video_id_to_header')){
 	function ifind_include_list_video_id_to_header(){
 		$location_metadata = ifind_get_list_business_location(get_the_ID());
 		$list_business = $location_metadata['list_business'];
 		$list_video_link = array();
-		if (count($list_business) > 0) {
+		if (is_array($list_business)) {
 			foreach ($list_business as $business_id) {
 				$video_file = ifind_get_post_custom_metadata($business_id, 'business', 'video_file');
 				if ($video_file) { 
-					?>
-					<link rel="preload" as="video" href="<?php echo esc_url($video_file); ?>" />
-				<?php }
+					$list_video_link[] = $video_file;
+				}
 			}
 		}
+		return $list_video_link;
 	}
 }
 
@@ -260,7 +260,12 @@ if(!function_exists ('ifind_get_list_posts')){
 if(!function_exists ('ifind_get_metadata')){
 	function ifind_get_post_custom_metadata($post_id, $post_type, $key = ''){
 		$meta_data = unserialize(get_post_meta( $post_id, $post_type.'_meta_data', true ));
-		return ($key) ? $meta_data[$post_type][$key] : $meta_data[$post_type];
+		if($key){
+			$return_data = (!empty($meta_data[$post_type][$key])) ? $meta_data[$post_type][$key] : '';
+		}else{
+			$return_data = $meta_data[$post_type];
+		}
+		return $return_data;
 	}
 }
 

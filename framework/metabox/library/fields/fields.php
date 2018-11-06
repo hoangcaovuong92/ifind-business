@@ -295,7 +295,7 @@ if (!class_exists('iFind_Admin_Metabox_Fields')) {
                     <p class="description"><?php echo $data['desc']; ?></p>
                 </th>
                 <td>
-                    <input type="text" class="wd-full-width"
+                    <input readonly type="text" class="wd-full-width"
                             name="<?php echo $data['field_name']; ?>" 
                             id="<?php echo 'image-value-'.$random_id; ?>" 
                             value="<?php echo esc_url($data['value'] ) ?>" />

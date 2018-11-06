@@ -29,8 +29,8 @@ $qc->SMS('PHONENUMBER', 'MESSAGE');
 $qc->CONTACT('NAME', 'ADDRESS', 'PHONE', 'EMAIL');
 **/
 
-if (!class_exists('QrCode')) {
-    class QrCode {
+if (!class_exists('ifind_QrCode')) {
+    class ifind_QrCode {
         // Google Chart API URL
         private $apiUrl = 'http://chart.apis.google.com/chart';
         private $data;

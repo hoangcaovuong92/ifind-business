@@ -21,8 +21,10 @@ $list_business_id = $location_meta_data['list_business'];
         foreach ($list_business_group_parent as $term_id => $name) {
             $term = get_term( $term_id, $taxonomy );
             $list_data[$term_id]['name'] = $term->name;
-            $list_data[$term_id]['map_marker_icon'] = get_term_meta($term_id, 'map_marker_icon', true)['id'];
-            $list_data[$term_id]['banner_image'] = get_term_meta($term_id, 'banner_image', true)['id'];
+            $list_data[$term_id]['map_marker_icon'] = !empty(get_term_meta($term_id, 'map_marker_icon', true)['id']) ? get_term_meta($term_id, 'map_marker_icon', true)['id'] : '';
+            $list_data[$term_id]['banner_image'] = !empty(get_term_meta($term_id, 'banner_image', true)['id']) ? get_term_meta($term_id, 'banner_image', true)['id'] : '';
+            $list_data[$term_id]['avatar_image'] = !empty(get_term_meta($term_id, 'avatar_image', true)['id']) ? get_term_meta($term_id, 'avatar_image', true)['id'] : '';
+            $list_data[$term_id]['font_icon_class'] = get_term_meta($term_id, 'font_icon_class', true) ? get_term_meta($term_id, 'font_icon_class', true) : 'fa fa-globe';
             $list_data[$term_id]['category_color'] = get_term_meta($term_id, 'category_color', true);
         }
     }
@@ -37,6 +39,7 @@ $list_business_id = $location_meta_data['list_business'];
             require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/tab-nav.php";
             require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/tab-content.php";
             require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/video-player.php";
+            require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/contact-form.php";
             ?>
     </div>
 </div>

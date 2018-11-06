@@ -27,6 +27,7 @@
         left: 0;
         position: absolute;
         width: 100%;
+        //display: none;
         @include breakpoint('min', 'small') {
             top: -88px;
             height: 90px;
@@ -51,7 +52,7 @@
 }
 
 .ifind-list-business {
-    margin-top: -30px;
+    margin-top: -10px;
 }
 
 $business_border_width: 1px;

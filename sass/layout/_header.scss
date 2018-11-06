@@ -52,10 +52,7 @@
 }
 .ifind-header-main{
     @include align-items(center);
-    padding-bottom: 80px;
-    &.gtranslate-show{
-        padding-bottom: 70px;
-    }
+    padding-bottom: 85px;
 }
 
 .ifind-gtranslate{
