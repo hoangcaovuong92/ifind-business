@@ -281,13 +281,17 @@ if(!function_exists ('ifind_get_metadata')){
 					$logo = $business_meta_data['logo'];
 					$small_banner = $business_meta_data['small_banner'];
 					$large_banner = $business_meta_data['large_banner'];
+					$info_banner_type = $business_meta_data['info_banner_type'];
 					$info_banner = $business_meta_data['info_banner'];
+					$info_banner_file = $business_meta_data['info_banner_file'];
 					$youtube_video_id = $business_meta_data['youtube_video_id'];
 					$list_media[$business_id] = array(
 						'logo' => $logo,
 						'small_banner' => $small_banner,
 						'large_banner' => $large_banner,
+						'info_banner_type' => $info_banner_type,
 						'info_banner' => $info_banner,
+						'info_banner_file' => $info_banner_file,
 						'youtube_video_id' => $youtube_video_id,
 						'video_type' => $youtube_video_id ? true : false,
 					);

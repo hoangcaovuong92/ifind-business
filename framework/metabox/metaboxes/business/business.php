@@ -140,7 +140,9 @@ if (!class_exists('iFind_Business')) {
 					'logo'				=> '',
 					'small_banner'		=> '',
 					'large_banner'		=> '',
+					'info_banner_type'	=> 'image',
 					'info_banner'		=> '',
+					'info_banner_file'	=> '',
 					'video_file'		=> '',
 					'youtube_video_id'	=> '',
 				),
@@ -154,6 +156,12 @@ if (!class_exists('iFind_Business')) {
 			$meta_key 	= $this->post_type;
 			$meta_data 	= $this->get_meta_data($meta_key);
 			$meta_data 	= empty($meta_data) ? $this->get_meta_data_default($meta_key) : $meta_data;
+			$info_banner_type_options = array(
+				'image' => esc_html__( 'Image', 'ifind' ),
+				'content-file' => esc_html__( 'Content File', 'ifind' ),
+				'video-file' => esc_html__( 'Video file', 'ifind' ),
+				'video-youtube' => esc_html__( 'Youtube video', 'ifind' ),
+			);
 			?>
 			<table id="<?php echo esc_attr( $random_id ); ?>" class="form-table wd-<?php echo $this->post_type; ?>-custom-meta-box wd-custom-meta-box-width">
 				<tbody>
@@ -218,11 +226,26 @@ if (!class_exists('iFind_Business')) {
 						"value" => $meta_data['large_banner'],
 					));
 
+					iFind_Admin_Metabox_Fields::get_select_field(array(
+						"title" => esc_html__( 'Info Banner Type', 'ifind' ),
+						"desc" => '',
+						"field_name" => $this->post_type."[info_banner_type]",
+						"options" => $info_banner_type_options,
+						"value" => $meta_data['info_banner_type'],
+					));
+
 					iFind_Admin_Metabox_Fields::get_image_field(array(
-						"title" => esc_html__( 'Info Banner', 'ifind' ),
+						"title" => esc_html__( 'Info Banner Image', 'ifind' ),
 						"desc" => esc_html__( 'Recommend size: 1036x736 px. Banner appears when click logo image.', 'ifind' ),
 						"field_name" => $this->post_type."[info_banner]",
 						"value" => $meta_data['info_banner'],
+					));
+					iFind_Admin_Metabox_Fields::get_video_file_field(array(
+						"title" => esc_html__( 'Info Banner Content File', 'ifind' ),
+						"desc" => esc_html__( 'Choose a html file ...', 'ifind' ),
+						"placeholder" => '',
+						"field_name" => $this->post_type."[info_banner_file]",
+						"value" => $meta_data['info_banner_file'],
 					));
 					iFind_Admin_Metabox_Fields::get_video_file_field(array(
 						"title" => esc_html__( 'Video File', 'ifind' ),

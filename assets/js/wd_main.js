@@ -7,9 +7,8 @@ jQuery(document).ready(function ($) {
 	ifind_wow_js_script();
 	ifind_google_map_script();
 	ifind_business_tab_script();
-	ifind_image_popup_fancybox();
+	ifind_fancybox_script();
 	ifind_preload_business_video();
-	ifind_video_player();
 	ifind_validator_form();
 	ifind_contact_form();
 	ifind_form_directions();
@@ -25,7 +24,7 @@ jQuery(document).ready(function ($) {
 //****************************************************************//
 if (typeof ifind_debug_mode != 'function') {
 	function ifind_debug_mode(mess) {
-		var debug = true;
+		var debug = false;
 		if (debug) {
 			console.log(mess);
 		}
@@ -213,7 +212,7 @@ if (typeof ifind_preload_business_video != 'function') {
 					// Video is now downloaded
 					// and we can set it as source on the video element
 					ifind_debug_mode('video download: '+vid);
-					jQuery('.ifind-fancybox-video-file[data-video-file="'+item+'"]').attr('data-video-file', vid);
+					jQuery('.ifind-fancybox-video-file[href="'+item+'"]').attr('href', vid);
 					//video.attr('src', vid);
 				}
 			}
@@ -226,17 +225,102 @@ if (typeof ifind_preload_business_video != 'function') {
 	}
 }
 
-if (typeof ifind_video_player != 'function') {
-	function ifind_video_player() {
-		// Later on, after some condition has been met, set video source to the
-		// preloaded video URL.
-		var video_wrap = jQuery('#ifind-video-player-wrap');
-		var video = jQuery('#ifind-video-player');
-		var button_target = jQuery('.ifind-fancybox-video-file');
-		jQuery(button_target).on('click', function (e) {
+
+if (typeof ifind_fancybox_close != 'function') {
+	function ifind_fancybox_close() {
+		jQuery(".fancybox-close").click();
+		jQuery('.fancybox-overlay').click();
+		jQuery.fancybox.close();
+	}
+}
+
+
+if (typeof ifind_fancybox_script != 'function') {
+	function ifind_fancybox_script() {
+		jQuery(".ifind-fancybox-image").fancybox({
+			openEffect: 'fade',
+			closeEffect: 'fade',
+			margin: [0, 0, 0, 0],
+			padding: 7,
+			width: 1038,
+			height: 738,
+			fitToView: true,
+			autoSize: false,
+			closeBtn: true,
+			arrows: false,
+			type: 'image',
+			helpers: {
+				overlay: {
+					css: {
+						'background': 'rgba(58, 42, 45, 0.5)'
+					},
+				}
+			},
+			onComplete: function () {},
+			beforeShow: function () {
+				//jQuery("body").css({'overflow-y':'hidden'});
+			},
+			afterClose: function () {
+				//jQuery("body").css({'overflow-y':'visible'});
+			},
+			afterLoad: function () {
+				var timer;
+				jQuery(document).on('mousemove touchstart click', function (event) {
+					event.preventDefault();
+					if (timer) clearTimeout(timer);
+					timer = setTimeout(function () {
+						ifind_fancybox_close();
+						ifind_reset_system();
+					}, 10000);
+				});
+			}
+		});
+
+		jQuery(".ifind-fancybox-content-file").fancybox({
+			openEffect: 'fade',
+			closeEffect: 'fade',
+			margin: [0, 0, 0, 0],
+			padding: 7,
+			width: 1040,
+			height: 'auto',
+			fitToView: true,
+			autoSize: false,
+			closeBtn: true,
+			arrows: false,
+			type: 'iframe',
+			scrolling: 'hidden',
+			helpers: {
+				overlay: {
+					css: {
+						'background': 'rgba(58, 42, 45, 0.5)'
+					},
+				}
+			},
+			onComplete: function () {},
+			beforeShow: function () {
+				//jQuery("body").css({'overflow-y':'hidden'});
+			},
+			afterClose: function () {
+				//jQuery("body").css({'overflow-y':'visible'});
+			},
+			afterLoad: function () {
+				var timer;
+				jQuery(document).on('mousemove touchstart click', function (event) {
+					event.preventDefault();
+					if (timer) clearTimeout(timer);
+					timer = setTimeout(function () {
+						ifind_fancybox_close();
+						ifind_reset_system();
+					}, 10000);
+				});
+			}
+		});
+		
+		jQuery('.ifind-fancybox-video-file').on('click', function (e) {
 			e.preventDefault();
-			video.attr('src', jQuery(this).data('video-file'));
-			jQuery.fancybox(video_wrap, {
+			var video = jQuery('#ifind-video-player');
+			video.attr('src', jQuery(this).attr('href'));
+			jQuery.fancybox('#ifind-video-player-wrap', {
 				openEffect: 'fade',
 				closeEffect: 'fade',
 				padding: 0,
@@ -295,58 +379,6 @@ if (typeof ifind_video_player != 'function') {
 					});
 				}
 			});
-		});
-	}
-}
-
-if (typeof ifind_fancybox_close != 'function') {
-	function ifind_fancybox_close() {
-		jQuery(".fancybox-close").click();
-		jQuery('.fancybox-overlay').click();
-		jQuery.fancybox.close();
-	}
-}
-
-
-if (typeof ifind_image_popup_fancybox != 'function') {
-	function ifind_image_popup_fancybox() {
-		jQuery(".ifind-fancybox-image").fancybox({
-			openEffect: 'fade',
-			closeEffect: 'fade',
-			margin: [0, 0, 0, 0],
-			padding: 7,
-			width: 1038,
-			height: 738,
-			fitToView: true,
-			autoSize: false,
-			closeBtn: true,
-			arrows: false,
-			type: 'image',
-			helpers: {
-				overlay: {
-					css: {
-						'background': 'rgba(58, 42, 45, 0.5)'
-					},
-				}
-			},
-			onComplete: function () {},
-			beforeShow: function () {
-				//jQuery("body").css({'overflow-y':'hidden'});
-			},
-			afterClose: function () {
-				//jQuery("body").css({'overflow-y':'visible'});
-			},
-			afterLoad: function () {
-				var timer;
-				jQuery(document).on('mousemove touchstart click', function (event) {
-					event.preventDefault();
-					if (timer) clearTimeout(timer);
-					timer = setTimeout(function () {
-						ifind_fancybox_close();
-						ifind_reset_system();
-					}, 10000);
-				});
-			}
 		});
 
 		jQuery('.map-directions-email-send').on('click', function (e) {

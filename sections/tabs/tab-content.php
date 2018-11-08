@@ -36,7 +36,10 @@
                             $business_name = get_the_title($business_id);
                             $business_metadata = ifind_get_post_custom_metadata($business_id, 'business');
                             $business_logo = wp_get_attachment_image( $business_metadata['logo'], 'full' );
+
+                            $business_info_banner_type = $business_metadata['info_banner_type'];
                             $business_info_banner = wp_get_attachment_image_url( $business_metadata['info_banner'], 'full' );
+                            $business_info_file = $business_metadata['info_banner_file'];
                             $youtube_video_id = $business_metadata['youtube_video_id'];
                             $youtube_video_url = 'http://www.youtube.com/embed/'.$youtube_video_id.'?enablejsapi=1&rel=0&modestbranding=0&wmode=opaque&showinfo=0&controls=0';
                             $business_video_file = $business_metadata['video_file'];
@@ -66,14 +69,19 @@
                                     data-location-id="<?php echo get_the_ID(); ?>"
                                     data-counter-position="logo">
                                     <?php 
-                                    $fancybox_class = ($youtube_video_id) ? 'ifind-fancybox-video-youtube' : 'ifind-fancybox-image';
-                                    $fancybox_class = ($business_video_file) ? 'ifind-fancybox-video-file' : $fancybox_class;
-                                    $fancybox_link = ($youtube_video_id) ? $youtube_video_url : $business_info_banner;
-                                    ?>
+                                    $fancybox_class = 'ifind-fancybox-'.$business_info_banner_type;
+                                    if ($business_info_banner_type === 'image') {
+                                        $fancybox_link = $business_info_banner;
+                                    } else if ($business_info_banner_type === 'content-file') {
+                                        $fancybox_link = $business_info_file;
+                                    } else if ($business_info_banner_type === 'video-file') {
+                                        $fancybox_link = $business_video_file;
+                                    } else if ($business_info_banner_type === 'video-youtube') {
+                                        $fancybox_link = $youtube_video_url;
+                                    } ?>
                                     
                                     <a class="fancybox fancybox.iframe <?php echo $fancybox_class; ?> business-logo-link" 
-                                        href="<?php echo $fancybox_link; ?>" content="<p>"
-                                        data-video-file="<?php echo esc_url($business_video_file); ?>">
+                                        href="<?php echo $fancybox_link; ?>" content="<p>">
                                         <?php echo $business_logo; ?>
                                         <div class="heading"><?php _e("More info", 'ifind'); ?></div>
                                     </a>
