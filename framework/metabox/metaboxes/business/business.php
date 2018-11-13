@@ -159,6 +159,7 @@ if (!class_exists('iFind_Business')) {
 			$info_banner_type_options = array(
 				'image' => esc_html__( 'Image', 'ifind' ),
 				'content-file' => esc_html__( 'Content File', 'ifind' ),
+				'content-file-and-video' => esc_html__( 'Content File & Video', 'ifind' ),
 				'video-file' => esc_html__( 'Video file', 'ifind' ),
 				'video-youtube' => esc_html__( 'Youtube video', 'ifind' ),
 			);
@@ -228,7 +229,7 @@ if (!class_exists('iFind_Business')) {
 
 					iFind_Admin_Metabox_Fields::get_select_field(array(
 						"title" => esc_html__( 'Info Banner Type', 'ifind' ),
-						"desc" => '',
+						"desc" => esc_html__('Select the content will be displayed when click to business.', 'ifind' ),
 						"field_name" => $this->post_type."[info_banner_type]",
 						"options" => $info_banner_type_options,
 						"value" => $meta_data['info_banner_type'],
@@ -240,17 +241,19 @@ if (!class_exists('iFind_Business')) {
 						"field_name" => $this->post_type."[info_banner]",
 						"value" => $meta_data['info_banner'],
 					));
-					iFind_Admin_Metabox_Fields::get_video_file_field(array(
+					iFind_Admin_Metabox_Fields::get_file_field(array(
 						"title" => esc_html__( 'Info Banner Content File', 'ifind' ),
 						"desc" => esc_html__( 'Choose a html file ...', 'ifind' ),
 						"placeholder" => '',
+						"button_title" => esc_html__( 'Select HTML File', 'ifind' ),
 						"field_name" => $this->post_type."[info_banner_file]",
 						"value" => $meta_data['info_banner_file'],
 					));
-					iFind_Admin_Metabox_Fields::get_video_file_field(array(
+					iFind_Admin_Metabox_Fields::get_file_field(array(
 						"title" => esc_html__( 'Video File', 'ifind' ),
 						"desc" => esc_html__( 'Video appears when click logo image instead of info banner.', 'ifind' ),
 						"placeholder" => esc_html__( "Exam: www.ifindsystem.com/test.mp4", 'ifind' ),
+						"button_title" => esc_html__( 'Select Video File', 'ifind' ),
 						"field_name" => $this->post_type."[video_file]",
 						"value" => $meta_data['video_file'],
 					));

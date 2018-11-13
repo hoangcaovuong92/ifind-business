@@ -2617,6 +2617,12 @@ body {
 
 #ifind-business-tabs .ifind-business-item .ifind-business-logo img {
   width: 75px;
+  border: 1px dotted rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+#ifind-business-tabs .ifind-business-item .ifind-business-logo .heading {
+  white-space: nowrap;
 }
 
 #ifind-business-tabs .ifind-business-item .ifind-business-desc {
@@ -2927,6 +2933,10 @@ a[href^=tel] {
   width: 100vw !important;
   height: 100vh !important;
   background: none !important;
+}
+
+.fancybox-skin {
+  background: black;
 }
 
 .ifind-business-title-banner.style-2 .ifind-business-title-banner-item {

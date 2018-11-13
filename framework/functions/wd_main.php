@@ -200,8 +200,9 @@ if(!function_exists ('ifind_include_list_video_id_to_header')){
 		$list_video_link = array();
 		if (is_array($list_business)) {
 			foreach ($list_business as $business_id) {
+				$info_banner_type = ifind_get_post_custom_metadata($business_id, 'business', 'info_banner_type');
 				$video_file = ifind_get_post_custom_metadata($business_id, 'business', 'video_file');
-				if ($video_file) { 
+				if (($info_banner_type === 'video-file' || $info_banner_type ===  'content-file-and-video') && $video_file) { 
 					$list_video_link[] = $video_file;
 				}
 			}

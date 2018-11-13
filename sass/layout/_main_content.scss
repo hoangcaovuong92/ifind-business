@@ -384,6 +384,11 @@ $business_border_width: 1px;
         .ifind-business-logo {
             img {
                 width: 75px;
+                border: 1px dotted rgba(0, 0, 0, 0.3);
+                border-radius: 4px;
+            }
+            .heading{
+                white-space: nowrap;
             }
         }
 

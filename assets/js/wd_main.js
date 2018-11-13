@@ -212,7 +212,7 @@ if (typeof ifind_preload_business_video != 'function') {
 					// Video is now downloaded
 					// and we can set it as source on the video element
 					ifind_debug_mode('video download: '+vid);
-					jQuery('.ifind-fancybox-video-file[href="'+item+'"]').attr('href', vid);
+					jQuery('.ifind-fancybox-video-file[href="'+item+'"], .ifind-fancybox-content-file-and-video[href="'+item+'"]').attr('href', vid);
 					//video.attr('src', vid);
 				}
 			}
@@ -281,7 +281,7 @@ if (typeof ifind_fancybox_script != 'function') {
 			closeEffect: 'fade',
 			margin: [0, 0, 0, 0],
 			padding: 7,
-			width: 1040,
+			width: 1038,
 			height: 'auto',
 			fitToView: true,
 			autoSize: false,
@@ -324,7 +324,7 @@ if (typeof ifind_fancybox_script != 'function') {
 				openEffect: 'fade',
 				closeEffect: 'fade',
 				padding: 0,
-				margin: [-60, 0, 0, 0],
+				margin: [0, 0, 0, 0],
 				fitToView: false,
 				autoSize: false,
 				width: '100%',
@@ -335,6 +335,74 @@ if (typeof ifind_fancybox_script != 'function') {
 				helpers: {
 					overlay: {
 						locked: true
+					}
+				},
+				beforeShow: function () {
+					// After the show-slide-animation has ended - play the vide in the current slide
+					this.content.find(video).trigger('play')
+					jQuery('body').addClass('video-playing');
+					// Attach the ended callback to trigger the fancybox.next() once the video has ended.
+					this.content.find(video).on('ended', function () {
+						jQuery.fancybox.next();
+					});
+					ifind_debug_mode('Playing video!!');
+				},
+				afterClose: function () {
+					ifind_debug_mode('Video after close');
+					jQuery('body').removeClass('video-playing');
+					ifind_debug_mode('Closed video!!');
+				},
+				afterLoad: function () {
+					video.get(0).addEventListener("playing", function () {
+						ifind_debug_mode('Playing event triggered');
+					});
+
+					// Pause event
+					video.get(0).addEventListener("pause", function () {
+						ifind_debug_mode('Pause event triggered');
+					});
+
+					// Seeking event
+					video.get(0).addEventListener("seeking", function () {
+						ifind_debug_mode('Seeking event triggered');
+					});
+
+					// Volume changed event
+					video.get(0).addEventListener("volumechange", function (e) {
+						ifind_debug_mode('Volumechange event triggered');
+					});
+
+					// Volume changed event
+					video.get(0).addEventListener("ended", function (e) {
+						ifind_debug_mode('ended event triggered');
+						ifind_fancybox_close();
+					});
+				}
+			});
+		});
+
+		jQuery('.ifind-fancybox-content-file-and-video').on('click', function (e) {
+			e.preventDefault();
+			var popup_target = jQuery(this).data('popup-target');
+			var popup_video = jQuery(this).data('popup-video');
+			var video = jQuery(popup_video);
+			video.attr('src', jQuery(this).attr('href'));
+			jQuery.fancybox(popup_target, {
+				openEffect: 'fade',
+				closeEffect: 'fade',
+				padding: 0,
+				margin: [0, 0, 0, 0],
+				fitToView: false,
+				autoSize: false,
+				width: '100%',
+				height: '100%',
+				closeBtn: true,
+				arrows: false,
+				scrolling: 'hidden',
+				helpers: {
+					overlay: {
+						locked: true,
+						css: { 'background': 'rgba(0, 0, 0, 1)' }
 					}
 				},
 				beforeShow: function () {

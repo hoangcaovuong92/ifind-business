@@ -74,16 +74,28 @@
                                         $fancybox_link = $business_info_banner;
                                     } else if ($business_info_banner_type === 'content-file') {
                                         $fancybox_link = $business_info_file;
-                                    } else if ($business_info_banner_type === 'video-file') {
+                                    } else if ($business_info_banner_type === 'content-file-and-video' || $business_info_banner_type === 'video-file') {
                                         $fancybox_link = $business_video_file;
                                     } else if ($business_info_banner_type === 'video-youtube') {
                                         $fancybox_link = $youtube_video_url;
                                     } ?>
                                     
                                     <a class="fancybox fancybox.iframe <?php echo $fancybox_class; ?> business-logo-link" 
-                                        href="<?php echo $fancybox_link; ?>" content="<p>">
+                                        href="<?php echo $fancybox_link; ?>" content="<p>"
+                                        <?php echo ($business_info_banner_type === 'content-file-and-video') ? 'data-popup-target="#ifind-content-file-and-video-'.$business_id.'" data-popup-video="#ifind-video-player-'.$business_id.'"' : ''; ?> >
                                         <?php echo $business_logo; ?>
                                         <div class="heading"><?php _e("More info", 'ifind'); ?></div>
+
+                                        <?php if ($business_info_banner_type === 'content-file-and-video') { ?>
+                                            <div id="ifind-content-file-and-video-<?php echo $business_id; ?>" style="display: none;">
+                                                <?php if ($business_info_file) { ?>
+                                                    <div class="ifind-content-file-and-video-banner" style="position: relative; margin: 250px 0 100px;height:736px;width:100%;">
+                                                        <iframe src="<?php echo $business_info_file; ?>" scrolling="no" style="position:absolute; top:0px; left:17px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+                                                    </div>
+                                                <?php } ?>
+                                                <div class="ifind-content-file-and-video-video"><video style="width: 100%;" id="ifind-video-player-<?php echo $business_id; ?>" controller muted></video></div>
+                                            </div>
+                                        <?php } ?>
                                     </a>
                                 </div>
                                 <div class="ifind-business-desc">

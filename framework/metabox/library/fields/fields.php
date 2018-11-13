@@ -277,11 +277,12 @@ if (!class_exists('iFind_Admin_Metabox_Fields')) {
             <?php
         }
 
-        static function get_video_file_field($data = array()){
+        static function get_file_field($data = array()){
             $default = array(
                 "title" => "",
                 "desc" => "",
                 "placeholder" => "",
+                "button_title" => esc_html__( 'Select File', 'ifind' ),
                 "field_name" => "no_name_available",
                 "value" => "",
                 "default" => TVLGIAO_WPDANCE_THEME_IMAGES."/default.jpg",
@@ -304,7 +305,7 @@ if (!class_exists('iFind_Admin_Metabox_Fields')) {
                         data-type="video"
                         data-image_value="<?php echo 'image-value-'.$random_id; ?>" 
                         data-image_preview="image-preview-<?php echo $random_id; ?>">
-                        <?php esc_html_e('Select Video File','ifind'); ?>
+                        <?php echo $data['button_title']; ?>
                     </a>
 
                     <a 	class="wd_media_lib_clear_btn button" 
