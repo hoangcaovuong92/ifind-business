@@ -2326,6 +2326,7 @@ body {
   height: 100%;
   min-height: 579px;
   border-top: none;
+  padding-bottom: 20px;
 }
 
 #ifind-business-tabs .nav > li > a:hover,

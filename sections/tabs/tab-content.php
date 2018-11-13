@@ -90,7 +90,7 @@
                                             <div id="ifind-content-file-and-video-<?php echo $business_id; ?>" style="display: none;">
                                                 <?php if ($business_info_file) { ?>
                                                     <div class="ifind-content-file-and-video-banner" style="position: relative; margin: 250px 0 100px;height:736px;width:100%;">
-                                                        <iframe src="<?php echo $business_info_file; ?>" scrolling="no" style="position:absolute; top:0px; left:17px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+                                                        <iframe src="<?php echo $business_info_file; ?>" class="fancybox-iframe" frameborder="0" vspace="0" hspace="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" scrolling="no" style="position:absolute; top:0px; left:17px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
                                                     </div>
                                                 <?php } ?>
                                                 <div class="ifind-content-file-and-video-video"><video style="width: 100%;" id="ifind-video-player-<?php echo $business_id; ?>" controller muted></video></div>
