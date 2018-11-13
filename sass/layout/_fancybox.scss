@@ -29,3 +29,36 @@
 .fancybox-skin {
     background: rgba(0, 0, 0, 1);
 }
+
+.ifind-content-file-and-video-wrap {
+    display: none;
+    height: 100%;
+    .ifind-content-file-and-video-content{
+        @include flexbox; 
+        @include flex-wrap(wrap); 
+        @include justify-content(center);
+        @include align-items(center);
+        height: 100%;
+    }
+    .ifind-content-file-and-video-banner {
+        position: relative;
+        height: 736px;
+        width: 100%;
+        iframe {
+            position: absolute;
+            top: 0px;
+            left: 17px;
+            bottom: 0px;
+            right: 0px;
+            width: 100%;
+            height: 100%;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    }
+    .ifind-content-file-and-video-video{
+        width: 100%;
+    }
+}

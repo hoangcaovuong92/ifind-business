@@ -386,7 +386,7 @@ if (typeof ifind_fancybox_script != 'function') {
 			var popup_target = jQuery(this).data('popup-target');
 			var popup_video = jQuery(this).data('popup-video');
 			var video = jQuery(popup_video);
-			video.attr('src', jQuery(this).attr('href'));
+			video.find('source').attr('src', jQuery(this).attr('href'));
 			jQuery.fancybox(popup_target, {
 				openEffect: 'fade',
 				closeEffect: 'fade',
