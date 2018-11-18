@@ -131,8 +131,10 @@ add_action('wp_ajax_nopriv_load_table_bussiness_statistics', 'ifind_load_table_b
 add_action('wp_ajax_load_table_bussiness_statistics', 'ifind_load_table_bussiness_statistics_ajax');
 if( !function_exists('ifind_load_table_bussiness_statistics_ajax') ){
 	function ifind_load_table_bussiness_statistics_ajax() { 
-		$business_id = $_REQUEST['business_id'];  
-		ifind_get_click_counter( $business_id, 'table', true );
+		$business_id = $_REQUEST['business_id'];
+		$datepicker_from = $_REQUEST['datepicker_from'];
+		$datepicker_to = $_REQUEST['datepicker_to'];
+		ifind_get_click_counter( $business_id, $datepicker_from, $datepicker_to, 'table', true );
 		die(); //stop "0" from being output
 	}
 }

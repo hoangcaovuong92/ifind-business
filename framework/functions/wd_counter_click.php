@@ -28,45 +28,123 @@ if( !function_exists('ifind_set_click_counter') ){
 
 // $ouput_type: table | array
 if( !function_exists('ifind_get_click_counter') ){
-	function ifind_get_click_counter( $business_id, $ouput_type = 'array', $echo = false ){
+	function ifind_get_click_counter( $business_id, $datepicker_from = '', $datepicker_to = '', $ouput_type = 'array', $echo = false ){
 		$meta_key = '_ifind_click_counter';
 		$data = get_post_meta($business_id, $meta_key, true);
+		$fitered_data = array();
+		$from_timestamp = ($datepicker_from) ? date_format(date_create($datepicker_from), 'U') : '';
+		$to_timestamp = ($datepicker_to) ? date_format(date_create($datepicker_to), 'U') + (3600 * 24) : '';
+		// var_dump($from_timestamp);
+		// var_dump($to_timestamp);
+
+		// if only from date is set
+		if ($from_timestamp && !$to_timestamp){
+			$to_timestamp = $from_timestamp + (3600 * 24);
+		}
+
+		// if only to date is set
+		if (!$from_timestamp && $to_timestamp){
+			$from_timestamp = $to_timestamp - (3600 * 24);
+		}
+
+		// Filter data
+		if (is_array($data) && count($data) > 0) {
+			foreach ($data as $click_info) {
+				// var_dump($click_info['timestamp'] . ' - ' .ifind_convert_timestamp_to_time($click_info['timestamp']));
+				if (!$from_timestamp || !$to_timestamp || ($from_timestamp <= $click_info['timestamp'] && $click_info['timestamp'] < $to_timestamp) ) {
+					$fitered_data[] = $click_info;
+				}
+			}
+		}
+
 		if ($ouput_type === 'table') { ?>
 			<?php ob_start(); ?>
-			<h2><?php printf(esc_html__( 'Statistics for %s', 'ifind' ), get_the_title($business_id)); ?></h2>
+			<style>
+				.ifind-statistics-result{
+					overflow-x:auto;
+				}
+				table.ifind-table-click-counter{
+					border-collapse: collapse;
+					border-spacing: 0;
+					width: 100%;
+				}
+
+				table.ifind-table-click-counter th{
+					border: 1px solid #ddd;
+					padding: 12px 8px;
+					text-align: left;
+					background-color: #4CAF50;
+					border: 1px solid #ddd;
+					color: white;
+				}
+				table.ifind-table-click-counter td{
+					border: 1px solid #ddd;
+					padding: 8px;
+				}
+				table.ifind-table-click-counter tbody tr:nth-child(odd){background-color: #fff;}
+
+				table.ifind-table-click-counter tbody tr:hover {background-color: #ddd;}
+			</style>
+
+			<h2>
+				<?php 
+				printf(esc_html__( 'Statistics for %s', 'ifind' ), get_the_title($business_id));
+				if ($datepicker_from && $datepicker_to && $datepicker_from !== $datepicker_to) {
+					printf(esc_html__( ' from %s to %s', 'ifind' ), $datepicker_from, $datepicker_to);
+				}
+				if ($datepicker_from && $datepicker_to && $datepicker_from === $datepicker_to) {
+					printf(esc_html__( ' on %s', 'ifind' ), $datepicker_from);
+				}
+				if ($datepicker_from !== '' && $datepicker_to === '') {
+					printf(esc_html__( ' on %s', 'ifind' ), $datepicker_from);
+				}
+				if ($datepicker_from === '' && $datepicker_to !== '') {
+					printf(esc_html__( ' on %s', 'ifind' ), $datepicker_to);
+				}
+				?>
+			</h2>
 			<div class="ifind-statistics-result">
 				<?php
-				if (is_array($data) && count($data) > 0) { ?>
-					<p><?php printf(esc_html__( 'There are %d records', 'ifind' ), count($data)); ?></p>
-					<table style="width: 100%" border="1" class="ifind-table ifind-table-click-counter">
-						<tr>
-							<th><?php esc_html_e('Position','ifind'); ?></th>
-							<th><?php esc_html_e('Time','ifind'); ?></th>
-							<th><?php esc_html_e('Location','ifind'); ?></th>
-							<th><?php esc_html_e('IP Address','ifind'); ?></th>
-						</tr>
-						<?php foreach ($data as $click_info) { ?>
+				if (is_array($fitered_data) && count($fitered_data) > 0) {
+					$i = 1; ?>
+					
+					<p><?php printf(esc_html__( 'There are %d records', 'ifind' ), count($fitered_data)); ?></p>
+					<table class="ifind-table ifind-table-click-counter">
+						<thead>
 							<tr>
-								<td><?php echo $click_info['position'] ?></td>
-								<td><?php echo ifind_convert_timestamp_to_time($click_info['timestamp']); ?></td>
-								<td><?php echo get_the_title($click_info['location_id']) ?></td>
-								<td><?php echo $click_info['ip_address'] ?></td>
+								<th><?php esc_html_e('No.','ifind'); ?></th>
+								<th><?php esc_html_e('Position','ifind'); ?></th>
+								<th><?php esc_html_e('Time','ifind'); ?></th>
+								<th><?php esc_html_e('Location','ifind'); ?></th>
+								<th><?php esc_html_e('IP Address','ifind'); ?></th>
 							</tr>
-						<?php } ?>
+						</thead>
+						<tbody>
+							<?php foreach ($fitered_data as $click_info) { ?>
+								<tr>
+									<td><?php echo $i ?></td>
+									<td><?php echo $click_info['position'] ?></td>
+									<td><?php echo ifind_convert_timestamp_to_time($click_info['timestamp']); ?></td>
+									<td><?php echo get_the_title($click_info['location_id']) ?></td>
+									<td><?php echo $click_info['ip_address'] ?></td>
+								</tr>
+								<?php $i++; ?>
+							<?php } ?>
+						</tbody>
 					</table>
 				<?php } else { ?>
 					<p><?php esc_html_e( 'No record exists!', 'ifind' ); ?></p>
 				<?php } ?>
 			</div>
 			<?php 
-			$data = ob_get_contents();
+			$result = ob_get_contents();
 			ob_end_clean();
 		}
 		if( $echo ){
-			echo $data;
+			echo $result;
 		}
 		else{
-			return $data;
+			return $result;
 		}
 	}
 }

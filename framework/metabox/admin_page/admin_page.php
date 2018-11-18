@@ -49,18 +49,15 @@ if (!class_exists('iFind_Admin_Page')) {
 				<h1><?php esc_html_e("Statistics", 'ifind'); ?></h1>
 				<div class="ifind-statistics-wrap">
 					<table class="form-table">
-						<tr valign="top">
-							<th scope="row"><?php esc_html_e("Select a business name:", 'ifind'); ?></th>
-							<td><?php $this->display_list_business_form(); ?></td>
-						</tr>
+						<?php $this->display_list_business_form(); ?>
 					</table>
 				</div>
 				<div id="ifind-business-statistics"></div>
 				<form method="post" class="send-statistics-mail-form" name="send-statistics-mail-form" action="">
 					<table class="form-table">
 						<tr valign="top">
-							<th scope="row"><?php esc_html_e("Email Address", 'ifind'); ?></th>
-							<td><input type="email" name="email" value="" /></td>
+							<th scope="row"><?php esc_html_e("Email Address:", 'ifind'); ?></th>
+							<td><input style="min-width: 335px;" type="email" name="email" value="" placeholder="<?php esc_html_e("Enter email here...", 'ifind'); ?>" /></td>
 						</tr>
 					</table>
 					
@@ -73,31 +70,45 @@ if (!class_exists('iFind_Admin_Page')) {
 		} //end content admin page
 
 		public function display_list_business_form(){ ?>
-			<div class="ifind-business-list-form">
-				<select name="ifind-business-list-select" id="ifind-business-list-select">
-					<?php 
-					$args = array(
-						'post_type'			=> 'business',
-						'post_status'		=> 'publish',
-						'posts_per_page' 	=> -1,
-					);
-					$business_list = array();
-					$data = new WP_Query($args);
-					if( $data->have_posts() ){
-						while( $data->have_posts() ){
-							$data->the_post();
-							global $post;
-							$business_list[$post->ID] = html_entity_decode( $post->post_title, ENT_QUOTES, 'UTF-8' );
-						}
-					}
-					wp_reset_postdata(); ?>
-					<?php if (count($business_list) > 0) { ?>
-						<?php foreach ($business_list as $key => $value): ?>
-							<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
-						<?php endforeach; ?>
-					<?php } ?>
-				</select>
-			</div>
+				<tr valign="top">
+					<th scope="row"><?php esc_html_e("Select a business name:", 'ifind'); ?></th>
+					<td>
+						<select name="ifind-business-list-select" id="ifind-business-list-select">
+							<?php 
+							$args = array(
+								'post_type'			=> 'business',
+								'post_status'		=> 'publish',
+								'posts_per_page' 	=> -1,
+							);
+							$business_list = array();
+							$data = new WP_Query($args);
+							if( $data->have_posts() ){
+								while( $data->have_posts() ){
+									$data->the_post();
+									global $post;
+									$business_list[$post->ID] = html_entity_decode( $post->post_title, ENT_QUOTES, 'UTF-8' );
+								}
+							}
+							wp_reset_postdata(); ?>
+							<?php if (count($business_list) > 0) { ?>
+								<?php foreach ($business_list as $key => $value): ?>
+									<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+								<?php endforeach; ?>
+							<?php } ?>
+						</select>
+					</td>
+				</tr>
+				<!-- <tr valign="top">
+					<th scope="row"><?php //esc_html_e("Filter by day:", 'ifind'); ?></th>
+					<td><input type="checkbox" name="ifind-business-filter-by-day" id="ifind-business-filter-by-day"></td>
+				</tr> -->
+				<tr valign="top">
+					<th scope="row"><?php esc_html_e("Select a day:", 'ifind'); ?></th>
+					<td>
+						<input type="text" class="datepicker" name="ifind-business-select-day-from" id="datepicker_from" placeholder="<?php esc_html_e("From...", 'ifind'); ?>">
+						<input type="text" class="datepicker" name="ifind-business-select-day-to" id="datepicker_to" placeholder="<?php esc_html_e("To...", 'ifind'); ?>">
+					</td>
+				</tr>
 		<?php
 		} //end content admin page
 

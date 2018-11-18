@@ -237,6 +237,12 @@ if (!class_exists('ifindThemeSetting')) {
 			wp_enqueue_media();
 			wp_enqueue_style('font-awesome-css', 		'//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
+			// Load the datepicker script (pre-registered in WordPress).
+			wp_enqueue_script( 'jquery-ui-datepicker' );
+			// You need styling for the datepicker. For simplicity I've linked to Google's hosted jQuery UI CSS.
+			wp_register_style( 'jquery-ui', 'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
+			wp_enqueue_style( 'jquery-ui' );  
+
 			wp_enqueue_script('wd-admin-js', 			TVLGIAO_WPDANCE_THEME_JS.'/wd_admin.js', array('jquery'), false, true);
 			wp_localize_script('wd-admin-js', 			'option_object', $tvlgiao_wpdance_theme_options);
 			wp_localize_script('wd-admin-js', 			'ajax_object', $ajax_object_vars);
