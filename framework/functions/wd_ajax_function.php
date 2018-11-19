@@ -139,6 +139,38 @@ if( !function_exists('ifind_load_table_bussiness_statistics_ajax') ){
 	}
 }
 
+add_action('wp_ajax_nopriv_refresh_business_by_location', 'ifind_refresh_business_by_location_ajax');
+add_action('wp_ajax_refresh_business_by_location', 'ifind_refresh_business_by_location_ajax');
+if( !function_exists('ifind_refresh_business_by_location_ajax') ){
+	function ifind_refresh_business_by_location_ajax() { 
+		$location_id = $_REQUEST['location_id'];
+		$args = array(
+			'post_type'			=> 'business',
+			'post_status'		=> 'publish',
+			'posts_per_page' 	=> -1,
+		);
+		if ($location_id && $location_id !== '-1') {
+			$location_meta_data = ifind_get_post_custom_metadata($location_id, 'location');
+			$args['post__in'] = $location_meta_data['list_business'];
+		}
+		$business_list = array();
+		$data = new WP_Query($args);
+		if( $data->have_posts() ){
+			while( $data->have_posts() ){
+				$data->the_post();
+				global $post;
+				$business_list[$post->ID] = html_entity_decode( $post->post_title, ENT_QUOTES, 'UTF-8' );
+			}
+		}
+		wp_reset_postdata();
+		if (count($business_list) > 0) {
+			foreach ($business_list as $key => $value){ ?>
+				<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+			<?php } 
+		}
+		die(); //stop "0" from being output
+	}
+}
 
 add_action('wp_ajax_nopriv_send_statistics_mail', 'ifind_send_statistics_mail_ajax');
 add_action('wp_ajax_send_statistics_mail', 'ifind_send_statistics_mail_ajax');

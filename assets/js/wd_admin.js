@@ -33,6 +33,23 @@ if (typeof ifind_ajax_reset_secret_key != 'function') {
 
 if (typeof ifind_ajax_load_table_bussiness_statistics != 'function') {
 	function ifind_ajax_load_table_bussiness_statistics() {
+		jQuery('#ifind-location-list-select').on('change', function (e) {
+			e.preventDefault();
+			var location_id = jQuery(this).val();
+			jQuery.ajax({
+				type: "POST",
+				url: ajax_object.ajax_url,
+				data: {
+					action: "refresh_business_by_location",
+					location_id: location_id,
+				},
+				beforeSend: function () {},
+				success: function (data) {
+					jQuery('#ifind-business-list-select').html(data).trigger('change');
+				}
+			});
+		})
+
 		jQuery('#ifind-business-list-select').on('change', function (e) {
 			e.preventDefault();
 			var business_id = jQuery(this).val();
@@ -94,7 +111,7 @@ if (typeof ifind_ajax_send_statistics_mail != 'function') {
 if (typeof ifind_datepicker != 'function') {
 	function ifind_datepicker() {
 		//jQuery(".datepicker").datepicker();
-		var dateFormat = "yy/mm/dd";
+		var dateFormat = "yy-mm-dd";
 		var from = jQuery("#datepicker_from")
 			.datepicker({
 				defaultDate: "+1w",

@@ -60,8 +60,22 @@ if( !function_exists('ifind_get_click_counter') ){
 		if ($ouput_type === 'table') { ?>
 			<?php ob_start(); ?>
 			<style>
+				#ifind-business-statistics{
+					border: 1px solid #ddd;
+					border-radius: 5px;
+					padding: 8px;
+					background: #fff;
+				}
 				.ifind-statistics-result{
 					overflow-x:auto;
+				}
+				.ifind-statistics-result-title{
+					font-size: 30px;
+					text-align: center;
+					margin: 10px 0;
+				}
+				.ifind-statistics-result-desc{
+					text-align: center;
 				}
 				table.ifind-table-click-counter{
 					border-collapse: collapse;
@@ -81,12 +95,12 @@ if( !function_exists('ifind_get_click_counter') ){
 					border: 1px solid #ddd;
 					padding: 8px;
 				}
-				table.ifind-table-click-counter tbody tr:nth-child(odd){background-color: #fff;}
+				table.ifind-table-click-counter tbody tr:nth-child(even){background-color: #F1F1F1;}
 
 				table.ifind-table-click-counter tbody tr:hover {background-color: #ddd;}
 			</style>
 
-			<h2>
+			<h2 class="ifind-statistics-result-title">
 				<?php 
 				printf(esc_html__( 'Statistics for %s', 'ifind' ), get_the_title($business_id));
 				if ($datepicker_from && $datepicker_to && $datepicker_from !== $datepicker_to) {
@@ -108,8 +122,8 @@ if( !function_exists('ifind_get_click_counter') ){
 				if (is_array($fitered_data) && count($fitered_data) > 0) {
 					$i = 1; ?>
 					
-					<p><?php printf(esc_html__( 'There are %d records', 'ifind' ), count($fitered_data)); ?></p>
-					<table class="ifind-table ifind-table-click-counter">
+					<h3 class="ifind-statistics-result-desc"><?php printf(__( 'There are <strong>%d</strong> records', 'ifind' ), count($fitered_data)); ?></h3>
+					<table border="1" class="ifind-table ifind-table-click-counter">
 						<thead>
 							<tr>
 								<th><?php esc_html_e('No.','ifind'); ?></th>
@@ -133,7 +147,7 @@ if( !function_exists('ifind_get_click_counter') ){
 						</tbody>
 					</table>
 				<?php } else { ?>
-					<p><?php esc_html_e( 'No record exists!', 'ifind' ); ?></p>
+					<h3 class="ifind-statistics-result-desc"><?php esc_html_e( 'No record exists!', 'ifind' ); ?></h3>
 				<?php } ?>
 			</div>
 			<?php 

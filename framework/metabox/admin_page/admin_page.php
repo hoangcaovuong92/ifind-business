@@ -57,7 +57,7 @@ if (!class_exists('iFind_Admin_Page')) {
 					<table class="form-table">
 						<tr valign="top">
 							<th scope="row"><?php esc_html_e("Email Address:", 'ifind'); ?></th>
-							<td><input style="min-width: 335px;" type="email" name="email" value="" placeholder="<?php esc_html_e("Enter email here...", 'ifind'); ?>" /></td>
+							<td><input style="min-width: 330px;" type="email" name="email" value="" placeholder="<?php esc_html_e("Enter email here...", 'ifind'); ?>" /></td>
 						</tr>
 					</table>
 					
@@ -71,9 +71,38 @@ if (!class_exists('iFind_Admin_Page')) {
 
 		public function display_list_business_form(){ ?>
 				<tr valign="top">
+					<th scope="row"><?php esc_html_e("Select a location name:", 'ifind'); ?></th>
+					<td>
+						<select style="min-width: 330px;" name="ifind-location-list-select" id="ifind-location-list-select">
+							<?php
+								$args = array(
+									'post_type'			=> 'location',
+									'post_status'		=> 'publish',
+								);
+								$location_list = array('-1' => esc_html__("All locations", 'ifind'));
+								$data = new WP_Query($args);
+								if( $data->have_posts() ){
+									while( $data->have_posts() ){
+										$data->the_post();
+										global $post;
+										$location_list[$post->ID] = html_entity_decode( $post->post_title, ENT_QUOTES, 'UTF-8' );
+									}
+								}
+								wp_reset_postdata(); ?>
+								<?php if (count($location_list) > 0) { ?>
+									<?php foreach ($location_list as $key => $value): ?>
+										<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+									<?php endforeach; ?>
+								<?php } ?>
+							?>
+						</select>
+					</td>
+				</tr>
+
+				<tr valign="top">
 					<th scope="row"><?php esc_html_e("Select a business name:", 'ifind'); ?></th>
 					<td>
-						<select name="ifind-business-list-select" id="ifind-business-list-select">
+						<select style="min-width: 330px;" name="ifind-business-list-select" id="ifind-business-list-select">
 							<?php 
 							$args = array(
 								'post_type'			=> 'business',
