@@ -45,4 +45,5 @@ do_action('tvlgiao_wpdance_after_opening_body_tag'); ?>
 		 */ 
 		do_action('tvlgiao_wpdance_header_mobile'); ?>
 	</div>
+	<div id="ifind-secret-key" data-secret-key="<?php echo ifind_get_secret_key(); ?>"></div>
 </header> <!-- END HEADER  -->

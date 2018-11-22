@@ -46,13 +46,7 @@ if( !function_exists('ifind_send_directions_mail_ajax') ){
 	function ifind_send_directions_mail_ajax() { 
 		$email_to = sanitize_email($_REQUEST['email']);
 		$title = $_REQUEST['title'];
-		$message = '';
-		$message .= "<!DOCTYPE html>";
-		$message .= '<html><head><meta http-equiv="Content-Type" content="text/html charset=UTF-8" /></head>';
-		$message .= '<body>';
-		$message .= $_REQUEST['message'];
-		$message .= "</body>";
-		$message .= "</html>";
+		$message = ifind_sanitize_html_content($_REQUEST['message']);
 
 		// message that will be displayed when everything is OK :)
 		$okMessage = sprintf(__("Directions have been sent to your email: %s!", 'ifind'), $email_to);
@@ -172,19 +166,39 @@ if( !function_exists('ifind_refresh_business_by_location_ajax') ){
 	}
 }
 
+add_action('wp_ajax_nopriv_add_pdf_attachment', 'ifind_add_pdf_attachment_ajax');
+add_action('wp_ajax_add_pdf_attachment', 'ifind_add_pdf_attachment_ajax');
+if( !function_exists('ifind_add_pdf_attachment_ajax') ){
+	function ifind_add_pdf_attachment_ajax() { 
+		$business_id = $_REQUEST['business_id'];
+		$datepicker_from = $_REQUEST['datepicker_from'];
+		$datepicker_to = $_REQUEST['datepicker_to'];
+		$attachment_content = ifind_get_click_counter( $business_id, $datepicker_from , $datepicker_to, 'table' );
+		wp_send_json_success(array(
+			'attachment_content' => ifind_save_pdf_file($attachment_content),
+		));
+
+		die(); //stop "0" from being output
+	}
+}
+
 add_action('wp_ajax_nopriv_send_statistics_mail', 'ifind_send_statistics_mail_ajax');
 add_action('wp_ajax_send_statistics_mail', 'ifind_send_statistics_mail_ajax');
 if( !function_exists('ifind_send_statistics_mail_ajax') ){
 	function ifind_send_statistics_mail_ajax() { 
 		$email_to = sanitize_email($_REQUEST['email']);
+		$attachment = $_REQUEST['attachment'];
+		$attachment_file = $_REQUEST['attachment_file'];
 		$title = $_REQUEST['title'];
-		$message = '';
-		$message .= "<!DOCTYPE html>";
-		$message .= '<html><head><meta http-equiv="Content-Type" content="text/html charset=UTF-8" /></head>';
-		$message .= '<body>';
-		$message .= $_REQUEST['message'];
-		$message .= "</body>";
-		$message .= "</html>";
+		$business_id = $_REQUEST['business_id'];
+		$datepicker_from = $_REQUEST['datepicker_from'];
+		$datepicker_to = $_REQUEST['datepicker_to'];
+		
+		$message = ifind_get_click_counter( $business_id, $datepicker_from , $datepicker_to, 'table' );
+		if($attachment && $attachment_file){
+			$attachment = $attachment_file;
+			$message .= sprintf(__("<p>Note: Please see attachment file or click on the following link to view: <strong><a href='%s'>%s</a></strong></p>", 'ifind'), $attachment, $attachment);
+		}
 
 		// message that will be displayed when everything is OK :)
 		$okMessage = sprintf(__("Statistics have been sent to your email: %s!", 'ifind'), $email_to);
@@ -204,9 +218,11 @@ if( !function_exists('ifind_send_statistics_mail_ajax') ){
 			'From: '. $from,
 			'Reply-To: ' . $from
 		);
+
+		
 		 
 	  	//Here put your Validation and send mail
-		$sent = wp_mail($email_to, $subject, $message, $headers);
+		$sent = wp_mail($email_to, $subject, $message, $headers, $attachment);
 		if($sent) {
 			$responseArray = array(
 				'type' => 'success',

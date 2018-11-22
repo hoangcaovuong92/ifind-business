@@ -1,0 +1,38 @@
+#ifind-business-statistics{
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px;
+    background: #fff;
+}
+.ifind-statistics-result{
+    overflow-x:auto;
+}
+.ifind-statistics-result-title{
+    font-size: 30px;
+    text-align: center;
+    margin: 10px 0;
+}
+.ifind-statistics-result-desc{
+    text-align: center;
+}
+table.ifind-table-click-counter{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+table.ifind-table-click-counter th{
+    border: 1px solid #ddd;
+    padding: 12px 8px;
+    text-align: left;
+    background-color: #4CAF50;
+    border: 1px solid #ddd;
+    color: white;
+}
+table.ifind-table-click-counter td{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+table.ifind-table-click-counter tbody tr:nth-child(even){background-color: #F1F1F1;}
+
+table.ifind-table-click-counter tbody tr:hover {background-color: #ddd;}

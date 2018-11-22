@@ -52,12 +52,19 @@ if (!class_exists('iFind_Admin_Page')) {
 						<?php $this->display_list_business_form(); ?>
 					</table>
 				</div>
-				<div id="ifind-business-statistics"></div>
+				<div id="ifind-business-statistics-result"></div>
 				<form method="post" class="send-statistics-mail-form" name="send-statistics-mail-form" action="">
 					<table class="form-table">
 						<tr valign="top">
 							<th scope="row"><?php esc_html_e("Email Address:", 'ifind'); ?></th>
 							<td><input style="min-width: 330px;" type="email" name="email" value="" placeholder="<?php esc_html_e("Enter email here...", 'ifind'); ?>" /></td>
+						</tr>
+						<tr valign="top">
+							<th scope="row"><?php esc_html_e("Attachment (PDF):", 'ifind'); ?></th>
+							<td>
+								<input type="checkbox" name="attachment" value="0" />
+								<p id="attachment_link"></p>
+							</td>
 						</tr>
 					</table>
 					
