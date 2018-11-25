@@ -125,10 +125,11 @@ add_action('wp_ajax_nopriv_load_table_bussiness_statistics', 'ifind_load_table_b
 add_action('wp_ajax_load_table_bussiness_statistics', 'ifind_load_table_bussiness_statistics_ajax');
 if( !function_exists('ifind_load_table_bussiness_statistics_ajax') ){
 	function ifind_load_table_bussiness_statistics_ajax() { 
+		$location_id = $_REQUEST['location_id'];
 		$business_id = $_REQUEST['business_id'];
 		$datepicker_from = $_REQUEST['datepicker_from'];
 		$datepicker_to = $_REQUEST['datepicker_to'];
-		ifind_get_click_counter( $business_id, $datepicker_from, $datepicker_to, 'table', true );
+		ifind_get_table_statistics( $location_id, $business_id, $datepicker_from, $datepicker_to, 'table', true );
 		die(); //stop "0" from being output
 	}
 }
@@ -170,12 +171,15 @@ add_action('wp_ajax_nopriv_add_pdf_attachment', 'ifind_add_pdf_attachment_ajax')
 add_action('wp_ajax_add_pdf_attachment', 'ifind_add_pdf_attachment_ajax');
 if( !function_exists('ifind_add_pdf_attachment_ajax') ){
 	function ifind_add_pdf_attachment_ajax() { 
+		$location_id = $_REQUEST['location_id'];
 		$business_id = $_REQUEST['business_id'];
 		$datepicker_from = $_REQUEST['datepicker_from'];
 		$datepicker_to = $_REQUEST['datepicker_to'];
-		$attachment_content = ifind_get_click_counter( $business_id, $datepicker_from , $datepicker_to, 'table' );
+		$attachment_content = ifind_get_table_statistics($location_id, $business_id, $datepicker_from , $datepicker_to, 'pdf' );
+		$attachment_file = ifind_save_pdf_file($attachment_content);
 		wp_send_json_success(array(
-			'attachment_content' => ifind_save_pdf_file($attachment_content),
+			'attachment_file' => $attachment_file,
+			'direct_link' => str_replace(ABSPATH, get_home_url(), $attachment_file)
 		));
 
 		die(); //stop "0" from being output
@@ -189,15 +193,17 @@ if( !function_exists('ifind_send_statistics_mail_ajax') ){
 		$email_to = sanitize_email($_REQUEST['email']);
 		$attachment = $_REQUEST['attachment'];
 		$attachment_file = $_REQUEST['attachment_file'];
+		$direct_link = $_REQUEST['direct_link'];
 		$title = $_REQUEST['title'];
+		$location_id = $_REQUEST['location_id'];
 		$business_id = $_REQUEST['business_id'];
 		$datepicker_from = $_REQUEST['datepicker_from'];
 		$datepicker_to = $_REQUEST['datepicker_to'];
 		
-		$message = ifind_get_click_counter( $business_id, $datepicker_from , $datepicker_to, 'table' );
+		$message = ifind_get_table_statistics($location_id, $business_id, $datepicker_from , $datepicker_to, 'table' );
 		if($attachment && $attachment_file){
 			$attachment = $attachment_file;
-			$message .= sprintf(__("<p>Note: Please see attachment file or click on the following link to view: <strong><a href='%s'>%s</a></strong></p>", 'ifind'), $attachment, $attachment);
+			$message .= sprintf(__("<p>Note: Please see attachment file or click on the following link to view: <strong><a href='%s'>%s</a></strong></p>", 'ifind'), $direct_link, $direct_link);
 		}
 
 		// message that will be displayed when everything is OK :)

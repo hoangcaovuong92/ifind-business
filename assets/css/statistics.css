@@ -1,4 +1,52 @@
-#ifind-business-statistics{
+/* Email form */
+.send-statistics-mail-form{
+    position: sticky;
+    bottom: 0;
+    background: #ffffff;
+    border: 3px dashed #000;
+}
+
+.send-statistics-mail-form img{
+    position: absolute;
+    top: -40px;
+    right: 0;
+    width: 100px;
+}
+
+.send-statistics-mail-form table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.send-statistics-mail-form a{
+    font-weight: bold;
+}
+
+.send-statistics-mail-form .send-statistics-mail-form-input-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.send-statistics-mail-form .send-statistics-mail-form-input-wrap input{
+    flex: 1;
+    margin-left: 20px;
+}
+
+.send-statistics-mail-form .send-statistics-mail-form-input-wrap span{
+    white-space: nowrap;
+}
+
+.send-statistics-mail-form table th, .send-statistics-mail-form table td{
+    padding: 15px;
+    vertical-align: middle;
+}
+
+/* Result form */
+#ifind-business-statistics-wrap{
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 8px;
@@ -8,31 +56,59 @@
     overflow-x:auto;
 }
 .ifind-statistics-result-title{
-    font-size: 30px;
     text-align: center;
     margin: 10px 0;
 }
+
 .ifind-statistics-result-desc{
-    text-align: center;
+    font-style: italic;
 }
-table.ifind-table-click-counter{
+
+table.ifind-table{
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
+    table-layout: fixed;
 }
 
-table.ifind-table-click-counter th{
+.ifind-table-business-overview tr td:first-child{
+    font-weight: bold;
+    text-align: right;
+}
+
+.ifind-statistics-item-no{
+    font-weight: bold;
+}
+
+table.ifind-table th{
     border: 1px solid #ddd;
-    padding: 12px 8px;
     text-align: left;
     background-color: #4CAF50;
     border: 1px solid #ddd;
     color: white;
 }
-table.ifind-table-click-counter td{
+table.ifind-table td{
     border: 1px solid #ddd;
+}
+table.ifind-table tr:nth-child(even){background-color: #F1F1F1;}
+
+table.ifind-table tr:hover {background-color: #ddd;}
+
+.ifind-statistics-result-title{
+    font-size: 25px;
+}
+.ifind-statistics-result-desc{
+    font-size: 15px;
+}
+.ifind-statistics-item-title{
+    font-size: 20px;
+}
+table.ifind-table{
+    font-size: 14px;
+}
+table.ifind-table th{
+    padding: 12px 8px;
+}
+table.ifind-table td{
     padding: 8px;
 }
-table.ifind-table-click-counter tbody tr:nth-child(even){background-color: #F1F1F1;}
-
-table.ifind-table-click-counter tbody tr:hover {background-color: #ddd;}

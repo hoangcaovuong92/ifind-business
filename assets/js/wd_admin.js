@@ -52,6 +52,7 @@ if (typeof ifind_ajax_statistics != 'function') {
 
 		jQuery('#ifind-business-list-select').on('change', function (e) {
 			e.preventDefault();
+			var location_id = jQuery('#ifind-location-list-select').val();
 			var business_id = jQuery(this).val();
 			var datepicker_from = jQuery('#datepicker_from').val();
 			var datepicker_to = jQuery('#datepicker_to').val();
@@ -62,6 +63,7 @@ if (typeof ifind_ajax_statistics != 'function') {
 				url: ajax_object.ajax_url,
 				data: {
 					action: "load_table_bussiness_statistics",
+					location_id: location_id,
 					business_id: business_id,
 					datepicker_from: datepicker_from,
 					datepicker_to: datepicker_to,
@@ -81,80 +83,115 @@ if (typeof ifind_ajax_statistics != 'function') {
 			var email = jQuery(this).find('input[name="email"]').val();
 			var attachment = jQuery(this).find('input[name="attachment"]').prop('checked') ? 1 : 0;
 			var attachment_file = '';
-			var title = jQuery('#ifind-business-statistics-result h2').text();
+			var title = jQuery('#ifind-business-statistics-result h2.ifind-statistics-result-title').text();
+			var location_id = jQuery('#ifind-location-list-select').val();
 			var business_id = jQuery('#ifind-business-list-select').val();
 			var datepicker_from = jQuery('#datepicker_from').val();
 			var datepicker_to = jQuery('#datepicker_to').val();
-			if (email) {
-				if (attachment) {
-					jQuery.ajax({
-						type: "POST",
-						url: ajax_object.ajax_url,
-						data: {
-							action: "add_pdf_attachment",
-							business_id: business_id,
-							datepicker_from: datepicker_from,
-							datepicker_to: datepicker_to,
-						},
-						beforeSend: function () {
-							jQuery('.send-statistics-mail-form input#submit').attr('disabled', 'disabled');
-						},
-						success: function (response, status, xhr) {
-							var status = response.data.success;
-							var attachment_file = response.data.attachment_content;
-							jQuery("#attachment_link").html('<a target="_blank" href="'+attachment_file+'">View & Download</a>');
-							jQuery.ajax({
-								type: "POST",
-								url: ajax_object.ajax_url,
-								data: {
-									action: "send_statistics_mail",
-									email: email,
-									attachment: attachment,
-									attachment_file: attachment_file,
-									title: title,
-									business_id: business_id,
-									datepicker_from: datepicker_from,
-									datepicker_to: datepicker_to,
-								},
-								beforeSend: function () {
-									jQuery('.send-statistics-mail-form input#submit').attr('disabled', 'disabled');
-								},
-								success: function (data) {
-									jQuery('.send-statistics-mail-form input[type="email"]').val('');
-									jQuery('.send-statistics-mail-form input#submit').removeAttr('disabled');
-									alert(data.message);
+			if(jQuery('.ifind-table').length) {
+				if (email) {
+					if (attachment) {
+						jQuery.ajax({
+							type: "POST",
+							url: ajax_object.ajax_url,
+							data: {
+								action: "add_pdf_attachment",
+								location_id: location_id,
+								business_id: business_id,
+								datepicker_from: datepicker_from,
+								datepicker_to: datepicker_to,
+							},
+							beforeSend: function () {
+								jQuery('.send-statistics-mail-form input#submit').attr('disabled', 'disabled');
+							},
+							success: function (response, status, xhr) {
+								var attachment_file = response.data.attachment_file;
+								var direct_link = response.data.direct_link;
+								if (direct_link) {
+									jQuery("#attachment_link").html('<a target="_blank" href="'+direct_link+'">View & Download Attachment File</a>');
 								}
-							});
-						}
-					});
-				} else {
-					jQuery.ajax({
-						type: "POST",
-						url: ajax_object.ajax_url,
-						data: {
-							action: "send_statistics_mail",
-							email: email,
-							attachment: attachment,
-							attachment_file: attachment_file,
-							title: title,
-							business_id: business_id,
-							datepicker_from: datepicker_from,
-							datepicker_to: datepicker_to,
-						},
-						beforeSend: function () {
-							jQuery('.send-statistics-mail-form input#submit').attr('disabled', 'disabled');
-						},
-						success: function (data) {
-							jQuery('.send-statistics-mail-form input[type="email"]').val('');
-							jQuery('.send-statistics-mail-form input#submit').removeAttr('disabled');
-							alert(data.message);
-						}
+								jQuery.ajax({
+									type: "POST",
+									url: ajax_object.ajax_url,
+									data: {
+										action: "send_statistics_mail",
+										email: email,
+										attachment: attachment,
+										attachment_file: attachment_file,
+										direct_link: direct_link,
+										title: title,
+										location_id: location_id,
+										business_id: business_id,
+										datepicker_from: datepicker_from,
+										datepicker_to: datepicker_to,
+									},
+									beforeSend: function () {
+										jQuery('.send-statistics-mail-form input#submit').attr('disabled', 'disabled');
+									},
+									success: function (data) {
+										jQuery('.send-statistics-mail-form input[type="email"]').val('');
+										jQuery('.send-statistics-mail-form input#submit').removeAttr('disabled');
+										if(data.message){
+											swal({
+												title: 'iFind notifications',
+												type: 'success',
+												text: data.message,
+												timer: 6000
+											});
+										}
+									}
+								});
+							}
+						});
+					} else {
+						jQuery.ajax({
+							type: "POST",
+							url: ajax_object.ajax_url,
+							data: {
+								action: "send_statistics_mail",
+								email: email,
+								attachment: attachment,
+								attachment_file: attachment_file,
+								title: title,
+								location_id: location_id,
+								business_id: business_id,
+								datepicker_from: datepicker_from,
+								datepicker_to: datepicker_to,
+							},
+							beforeSend: function () {
+								jQuery('.send-statistics-mail-form input#submit').attr('disabled', 'disabled');
+							},
+							success: function (data) {
+								jQuery('.send-statistics-mail-form input[type="email"]').val('');
+								jQuery('.send-statistics-mail-form input#submit').removeAttr('disabled');
+								if(data.message){
+									swal({
+										title: 'iFind notifications',
+										type: 'success',
+										text: data.message,
+										timer: 6000
+									});
+								}
+							}
+						});
+					}
+					return false;
+				}else{
+					jQuery('.send-statistics-mail-form input[type="email"]').focus();
+					swal({
+						title: 'iFind notifications',
+						type: 'error',
+						text: 'Enter an email first!',
+						timer: 6000
 					});
 				}
-				return false;
 			}else{
-				jQuery('.send-statistics-mail-form input[type="email"]').focus();
-				alert('Enter an email first!');
+				swal({
+					title: 'iFind notifications',
+					type: 'error',
+					text: 'No results to send. Please select another business!',
+					timer: 6000
+				});
 			}
 		});
 	}

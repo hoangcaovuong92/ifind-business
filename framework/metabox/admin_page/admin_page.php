@@ -54,23 +54,22 @@ if (!class_exists('iFind_Admin_Page')) {
 				</div>
 				<div id="ifind-business-statistics-result"></div>
 				<form method="post" class="send-statistics-mail-form" name="send-statistics-mail-form" action="">
+					<img src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/send_email.png'; ?>" alt="">
 					<table class="form-table">
 						<tr valign="top">
-							<th scope="row"><?php esc_html_e("Email Address:", 'ifind'); ?></th>
-							<td><input style="min-width: 330px;" type="email" name="email" value="" placeholder="<?php esc_html_e("Enter email here...", 'ifind'); ?>" /></td>
-						</tr>
-						<tr valign="top">
-							<th scope="row"><?php esc_html_e("Attachment (PDF):", 'ifind'); ?></th>
+							<td class="send-statistics-mail-form-input-wrap"><span><?php esc_html_e("Email Address:", 'ifind'); ?></span>
+								<input type="email" name="email" value="" placeholder="<?php esc_html_e("Enter email here...", 'ifind'); ?>" /></td>
+							<th scope="row"></th>
 							<td>
-								<input type="checkbox" name="attachment" value="0" />
-								<p id="attachment_link"></p>
+								<input type="checkbox" checked name="attachment" value="0" />
+								<?php esc_html_e("Attachment (PDF):", 'ifind'); ?>
+							</td>
+							<td><p id="attachment_link"></p></td>
+							<td>
+								<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_html_e("Send An Email", 'ifind'); ?>">
 							</td>
 						</tr>
 					</table>
-					
-					<p class="submit-button">
-						<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_html_e("Send An Email", 'ifind'); ?>">
-					</p>
 				</form>
 			</div>
 		<?php

@@ -141,7 +141,7 @@ if (!class_exists('ifindThemeSetting')) {
 				'wd_get_customize_data',
 				'wd_ajax_function',
 				'wd_register_tgmpa_plugin',
-				'wd_counter_click'
+				'wd_statistics'
 			);
 		}
 		
@@ -237,13 +237,18 @@ if (!class_exists('ifindThemeSetting')) {
 			);
 			wp_enqueue_media();
 			wp_enqueue_style('font-awesome-css', 		'//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+			wp_enqueue_style('morris-css', 				'//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css');
+			wp_enqueue_style('statistics-css', 			TVLGIAO_WPDANCE_THEME_CSS.'/statistics.css');
 
 			// Load the datepicker script (pre-registered in WordPress).
 			wp_enqueue_script( 'jquery-ui-datepicker' );
 			// You need styling for the datepicker. For simplicity I've linked to Google's hosted jQuery UI CSS.
-			wp_register_style( 'jquery-ui', 'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
+			wp_register_style( 'jquery-ui', 			'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
 			wp_enqueue_style( 'jquery-ui' );  
 
+			wp_enqueue_script('swal-js', 				'//unpkg.com/sweetalert/dist/sweetalert.min.js"' ,array('jquery'),false,true);
+			wp_enqueue_script('raphael-js', 			'//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"' ,array('jquery'),false,true);
+			wp_enqueue_script('morris-js', 				'//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"' ,array('jquery'),false,true);
 			wp_enqueue_script('wd-admin-js', 			TVLGIAO_WPDANCE_THEME_JS.'/wd_admin.js', array('jquery'), false, true);
 			wp_localize_script('wd-admin-js', 			'option_object', $tvlgiao_wpdance_theme_options);
 			wp_localize_script('wd-admin-js', 			'ajax_object', $ajax_object_vars);

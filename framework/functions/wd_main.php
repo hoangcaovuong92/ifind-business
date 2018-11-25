@@ -6,9 +6,6 @@
  * -Email  : hoangcaovuong92@gmail.com.
  */
 
-// Reference the Dompdf namespace
-use Dompdf\Dompdf;
-
 /*---------------------------------------------------------------------------*/
 /*								MAIN FUNCTION 								 */
 /*---------------------------------------------------------------------------*/
@@ -52,49 +49,6 @@ if( !function_exists('ifind_display_weather_today_info') ){
 			</div>
 		<?php
 		}
-	}
-}
-
-if(!function_exists ('ifind_save_pdf_file')){
-	function ifind_save_pdf_file($attachment_content){
-		// Notication: Add to begin of this file : use Dompdf\Dompdf;
-		// Instantiate and use the dompdf class
-		$dompdf = new Dompdf();
-		
-		// Load content from html file
-		$attachment_content = ifind_sanitize_html_content($attachment_content);
-		$dompdf->loadHtml($attachment_content, 'UTF-8');
-
-		// (Optional) Setup the paper size and orientation
-		//$dompdf->setPaper('A4');
-		$dompdf->setPaper('A4', 'landscape');
-		$dompdf->set_option('defaultMediaType', 'all');
-		$dompdf->set_option('isFontSubsettingEnabled', true);
-		$dompdf->set_option('defaultFont', 'Courier');
-		// Render the HTML as PDF
-		$dompdf->render();
-
-		//File Path
-		$pdfroot  = ABSPATH.'/pdf_file/';
-
-		//Create folder if not exists
-		if (!is_dir($pdfroot)) {
-			mkdir($pdfroot, 0777, true);
-		}
-
-		//File name
-		$pdfroot .= 'report_'.date("F j,Y_G-i-s").'.pdf';
-
-		//Create file if not exists
-		if (!is_file($pdfroot)) {}
-
-		//Download file
-		//$dompdf->stream('title.pdf');
-
-		$pdf_string = $dompdf->output();
-		unset($dompdf);
-		//Write pdf file - return url of file if success
-		return file_put_contents($pdfroot, $pdf_string) ? $pdfroot : false;
 	}
 }
 
@@ -158,11 +112,17 @@ if(!function_exists ('ifind_get_timestamp_by_timezone')){
 
 if(!function_exists ('ifind_convert_timestamp_to_time')){
 	function ifind_convert_timestamp_to_time($timestamp, $datetimeFormat = 'Y-m-d H:i:s') {
-		$date = new \DateTime();
-		// If you must have use time zones
-		// $date = new \DateTime('now', new \DateTimeZone('Europe/Helsinki'));
-		$date->setTimestamp($timestamp);
-		return $date->format($datetimeFormat);
+		if ($timestamp) {
+			$date = new \DateTime();
+			// If you must have use time zones
+			// $date = new \DateTime('now', new \DateTimeZone('Europe/Helsinki'));
+			$date->setTimestamp($timestamp);
+			$return = $date->format($datetimeFormat);
+		} else {
+			$return = __("Unlimited", 'ifind');
+		}
+		
+		return $return;
 	}
 }
 
