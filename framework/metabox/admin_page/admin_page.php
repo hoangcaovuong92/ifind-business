@@ -61,11 +61,12 @@ if (!class_exists('iFind_Admin_Page')) {
 								<input type="email" name="email" value="" placeholder="<?php esc_html_e("Enter email here...", 'ifind'); ?>" /></td>
 							<th scope="row"></th>
 							<td>
-								<input type="checkbox" checked name="attachment" value="0" />
-								<?php esc_html_e("Attachment (PDF):", 'ifind'); ?>
+							<label><input type="checkbox" checked name="attachment" value="0" />
+								<?php esc_html_e("Attachment (PDF):", 'ifind'); ?></label>
 							</td>
 							<td><p id="attachment_link"></p></td>
 							<td>
+								<span class="ifind-loading-icon"><img src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/loading.gif'; ?>" alt=""></span>
 								<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_html_e("Send An Email", 'ifind'); ?>">
 							</td>
 						</tr>

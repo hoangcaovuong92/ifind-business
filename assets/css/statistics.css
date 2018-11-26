@@ -13,6 +13,10 @@
     width: 100px;
 }
 
+.ifind-loading-icon{
+    display: none;
+}
+
 .send-statistics-mail-form table{
     border-collapse: collapse;
     border-spacing: 0;
@@ -46,22 +50,31 @@
 }
 
 /* Result form */
-#ifind-business-statistics-wrap{
+.ifind-section{
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 8px;
     background: #fff;
+    margin-bottom: 10px;
 }
-.ifind-statistics-result{
+.ifind-table-wrap{
     overflow-x:auto;
 }
-.ifind-statistics-result-title{
+.ifind-main-title{
     text-align: center;
-    margin: 10px 0;
+    font-size: 25px;
+    margin: 10px 0 20px;
+    text-transform: uppercase;
 }
 
-.ifind-statistics-result-desc{
+.ifind-subtitle{
+    font-size: 20px;
+}
+
+.ifind-desc{
+    font-size: 15px;
     font-style: italic;
+    margin-top: 0;
 }
 
 table.ifind-table{
@@ -71,7 +84,7 @@ table.ifind-table{
     table-layout: fixed;
 }
 
-.ifind-table-business-overview tr td:first-child{
+.ifind-horizontal-table tr td:first-child{
     font-weight: bold;
     text-align: right;
 }
@@ -94,15 +107,6 @@ table.ifind-table tr:nth-child(even){background-color: #F1F1F1;}
 
 table.ifind-table tr:hover {background-color: #ddd;}
 
-.ifind-statistics-result-title{
-    font-size: 25px;
-}
-.ifind-statistics-result-desc{
-    font-size: 15px;
-}
-.ifind-statistics-item-title{
-    font-size: 20px;
-}
 table.ifind-table{
     font-size: 14px;
 }

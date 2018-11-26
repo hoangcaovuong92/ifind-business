@@ -22,9 +22,7 @@ if( !function_exists('ifind_update_business_click_counter_ajax') ){
 			'location_id' => $location_id,
 			'ip_address' => $ip_address,
 		);
-		ifind_set_click_counter( $location_id, $business_id, $click_info );
-		//echo $timezone.': '.$current_timestamp.PHP_EOL;
-		//echo ifind_convert_timestamp_to_time($current_timestamp);
+		ifind_save_business_statistics( $location_id, $business_id, $click_info );
 		die(); //stop "0" from being output
 	}
 }
@@ -129,7 +127,7 @@ if( !function_exists('ifind_load_table_bussiness_statistics_ajax') ){
 		$business_id = $_REQUEST['business_id'];
 		$datepicker_from = $_REQUEST['datepicker_from'];
 		$datepicker_to = $_REQUEST['datepicker_to'];
-		ifind_get_table_statistics( $location_id, $business_id, $datepicker_from, $datepicker_to, 'table', true );
+		ifind_get_table_statistics( $location_id, $business_id, $datepicker_from, $datepicker_to, 'admin', true );
 		die(); //stop "0" from being output
 	}
 }
@@ -167,6 +165,18 @@ if( !function_exists('ifind_refresh_business_by_location_ajax') ){
 	}
 }
 
+add_action('wp_ajax_nopriv_remove_statistics_email_sender', 'ifind_remove_statistics_email_sender_ajax');
+add_action('wp_ajax_remove_statistics_email_sender', 'ifind_remove_statistics_email_sender_ajax');
+if( !function_exists('ifind_remove_statistics_email_sender_ajax') ){
+	function ifind_remove_statistics_email_sender_ajax() { 
+		$index = $_REQUEST['index'];
+		$attachment_file = $_REQUEST['attachment_file'];
+		ifind_remove_statistics_email_sender( $index, $attachment_file );
+
+		die(); //stop "0" from being output
+	}
+}
+
 add_action('wp_ajax_nopriv_add_pdf_attachment', 'ifind_add_pdf_attachment_ajax');
 add_action('wp_ajax_add_pdf_attachment', 'ifind_add_pdf_attachment_ajax');
 if( !function_exists('ifind_add_pdf_attachment_ajax') ){
@@ -175,7 +185,7 @@ if( !function_exists('ifind_add_pdf_attachment_ajax') ){
 		$business_id = $_REQUEST['business_id'];
 		$datepicker_from = $_REQUEST['datepicker_from'];
 		$datepicker_to = $_REQUEST['datepicker_to'];
-		$attachment_content = ifind_get_table_statistics($location_id, $business_id, $datepicker_from , $datepicker_to, 'pdf' );
+		$attachment_content = ifind_get_table_statistics($location_id, $business_id, $datepicker_from , $datepicker_to, 'email_content' );
 		$attachment_file = ifind_save_pdf_file($attachment_content);
 		wp_send_json_success(array(
 			'attachment_file' => $attachment_file,
@@ -200,7 +210,7 @@ if( !function_exists('ifind_send_statistics_mail_ajax') ){
 		$datepicker_from = $_REQUEST['datepicker_from'];
 		$datepicker_to = $_REQUEST['datepicker_to'];
 		
-		$message = ifind_get_table_statistics($location_id, $business_id, $datepicker_from , $datepicker_to, 'table' );
+		$message = ifind_get_table_statistics($location_id, $business_id, $datepicker_from , $datepicker_to, 'email_content' );
 		if($attachment && $attachment_file){
 			$attachment = $attachment_file;
 			$message .= sprintf(__("<p>Note: Please see attachment file or click on the following link to view: <strong><a href='%s'>%s</a></strong></p>", 'ifind'), $direct_link, $direct_link);
@@ -235,6 +245,14 @@ if( !function_exists('ifind_send_statistics_mail_ajax') ){
 				'title' => __("Success!:", 'ifind'),
 				'message' => $okMessage
 			);
+			
+			$email_info = array(
+				'email' => $email_to,
+				'time' => ifind_get_current_timestamp_by_timezone(),
+				'attachment_file' => $attachment_file,
+				'direct_link' => $direct_link,
+			);
+			ifind_save_statistics_email_sender( $email_info );
 		}//message sent!
 		else  {
 			$responseArray = array(

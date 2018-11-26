@@ -73,7 +73,7 @@ if (typeof ifind_ajax_statistics != 'function') {
 					jQuery('#ifind-business-statistics-result').html(data);
 				}
 			});
-		})
+		});
 		jQuery('#ifind-business-list-select').trigger('change');
 
 		//Send email
@@ -88,7 +88,7 @@ if (typeof ifind_ajax_statistics != 'function') {
 			var business_id = jQuery('#ifind-business-list-select').val();
 			var datepicker_from = jQuery('#datepicker_from').val();
 			var datepicker_to = jQuery('#datepicker_to').val();
-			if(jQuery('.ifind-table').length) {
+			if(jQuery('.ifind-table-click-counter').length) {
 				if (email) {
 					if (attachment) {
 						jQuery.ajax({
@@ -103,13 +103,11 @@ if (typeof ifind_ajax_statistics != 'function') {
 							},
 							beforeSend: function () {
 								jQuery('.send-statistics-mail-form input#submit').attr('disabled', 'disabled');
+								jQuery('.send-statistics-mail-form .ifind-loading-icon').show();
 							},
-							success: function (response, status, xhr) {
+							success: function (response) {
 								var attachment_file = response.data.attachment_file;
 								var direct_link = response.data.direct_link;
-								if (direct_link) {
-									jQuery("#attachment_link").html('<a target="_blank" href="'+direct_link+'">View & Download Attachment File</a>');
-								}
 								jQuery.ajax({
 									type: "POST",
 									url: ajax_object.ajax_url,
@@ -129,16 +127,18 @@ if (typeof ifind_ajax_statistics != 'function') {
 										jQuery('.send-statistics-mail-form input#submit').attr('disabled', 'disabled');
 									},
 									success: function (data) {
+										jQuery('.send-statistics-mail-form .ifind-loading-icon').hide();
 										jQuery('.send-statistics-mail-form input[type="email"]').val('');
 										jQuery('.send-statistics-mail-form input#submit').removeAttr('disabled');
 										if(data.message){
 											swal({
-												title: 'iFind notifications',
-												type: 'success',
+												title: data.title,
+												type: data.type,
 												text: data.message,
 												timer: 6000
 											});
 										}
+										jQuery('#ifind-business-list-select').trigger('change');
 									}
 								});
 							}
@@ -159,19 +159,22 @@ if (typeof ifind_ajax_statistics != 'function') {
 								datepicker_to: datepicker_to,
 							},
 							beforeSend: function () {
+								jQuery('.send-statistics-mail-form .ifind-loading-icon').show();
 								jQuery('.send-statistics-mail-form input#submit').attr('disabled', 'disabled');
 							},
 							success: function (data) {
+								jQuery('.send-statistics-mail-form .ifind-loading-icon').hide();
 								jQuery('.send-statistics-mail-form input[type="email"]').val('');
 								jQuery('.send-statistics-mail-form input#submit').removeAttr('disabled');
 								if(data.message){
 									swal({
-										title: 'iFind notifications',
-										type: 'success',
+										title: data.title,
+										type: data.type,
 										text: data.message,
 										timer: 6000
 									});
 								}
+								jQuery('#ifind-business-list-select').trigger('change');
 							}
 						});
 					}
@@ -193,6 +196,27 @@ if (typeof ifind_ajax_statistics != 'function') {
 					timer: 6000
 				});
 			}
+		});
+
+		jQuery( document ).delegate('.ifind-delete-statistics-email', 'click', function(e){
+			e.preventDefault();
+			if (jQuery(this).hasClass("disabled")) return;
+			var index = jQuery(this).data('index');
+			var attachment_file = jQuery(this).data('attachment_file');
+			jQuery(this).addClass("disabled");
+			jQuery.ajax({
+				type: "POST",
+				url: ajax_object.ajax_url,
+				data: {
+					action: "remove_statistics_email_sender",
+					index: index,
+					attachment_file: attachment_file,
+				},
+				beforeSend: function () {},
+				success: function (data) {
+					jQuery('#ifind-business-list-select').trigger('change');
+				}
+			});
 		});
 	}
 }

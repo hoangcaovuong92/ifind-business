@@ -126,7 +126,6 @@ if(!function_exists ('ifind_convert_timestamp_to_time')){
 	}
 }
 
-
 // timezone for one NY co-ordinate : echo ifind_get_nearest_timezone(40.772222,-74.164581);
 // more faster and accurate if you can pass the country code : echo ifind_get_nearest_timezone(40.772222, -74.164581, 'US');
 if(!function_exists ('ifind_get_nearest_timezone')){
