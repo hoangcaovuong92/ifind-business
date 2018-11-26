@@ -280,6 +280,7 @@ if( !function_exists('ifind_get_table_statistics') ){
 					.ifind-main-title{
 						text-align: center;
 						font-size: 20px;
+						line-height: 1.2;
 						margin: 10px 0;
 						text-transform: uppercase;
 					}
@@ -341,15 +342,19 @@ if( !function_exists('ifind_get_table_statistics') ){
 					<?php 
 					printf(esc_html__( 'Statistics for %s', 'ifind' ), get_the_title($business_id));
 					if ($datepicker_from && $datepicker_to && $datepicker_from !== $datepicker_to) {
+						echo '<br/>';
 						printf(esc_html__( ' from %s to %s', 'ifind' ), $datepicker_from, $datepicker_to);
 					}
 					if ($datepicker_from && $datepicker_to && $datepicker_from === $datepicker_to) {
+						echo '<br/>';
 						printf(esc_html__( ' on %s', 'ifind' ), $datepicker_from);
 					}
 					if ($datepicker_from !== '' && $datepicker_to === '') {
+						echo '<br/>';
 						printf(esc_html__( ' on %s', 'ifind' ), $datepicker_from);
 					}
 					if ($datepicker_from === '' && $datepicker_to !== '') {
+						echo '<br/>';
 						printf(esc_html__( ' on %s', 'ifind' ), $datepicker_to);
 					}
 					?>
@@ -413,7 +418,7 @@ if( !function_exists('ifind_get_table_statistics') ){
 					<h3 class="ifind-subtitle ifind-statistics-item-title"><?php esc_html_e('III. Statistics Detail','ifind'); ?></h3>
 					<?php if (is_array($statistics_detail) && count($statistics_detail) > 0) {
 						$i = 1; ?>
-						<h4 class="ifind-desc ifind-statistics-result-desc"><?php printf(__( 'There are <strong>%d</strong> records', 'ifind' ), count($statistics_detail)); ?></h4>
+						<h4 class="ifind-desc ifind-statistics-result-desc"><?php //printf(__( 'There are <strong>%d</strong> records', 'ifind' ), count($statistics_detail)); ?></h4>
 						<table border="1" class="ifind-table ifind-table-click-counter">
 							<tr>
 								<th><?php esc_html_e('#','ifind'); ?></th>

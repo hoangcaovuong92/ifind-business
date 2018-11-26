@@ -63,6 +63,7 @@
 .ifind-main-title{
     text-align: center;
     font-size: 25px;
+    line-height: 1.2;
     margin: 10px 0 20px;
     text-transform: uppercase;
 }
