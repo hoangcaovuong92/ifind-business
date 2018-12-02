@@ -57,7 +57,7 @@ if( !function_exists('ifind_send_directions_mail_ajax') ){
 		$subject = "[iFind] ".$title;
 		$headers = array(
 			'MIME-Version: 1.0',
-			'Content-type: text/html; charset=iso-8859-1',
+			'Content-type: text/html; charset=UTF-8',
 			'X-Priority: 1 (Higuest)',
 			'X-MSMail-Priority: High',
 			'Importance: High',
@@ -196,6 +196,84 @@ if( !function_exists('ifind_add_pdf_attachment_ajax') ){
 	}
 }
 
+add_action('wp_ajax_nopriv_send_mail_contact', 'ifind_send_mail_contact_ajax');
+add_action('wp_ajax_send_mail_contact', 'ifind_send_mail_contact_ajax');
+if( !function_exists('ifind_send_mail_contact_ajax') ){
+	function ifind_send_mail_contact_ajax() { 
+		$business_email = $_REQUEST['business_email'];
+		$location_id = $_REQUEST['location_id'];
+		$location_name = get_the_title($location_id);
+		$business_id = $_REQUEST['business_id'];
+		$business_name = get_the_title($business_id);
+		$location_email = $_REQUEST['location_email'];
+		$timezone = $_REQUEST['timezone'];
+		$current_timestamp = ifind_get_current_timestamp_by_timezone($timezone);
+		$current_time = ifind_convert_timestamp_to_time($current_timestamp);
+		$ip_address = ifind_get_client_ip();
+
+		if (!is_email($business_email)) return;
+
+		$subject =  __("[iFind] Someone wants to contact you from our kiosk.", 'ifind');
+		$message =  "
+			Dear my customer,<br/>
+			We have sent this email to inform you that there is a visitor just clicking on our kiosk contact button to find a way to contact you. Here are details on this:<br/>
+			-Kiosk Location: $location_name <br/>
+			-Business name: $business_name <br/>
+			-IP Address: $ip_address <br/>
+			-Time: $current_time <br/>
+			<br/>Best Regards!
+		";
+		
+		//php mailer variables
+		$admin_email = get_option('admin_email');
+		$headers = array(
+			'MIME-Version: 1.0',
+			'Content-type: text/html; charset=UTF-8',
+			'X-Priority: 1 (Higuest)',
+			'X-MSMail-Priority: High',
+			'Importance: High',
+			'From: '. $admin_email,
+			'Reply-To: ' . $admin_email,
+			'Bcc: ' . $admin_email,
+			
+		);
+		if (is_email($location_email)){
+			$headers[] = 'Cc: ' . $location_email;
+		}
+		 
+	  	//Here put your Validation and send mail
+		$sent = wp_mail($business_email, $subject, $message, $headers, $attachment);
+		if($sent) {
+			$responseArray = array(
+				'type' => 'success',
+				'title' => __("Success!:", 'ifind'),
+				'message' => $okMessage
+			);
+		} else  {
+			$responseArray = array(
+				'type' => 'danger', 
+				'title' => __("Error!", 'ifind'), 
+				'message' => $errorMessage
+			);
+		}//message wasn't sent
+
+		// if requested by AJAX request return JSON response
+		if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+			$encoded = json_encode($responseArray);
+
+			header('Content-Type: application/json');
+
+			echo $encoded;
+		}
+		// else just display the message
+		else {
+			echo $responseArray['message'];
+		}
+
+		die(); //stop "0" from being output
+	}
+}
+
 add_action('wp_ajax_nopriv_send_statistics_mail', 'ifind_send_statistics_mail_ajax');
 add_action('wp_ajax_send_statistics_mail', 'ifind_send_statistics_mail_ajax');
 if( !function_exists('ifind_send_statistics_mail_ajax') ){
@@ -227,12 +305,12 @@ if( !function_exists('ifind_send_statistics_mail_ajax') ){
 		$subject = "[iFind] ".$title;
 		$headers = array(
 			'MIME-Version: 1.0',
-			'Content-type: text/html; charset=iso-8859-1',
+			'Content-type: text/html; charset=UTF-8',
 			'X-Priority: 1 (Higuest)',
 			'X-MSMail-Priority: High',
 			'Importance: High',
 			'From: '. $from,
-			'Reply-To: ' . $from
+			'Reply-To: ' . $from,
 		);
 
 		
@@ -253,8 +331,7 @@ if( !function_exists('ifind_send_statistics_mail_ajax') ){
 				'direct_link' => $direct_link,
 			);
 			ifind_save_statistics_email_sender( $email_info );
-		}//message sent!
-		else  {
+		} else  {
 			$responseArray = array(
 				'type' => 'danger', 
 				'title' => __("Error!", 'ifind'), 

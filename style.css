@@ -1,7 +1,7 @@
 /*
 Theme Name: iFind
 Theme URI: http://ifindmedia.com
-Author: tvlgiao
+Author: Cao Vuong
 Author URI: http://ifindmedia.com/services.html
 Description: our default theme lets you create a strongest website with many features.
 Version: 1.0
@@ -1881,6 +1881,18 @@ body {
   z-index: 10;
 }
 
+#select_location_map:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 15px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  z-index: 10;
+}
+
 .ifind-map-select-location {
   width: 100%;
   height: 100%;
@@ -2206,6 +2218,7 @@ body {
 #map-directions-email {
   display: none;
   padding: 10px 20px 20px;
+  background: #fff;
 }
 
 #map-directions-email .map-directions-email-form #send-directions-form {
@@ -2343,6 +2356,7 @@ body {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
+  z-index: 1;
 }
 
 #ifind-business-tabs .nav-pills > li + li {

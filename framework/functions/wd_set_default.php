@@ -18,7 +18,7 @@ if(!function_exists ('tvlgiao_wpdance_get_theme_option_default_data')){
 			'weather'       => array(
 		        'default'       => array(
 					'api_key'     	=> 'b3e451be6f631c7934a9dccec4a6ab7d',
-					'update_time'	=> 30000
+					'update_time'	=> 60000
 		        ),
 			),
 			'slider'       => array(

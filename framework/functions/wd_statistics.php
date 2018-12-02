@@ -29,6 +29,14 @@ if( !function_exists('ifind_save_business_statistics') ){
 	}
 }
 
+add_action('deleted_post', 'ifind_delete_business_statistics');
+if( !function_exists('ifind_delete_business_statistics') ){
+	function ifind_delete_business_statistics( $post_id ){
+		$count_key = '_ifind_click_counter';
+		delete_post_meta($post_id, $count_key);
+	}
+}
+
 if( !function_exists('ifind_save_statistics_email_sender') ){
 	function ifind_save_statistics_email_sender( $email_info ){
 		if( ifind_is_robot() ){
@@ -151,6 +159,18 @@ if(!function_exists ('ifind_get_list_statictis_detail')){
 				'first' => '',
 				'last' => '',
 			),
+			'direction' => array(
+				'display' => true,
+				'count' => 0,
+				'first' => '',
+				'last' => '',
+			),
+			'contact' => array(
+				'display' => true,
+				'count' => 0,
+				'first' => '',
+				'last' => '',
+			),
 			'small-slider' => array(
 				'display' => true,
 				'count' => 0,
@@ -185,6 +205,7 @@ if(!function_exists ('ifind_get_list_statictis_detail')){
 					$summary_data['all']['last'] = ifind_convert_timestamp_to_time($click_info['timestamp']);
 
 					$summary_data[$click_info['position']]['count'] += 1; 
+					//$summary_data[$click_info['position']]['display'] = true; 
 					$summary_data[$click_info['position']]['first'] = !($summary_data[$click_info['position']]['first']) 
 																	  ? ifind_convert_timestamp_to_time($click_info['timestamp']) 
 																	  : $summary_data[$click_info['position']]['first'];
@@ -447,7 +468,7 @@ if( !function_exists('ifind_get_table_statistics') ){
 
 			<?php if ($ouput_type === 'admin'){ ?>
 				<div id="ifind-business-list-statistics-email-wrap" class="ifind-section">
-					<h2 class="ifind-main-title ifind-statistics-email-title"><?php esc_html_e( 'History', 'ifind' ); ?></h2>
+					<h2 class="ifind-main-title ifind-statistics-email-title"><?php esc_html_e( 'Sending emails history', 'ifind' ); ?></h2>
 					<div class="ifind-table-wrap ifind-statistics-result">
 						<?php if (is_array($list_email) && count($list_email) > 0) {
 							$i = 1; ?>
@@ -506,13 +527,5 @@ if( !function_exists('ifind_is_robot') ){
 		}
 
 		return false;
-	}
-}
-
-add_action('deleted_post', 'ifind_delete_click_counter');
-if( !function_exists('ifind_delete_click_counter') ){
-	function ifind_delete_click_counter( $post_id ){
-		$count_key = '_ifind_click_counter';
-		delete_post_meta($post_id, $count_key);
 	}
 }

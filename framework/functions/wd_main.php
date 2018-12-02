@@ -73,8 +73,8 @@ if(!function_exists ('ifind_fahrenheit_to_elsius')){
 	}
 }
 
-if(!function_exists ('ifind_removeSpecialChapr')){
-	function ifind_removeSpecialChapr($value){
+if(!function_exists ('ifind_removeSpecialCharacter')){
+	function ifind_removeSpecialCharacter($value){
 		$title = str_replace( array( '\'', '"', ',' , ';', '<', '>' ), ' ', $value);
 		return $title;
 	}

@@ -192,7 +192,7 @@ if (!class_exists('iFind_Business')) {
 					));
 
 					iFind_Admin_Metabox_Fields::get_qrcode_field(array(
-						"title" => esc_html__( 'QR Code', 'ifind' ),
+						"title" => esc_html__( 'Website', 'ifind' ),
 						"desc" => esc_html__( '.', 'ifind' ),
 						"placeholder" => esc_html__( 'Exam: ifindsystem.com', 'ifind' ),
 						"field_name" => $this->post_type."[qrcode]",

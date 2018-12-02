@@ -51,12 +51,15 @@
                             $business_address = $business_metadata['location_data']['address'];
                             $list_category_filter = 'all';
                             $list_category = get_the_terms( $business_id, 'business_group' );
+
                             //QR Code
-                            $qr_type = $business_metadata['qrcode']['qr_type'];
-                            $qr_content = $business_metadata['qrcode']['qr_content'];
-                            $qr_code = new ifind_QrCode();
-                            $qr_code->SETCONTENT($qr_type, $qr_content);
-                            $qr_link = $qr_code->QRCODE('link', 400);
+                            // $qr_type = $business_metadata['qrcode']['qr_type'];
+                            // $qr_content = $business_metadata['qrcode']['qr_content'];
+                            // $qr_code = new ifind_QrCode();
+                            // $qr_code->SETCONTENT($qr_type, $qr_content);
+                            // $qr_link = $qr_code->QRCODE('link', 400);
+
+                            $web_link = $business_metadata['qrcode']['qr_content'];
 
                             if (count($list_category) > 0) {
                                 foreach ($list_category as $category) {
@@ -64,10 +67,7 @@
                                 }
                             } ?>
                             <div class="ifind-business-item <?php echo $list_category_filter; ?>">
-                                <div class="ifind-counter-item ifind-business-logo"
-                                    data-business-id="<?php echo $business_id; ?>" 
-                                    data-location-id="<?php echo get_the_ID(); ?>"
-                                    data-counter-position="logo">
+                                <div class="ifind-business-logo">
                                     <?php 
                                     $fancybox_class = 'ifind-fancybox-'.$business_info_banner_type;
                                     if ($business_info_banner_type === 'image') {
@@ -80,7 +80,10 @@
                                         $fancybox_link = $youtube_video_url;
                                     } ?>
                                     
-                                    <a class="fancybox fancybox.iframe <?php echo $fancybox_class; ?> business-logo-link" 
+                                    <a class="ifind-counter-item fancybox fancybox.iframe <?php echo $fancybox_class; ?> business-logo-link" 
+                                        data-business-id="<?php echo $business_id; ?>" 
+                                        data-location-id="<?php echo get_the_ID(); ?>"
+                                        data-counter-position="logo"
                                         href="<?php echo $fancybox_link; ?>" content="<p>"
                                         <?php echo ($business_info_banner_type === 'content-file-and-video') ? 'data-popup-target="#ifind-content-file-and-video-'.$business_id.'" data-popup-video="#ifind-video-player-'.$business_id.'"' : ''; ?> >
                                         <?php echo $business_logo; ?>
@@ -110,17 +113,20 @@
                                     <div class="ifind-business-desc-content"><?php echo $business_desc; ?></div>
                                 </div>
                                 <div class="ifind-business-direction">
-                                    <a href="#" class="business-direction-link" 
+                                    <a href="#" class="ifind-counter-item business-direction-link" 
+                                                data-business-id="<?php echo $business_id; ?>" 
+                                                data-location-id="<?php echo get_the_ID(); ?>"
+                                                data-counter-position="direction"
                                                 data-lat="<?php echo $business_lat; ?>" 
                                                 data-lng="<?php echo $business_lng; ?>"
-                                                title="<?php printf(__("Directions from %s to %s",'ifind'), ifind_removeSpecialChapr(get_the_title()), ifind_removeSpecialChapr(get_the_title($business_id))); ?>" >
+                                                title="<?php printf(__("Directions from %s to %s",'ifind'), ifind_removeSpecialCharacter(get_the_title()), ifind_removeSpecialCharacter(get_the_title($business_id))); ?>" >
                                         <div class="heading"><?php _e("Directions",'ifind') ?></div>
                                         <img class="ifind-business-icon" src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/directions.png'; ?>">
                                         <div class="business-distance heading"></div>
                                     </a>
                                 </div>
                                 <div class="ifind-business-geocoding">
-                                    <a href="#" class="business-geocoding-link" 
+                                    <a href="#" class="ifind-counter-item business-geocoding-link" 
                                                 data-icon="<?php echo $map_marker_icon_url; ?>" 
                                                 data-address="<?php echo htmlspecialchars($business_address); ?>" 
                                                 data-lat="<?php echo $business_lat; ?>" 
@@ -133,7 +139,12 @@
                                 </div>
 
                                 <div class="ifind-business-contact">
-                                    <a class="fancybox-contact-us" data-business-email="<?php echo $business_email; ?>" href="<?php echo $qr_link; ?>">
+                                    <a class="ifind-counter-item fancybox-contact-us" 
+                                        data-business-email="<?php echo $business_email; ?>" 
+                                        data-business-id="<?php echo $business_id; ?>" 
+                                        data-location-id="<?php echo get_the_ID(); ?>"
+                                        data-counter-position="contact"
+                                        href="<?php echo $web_link; ?>">
                                         <div class="heading"><?php _e("Contact",'ifind') ?></div>
                                         <img class="ifind-business-icon" src="<?php echo TVLGIAO_WPDANCE_THEME_IMAGES.'/contact.png'; ?>">
                                         <div class="heading"><?php _e("Us",'ifind') ?></div>

@@ -1,0 +1,793 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: iFind\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-24 12:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: 404.php:38
+msgid "Sorry, Page Not Found!"
+msgstr ""
+
+#: 404.php:39
+msgid "404"
+msgstr ""
+
+#: comments.php:17
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:29
+msgid "POST A COMMENT"
+msgstr ""
+
+#: single-location.php:30
+msgid "Wecome to"
+msgstr ""
+
+#: single-location.php:37
+msgid "Office Hours:"
+msgstr ""
+
+#: single-location.php:41
+msgid "Contact Number:"
+msgstr ""
+
+#: single-location.php:65
+msgid "You are here!"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:34
+#, php-format
+msgid "Directions have been sent to your email: %s!"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:37
+msgid "Error! An error occurred. Please try again later.:"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:57
+msgid "Success!:"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:64
+msgid "Error!"
+msgstr ""
+
+#: framework/functions/wd_main.php:43
+msgid "Current weather:"
+msgstr ""
+
+#: framework/functions/wd_main.php:45
+msgid "Temperature:"
+msgstr ""
+
+#: framework/functions/wd_main.php:46
+msgid "Wind Speed:"
+msgstr ""
+
+#: framework/functions/wd_main.php:47
+msgid "Humidity:"
+msgstr ""
+
+#: framework/functions/wd_main.php:115
+#: framework/metabox/metaboxes/location/location.php:258
+msgid "Edit"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:6
+msgid "Redux Framework"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:11
+msgid "Contact Form 7"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:16
+msgid "Regenerate Thumbnails"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:21
+msgid "a3 Lazy Load"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:26
+msgid "Duplicate Post"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:31
+msgid "Loco Translate"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:36
+msgid "GTranslate"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:41
+msgid "Post SMTP Mailer/Email Log"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:55
+msgid "Install Required Plugins"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:56
+msgid "Install Plugins"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:57
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:58
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:59
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:60
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:61
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"installed."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %s plugins."
+" Contact the administrator of this site for help on getting the plugins "
+"installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:62
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:63
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:64
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s plugin."
+" Contact the administrator of this site for help on getting the plugin "
+"activated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:65
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:66
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %s plugins. "
+"Contact the administrator of this site for help on getting the plugins "
+"updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:67
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:68
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:69
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:70
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: framework/functions/wd_register_tgmpa_plugin.php:71
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: sections/tabs/back-link.php:1
+msgid "Back"
+msgstr ""
+
+#: sections/tabs/map-directions.php:4
+msgid "x"
+msgstr ""
+
+#: sections/tabs/map-directions.php:7
+msgid "Email me directions"
+msgstr ""
+
+#: sections/tabs/map-directions.php:11
+msgid "Valid email is required."
+msgstr ""
+
+#: sections/tabs/map-directions.php:17
+msgid "Send"
+msgstr ""
+
+#: sections/tabs/map-directions.php:24
+msgid "Distance:"
+msgstr ""
+
+#: sections/tabs/map-directions.php:25
+msgid "Duration:"
+msgstr ""
+
+#: sections/tabs/map-directions.php:26
+msgid "Start:"
+msgstr ""
+
+#: sections/tabs/map-directions.php:27
+msgid "End:"
+msgstr ""
+
+#: sections/tabs/tab-content.php:14
+msgid "Filter by:"
+msgstr ""
+
+#: sections/tabs/tab-content.php:16
+#, php-format
+msgid "All of %s"
+msgstr ""
+
+#: sections/tabs/tab-content.php:60
+msgid "More info"
+msgstr ""
+
+#: sections/tabs/tab-content.php:71
+#, php-format
+msgid "Directions from %s to %s"
+msgstr ""
+
+#: sections/tabs/tab-content.php:72
+msgid "Directions"
+msgstr ""
+
+#: sections/tabs/tab-content.php:83
+msgid "Show this location on map"
+msgstr ""
+
+#: sections/tabs/tab-content.php:84
+msgid "Show On"
+msgstr ""
+
+#: sections/tabs/tab-content.php:86
+msgid "Map"
+msgstr ""
+
+#: sections/tabs/tab-content.php:94
+msgid "No business available!"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:219
+msgid "Select Image"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:224
+msgid "Reset"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:264
+msgid "Location Search"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:268
+msgid "All"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:270
+msgid "Establishments"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:272
+msgid "Addresses"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:274
+msgid "Geocodes"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:278
+msgid "Strict Bounds"
+msgstr ""
+
+#: framework/metabox/library/Tax-meta-class/Tax-meta-class.php:379
+#: framework/metabox/library/Tax-meta-class/Tax-meta-class.php:426
+#: framework/metabox/library/Tax-meta-class/Tax-meta-class.php:426
+msgid "Remove"
+msgstr ""
+
+#: framework/metabox/library/Tax-meta-class/Tax-meta-class.php:392
+msgid "Add"
+msgstr ""
+
+#: framework/metabox/library/Tax-meta-class/Tax-meta-class.php:728
+msgid "Remove Image"
+msgstr ""
+
+#: framework/metabox/library/Tax-meta-class/Tax-meta-class.php:730
+msgid "Upload Image"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:64
+msgctxt "post type general name"
+msgid "Business Directory"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:65
+msgctxt "post type singular name"
+msgid "Business Directory"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:66
+msgctxt "Business"
+msgid "Add Business"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:67
+#: framework/metabox/metaboxes/location/location.php:66
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:67
+#: framework/metabox/metaboxes/business/business.php:68
+#: framework/metabox/metaboxes/business/business.php:69
+#: framework/metabox/metaboxes/business/business.php:71
+#: framework/metabox/metaboxes/business/business.php:280
+msgid "Business"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:68
+#: framework/metabox/metaboxes/location/location.php:67
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:69
+#: framework/metabox/metaboxes/location/location.php:68
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:70
+#: framework/metabox/metaboxes/location/location.php:69
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:70
+#: framework/metabox/metaboxes/business/business.php:72
+#: framework/metabox/metaboxes/business/business.php:73
+#: framework/metabox/metaboxes/business/business.php:74
+msgid "Businesss"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:71
+#: framework/metabox/metaboxes/location/location.php:70
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:72
+#: framework/metabox/metaboxes/location/location.php:71
+msgid "Search %a"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:73
+#: framework/metabox/metaboxes/location/location.php:72
+#, php-format
+msgid "No %s Found"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:74
+#: framework/metabox/metaboxes/location/location.php:73
+#, php-format
+msgid "No %s Found In Trash"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:76
+#: framework/metabox/metaboxes/business/business.php:78
+msgid "Business Directory"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:96
+#: framework/metabox/metaboxes/business/business.php:97
+#: framework/metabox/metaboxes/business/business.php:102
+msgid "Business Group"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:98
+#: framework/metabox/metaboxes/location/location.php:98
+msgid "Add New"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:99
+#: framework/metabox/metaboxes/location/location.php:99
+msgid "Edit Post"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:100
+#: framework/metabox/metaboxes/location/location.php:100
+msgid "View Post"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:101
+msgid "Add New Business Group"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:201
+msgid "Address"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:202
+msgid "Address of the office."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:203
+msgid "Exam: Jax Tyres Noosaville, 139 Eumundi Noosa Road, Noosaville QLD 4566"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:209
+#: framework/metabox/metaboxes/location/location.php:209
+msgid "Contact Number"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:210
+msgid "Contact Number of the office."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:211
+msgid "Exam: (07) 5473 3776"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:217
+#: framework/metabox/metaboxes/location/location.php:66
+#: framework/metabox/metaboxes/location/location.php:67
+#: framework/metabox/metaboxes/location/location.php:68
+#: framework/metabox/metaboxes/location/location.php:70
+#: framework/metabox/metaboxes/location/location.php:285
+msgid "Location"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:224
+msgid "Logo"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:225
+msgid "Recommend size: 150x150 px"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:231
+msgid "Small Banner"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:232
+msgid "Recommend size: 1080x360 px. Banner appears on header slider."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:238
+msgid "Large Banner"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:239
+msgid ""
+"Recommend size: 1080x1920 px. Banner appears on popup slider fullscreen."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:245
+msgid "Info Banner"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:246
+msgid "Recommend size: 1036x736 px. Banner appears when click logo image."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:251
+msgid "Youtube Video ID"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:252
+msgid "Video appears when click logo image instead of info banner."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:253
+msgid "Exam: HHmidNM2sOM"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:267
+msgid "Enter the Business name here"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:273
+msgid "Business Items"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/metabox_category.php:24
+msgid "Icon"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/metabox_category.php:25
+msgid "Recommend size: 45x45 px. Display on business tabs title."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/metabox_category.php:33
+msgid "Banner Image"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/metabox_category.php:34
+msgid "Recommend size: 558x228 px. Display on business tabs."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/metabox_category.php:38
+msgid "Index"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/metabox_category.php:39
+msgid "Business Group order number, lower number will be pre-ordered on tabs."
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:63
+msgctxt "post type general name"
+msgid "Locations"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:64
+msgctxt "post type singular name"
+msgid "Locations"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:65
+msgctxt "Location"
+msgid "Add Location"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:69
+#: framework/metabox/metaboxes/location/location.php:71
+#: framework/metabox/metaboxes/location/location.php:72
+#: framework/metabox/metaboxes/location/location.php:73
+#: framework/metabox/metaboxes/location/location.php:75
+#: framework/metabox/metaboxes/location/location.php:77
+msgid "Locations"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:96
+#: framework/metabox/metaboxes/location/location.php:102
+msgid "Categories Location"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:97
+msgid "Category Location"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:101
+msgid "Add New Category Location"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:193
+msgid "Slogan"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:201
+msgid "Office Hours"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:217
+msgid "Max Distance"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:218
+msgid ""
+"If the distance from location to business exceeds \"Max distance\", it will "
+"not be displayed. Unit: km"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:219
+msgid "Set -1 or leave blank to remove this limit."
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:225
+msgid "List Business"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:233
+msgid "Location Address"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:235
+msgid "Enter a location"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:262
+#, php-format
+msgid "Please add data for \"%s\" before"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:272
+msgid "Enter the location name here"
+msgstr ""
+
+#: framework/metabox/metaboxes/location/location.php:278
+msgid "location Items"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/wd_theme_options.php:93
+#: framework/wpdance/supports/theme_option/wd_theme_options.php:94
+msgid "Theme Options"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/wd_theme_options.php:194
+msgid "<p>This is the sidebar content, HTML is allowed.</p>"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/wd_theme_options.php:213
+msgid "Documentation"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/wd_theme_options.php:328
+msgid "Section via hook"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/wd_theme_options.php:329
+msgid ""
+"<p class=\"description\">This is a section created by adding a filter to the "
+"sections array. Can be used by child themes to add/remove sections from the "
+"options.</p>"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:3
+msgid "Google API"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:11
+msgid "Google Map API Key"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:19
+msgid "Map Zoom"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:28
+msgid "Weather API"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:36
+msgid "Openweathermap API Key"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:44
+msgid "Auto Update Time"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:46
+#: framework/wpdance/supports/theme_option/parts/options_general.php:63
+#: framework/wpdance/supports/theme_option/parts/options_general.php:71
+#: framework/wpdance/supports/theme_option/parts/options_general.php:79
+#: framework/wpdance/supports/theme_option/parts/options_general.php:95
+#: framework/wpdance/supports/theme_option/parts/options_general.php:103
+msgid "Unit: ms (1000ms = 1s)"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:53
+msgid "Slider Settings"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:61
+msgid "Show Popup After"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:62
+#: framework/wpdance/supports/theme_option/parts/options_general.php:70
+msgid "Waiting time before show large popup slider."
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:69
+msgid "Show Popup After (When watching information)"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:77
+msgid "Popup Delay"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:78
+msgid "Time delay after slider break."
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:85
+msgid "Break Popup Slider After Item"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:86
+msgid "Slider will break after number slide."
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:93
+msgid "Popup Slider Autoplay Speed"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:101
+msgid "Top Slider Autoplay Speed"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:109
+msgid "Footer Slider Items"
+msgstr ""
+
+#: framework/wpdance/supports/theme_option/parts/options_general.php:110
+msgid "Slide number of footer slider."
+msgstr ""
+
+#. Name of the theme
+msgid "iFind"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"our default theme lets you create a strongest website with many features."
+msgstr ""
+
+#. URI of the theme
+msgid "http://ifindmedia.com"
+msgstr ""
+
+#. Author of the theme
+msgid "tvlgiao"
+msgstr ""
+
+#. Author URI of the theme
+msgid "http://ifindmedia.com/services.html"
+msgstr ""

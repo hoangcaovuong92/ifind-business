@@ -59,6 +59,7 @@ $business_border_width: 1px;
 #map-directions-email{
     display: none;
     padding: 10px 20px 20px;
+    background: #fff;
     .map-directions-email-form{
         #send-directions-form{
             @include flexbox; 
@@ -157,6 +158,7 @@ $business_border_width: 1px;
         position: sticky;
         position :-webkit-sticky;
         top: 0;
+        z-index: 1;
         >li+li {
             margin-left: 0;
         }

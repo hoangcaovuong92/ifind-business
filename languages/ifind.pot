@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: iFind\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 12:30+0000\n"
+"POT-Creation-Date: 2018-12-02 08:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -33,37 +33,106 @@ msgstr[1] ""
 msgid "POST A COMMENT"
 msgstr ""
 
-#: single-location.php:30
-msgid "Wecome to"
+#: index.php:30
+msgid "Please choose a location:"
 msgstr ""
 
-#: single-location.php:37
+#: index.php:38
+msgid "Please add location before"
+msgstr ""
+
+#: single-location.php:39
+msgid "Welcome to"
+msgstr ""
+
+#: single-location.php:46
 msgid "Office Hours:"
 msgstr ""
 
-#: single-location.php:41
+#: single-location.php:50
 msgid "Contact Number:"
 msgstr ""
 
-#: single-location.php:65
+#: single-location.php:79
 msgid "You are here!"
 msgstr ""
 
-#: framework/functions/wd_ajax_function.php:34
+#: framework/abstract.php:125
+msgid "Click here to reload all browser!"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:50
 #, php-format
 msgid "Directions have been sent to your email: %s!"
 msgstr ""
 
-#: framework/functions/wd_ajax_function.php:37
+#: framework/functions/wd_ajax_function.php:53
+#: framework/functions/wd_ajax_function.php:301
 msgid "Error! An error occurred. Please try again later.:"
 msgstr ""
 
-#: framework/functions/wd_ajax_function.php:57
+#: framework/functions/wd_ajax_function.php:73
+#: framework/functions/wd_ajax_function.php:249
+#: framework/functions/wd_ajax_function.php:323
 msgid "Success!:"
 msgstr ""
 
-#: framework/functions/wd_ajax_function.php:64
+#: framework/functions/wd_ajax_function.php:80
+#: framework/functions/wd_ajax_function.php:255
+#: framework/functions/wd_ajax_function.php:337
 msgid "Error!"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:216
+msgid "[iFind] Someone wants to contact you from our kiosk."
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:294
+#, php-format
+msgid ""
+"<p>Note: Please see attachment file or click on the following link to view: "
+"<strong><a href='%s'>%s</a></strong></p>"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:298
+#, php-format
+msgid "Statistics have been sent to your email: %s!"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:373
+msgid "Please enter your fullname *"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:375
+msgid "Fullname is required."
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:377
+#: sections/tabs/contact-form.php:7 sections/tabs/send-mail-form.php:6
+msgid "Please enter your email *"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:379
+#: sections/tabs/contact-form.php:9 sections/tabs/send-mail-form.php:8
+msgid "Valid email is required."
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:381
+msgid "Please enter your phone number *"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:383
+msgid "Valid phone number is required."
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:390
+#: sections/tabs/contact-form.php:40 sections/tabs/send-mail-form.php:14
+msgid "Send"
+msgstr ""
+
+#: framework/functions/wd_ajax_function.php:399
+#: sections/tabs/send-mail-form.php:17
+msgid "x"
 msgstr ""
 
 #: framework/functions/wd_main.php:43
@@ -82,8 +151,12 @@ msgstr ""
 msgid "Humidity:"
 msgstr ""
 
-#: framework/functions/wd_main.php:115
-#: framework/metabox/metaboxes/location/location.php:258
+#: framework/functions/wd_main.php:122
+msgid "Unlimited"
+msgstr ""
+
+#: framework/functions/wd_main.php:268
+#: framework/metabox/metaboxes/location/location.php:220
 msgid "Edit"
 msgstr ""
 
@@ -239,12 +312,153 @@ msgstr ""
 msgid "All plugins installed and activated successfully. %s"
 msgstr ""
 
-#: sections/tabs/back-link.php:1
+#: framework/functions/wd_statistics.php:364
+#, php-format
+msgid "Statistics for %s"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:367
+#, php-format
+msgid " from %s to %s"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:371
+#: framework/functions/wd_statistics.php:375
+#: framework/functions/wd_statistics.php:379
+#, php-format
+msgid " on %s"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:386
+msgid "I. Overview"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:389
+msgid "Business Name:"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:393
+msgid "Start time:"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:397
+msgid "End time:"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:401
+msgid "Total number of clicks:"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:406
+msgid "II. General Statistics"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:412
+#: framework/functions/wd_statistics.php:445
+#: framework/functions/wd_statistics.php:477
+msgid "#"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:413
+#: framework/functions/wd_statistics.php:446
+msgid "Position"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:414
+msgid "Frequency"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:415
+msgid "First time"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:416
+msgid "Last time"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:428
+#: framework/functions/wd_statistics.php:429
+msgid "Unknown"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:436
+#: framework/functions/wd_statistics.php:464
+#: framework/functions/wd_statistics.php:499
+msgid "No record exists!"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:439
+msgid "III. Statistics Detail"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:447
+#: framework/functions/wd_statistics.php:479
+msgid "Time"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:448
+#: framework/metabox/metaboxes/business/business.php:203
+msgid "Location"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:449
+msgid "IP Address"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:471
+msgid "Sending emails history"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:478
+msgid "Email"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:480
+msgid "Attachment"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:481
+msgid "Action"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:488
+msgid "Permalink"
+msgstr ""
+
+#: framework/functions/wd_statistics.php:488
+msgid "N/A"
+msgstr ""
+
+#: sections/tabs/back-link.php:1 sections/tabs/map-directions.php:4
 msgid "Back"
 msgstr ""
 
-#: sections/tabs/map-directions.php:4
-msgid "x"
+#: sections/tabs/contact-form.php:3
+msgid "First Step"
+msgstr ""
+
+#: sections/tabs/contact-form.php:15
+msgid "Second Step"
+msgstr ""
+
+#: sections/tabs/contact-form.php:19
+msgid "Please enter your phone *"
+msgstr ""
+
+#: sections/tabs/contact-form.php:21
+msgid "Valid phone is required."
+msgstr ""
+
+#: sections/tabs/contact-form.php:27
+msgid "Third Step"
+msgstr ""
+
+#: sections/tabs/contact-form.php:31
+msgid "Please enter your message *"
+msgstr ""
+
+#: sections/tabs/contact-form.php:33
+msgid "Valid message is required."
 msgstr ""
 
 #: sections/tabs/map-directions.php:7
@@ -252,26 +466,18 @@ msgid "Email me directions"
 msgstr ""
 
 #: sections/tabs/map-directions.php:11
-msgid "Valid email is required."
-msgstr ""
-
-#: sections/tabs/map-directions.php:17
-msgid "Send"
-msgstr ""
-
-#: sections/tabs/map-directions.php:24
 msgid "Distance:"
 msgstr ""
 
-#: sections/tabs/map-directions.php:25
+#: sections/tabs/map-directions.php:12
 msgid "Duration:"
 msgstr ""
 
-#: sections/tabs/map-directions.php:26
+#: sections/tabs/map-directions.php:13
 msgid "Start:"
 msgstr ""
 
-#: sections/tabs/map-directions.php:27
+#: sections/tabs/map-directions.php:14
 msgid "End:"
 msgstr ""
 
@@ -284,64 +490,150 @@ msgstr ""
 msgid "All of %s"
 msgstr ""
 
-#: sections/tabs/tab-content.php:60
+#: sections/tabs/tab-content.php:90
 msgid "More info"
 msgstr ""
 
-#: sections/tabs/tab-content.php:71
+#: sections/tabs/tab-content.php:122
 #, php-format
 msgid "Directions from %s to %s"
 msgstr ""
 
-#: sections/tabs/tab-content.php:72
+#: sections/tabs/tab-content.php:123
 msgid "Directions"
 msgstr ""
 
-#: sections/tabs/tab-content.php:83
+#: sections/tabs/tab-content.php:134
 msgid "Show this location on map"
 msgstr ""
 
-#: sections/tabs/tab-content.php:84
+#: sections/tabs/tab-content.php:135
 msgid "Show On"
 msgstr ""
 
-#: sections/tabs/tab-content.php:86
+#: sections/tabs/tab-content.php:137
 msgid "Map"
 msgstr ""
 
-#: sections/tabs/tab-content.php:94
+#: sections/tabs/tab-content.php:148
+msgid "Contact"
+msgstr ""
+
+#: sections/tabs/tab-content.php:150
+msgid "Us"
+msgstr ""
+
+#: sections/tabs/tab-content.php:165
 msgid "No business available!"
 msgstr ""
 
+#: framework/metabox/admin_page/admin_page.php:49
+msgid "Statistics"
+msgstr ""
+
+#: framework/metabox/admin_page/admin_page.php:60
+msgid "Email Address:"
+msgstr ""
+
+#: framework/metabox/admin_page/admin_page.php:61
+msgid "Enter email here..."
+msgstr ""
+
+#: framework/metabox/admin_page/admin_page.php:65
+msgid "Attachment (PDF)"
+msgstr ""
+
+#: framework/metabox/admin_page/admin_page.php:70
+msgid "Send An Email"
+msgstr ""
+
+#: framework/metabox/admin_page/admin_page.php:81
+msgid "Select a location name:"
+msgstr ""
+
+#: framework/metabox/admin_page/admin_page.php:89
+msgid "All locations"
+msgstr ""
+
+#: framework/metabox/admin_page/admin_page.php:110
+msgid "Select a business name:"
+msgstr ""
+
+#: framework/metabox/admin_page/admin_page.php:142
+msgid "Select a day:"
+msgstr ""
+
+#: framework/metabox/admin_page/admin_page.php:144
+msgid "From..."
+msgstr ""
+
+#: framework/metabox/admin_page/admin_page.php:145
+msgid "To..."
+msgstr ""
+
 #: framework/metabox/library/fields/fields.php:219
-msgid "Select Image"
+msgid "Type"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:221
+msgid "URL"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:222
+msgid "TEXT"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:223
+msgid "EMAIL"
 msgstr ""
 
 #: framework/metabox/library/fields/fields.php:224
-msgid "Reset"
+msgid "SMS"
 msgstr ""
 
-#: framework/metabox/library/fields/fields.php:264
-msgid "Location Search"
+#: framework/metabox/library/fields/fields.php:225
+msgid "CONTACT"
 msgstr ""
 
-#: framework/metabox/library/fields/fields.php:268
-msgid "All"
+#: framework/metabox/library/fields/fields.php:226
+#: framework/metabox/library/fields/fields.php:231
+msgid "CONTENT"
 msgstr ""
 
-#: framework/metabox/library/fields/fields.php:270
-msgid "Establishments"
-msgstr ""
-
-#: framework/metabox/library/fields/fields.php:272
-msgid "Addresses"
+#: framework/metabox/library/fields/fields.php:267
+msgid "Select Image File"
 msgstr ""
 
 #: framework/metabox/library/fields/fields.php:274
+#: framework/metabox/library/fields/fields.php:316
+msgid "Reset"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:286
+msgid "Select File"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:357
+msgid "Location Search"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:361
+msgid "All"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:363
+msgid "Establishments"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:365
+msgid "Addresses"
+msgstr ""
+
+#: framework/metabox/library/fields/fields.php:367
 msgid "Geocodes"
 msgstr ""
 
-#: framework/metabox/library/fields/fields.php:278
+#: framework/metabox/library/fields/fields.php:371
 msgid "Strict Bounds"
 msgstr ""
 
@@ -363,198 +655,227 @@ msgstr ""
 msgid "Upload Image"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:64
-msgctxt "post type general name"
-msgid "Business Directory"
+#: framework/metabox/metaboxes/business/business.php:73
+#: framework/metabox/metaboxes/location/location.php:71
+#, php-format
+msgid "Add %s"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:65
-msgctxt "post type singular name"
-msgid "Business Directory"
-msgstr ""
-
-#: framework/metabox/metaboxes/business/business.php:66
-msgctxt "Business"
-msgid "Add Business"
-msgstr ""
-
-#: framework/metabox/metaboxes/business/business.php:67
-#: framework/metabox/metaboxes/location/location.php:66
+#: framework/metabox/metaboxes/business/business.php:74
+#: framework/metabox/metaboxes/business/business.php:105
+#: framework/metabox/metaboxes/business/business.php:108
+#: framework/metabox/metaboxes/location/location.php:72
+#: framework/metabox/metaboxes/location/location.php:103
+#: framework/metabox/metaboxes/location/location.php:106
 #, php-format
 msgid "Add New %s"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:67
-#: framework/metabox/metaboxes/business/business.php:68
-#: framework/metabox/metaboxes/business/business.php:69
-#: framework/metabox/metaboxes/business/business.php:71
-#: framework/metabox/metaboxes/business/business.php:280
-msgid "Business"
-msgstr ""
-
-#: framework/metabox/metaboxes/business/business.php:68
-#: framework/metabox/metaboxes/location/location.php:67
+#: framework/metabox/metaboxes/business/business.php:75
+#: framework/metabox/metaboxes/business/business.php:106
+#: framework/metabox/metaboxes/location/location.php:73
+#: framework/metabox/metaboxes/location/location.php:104
 #, php-format
 msgid "Edit %s"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:69
-#: framework/metabox/metaboxes/location/location.php:68
+#: framework/metabox/metaboxes/business/business.php:76
+#: framework/metabox/metaboxes/location/location.php:74
 #, php-format
 msgid "New %s"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:70
-#: framework/metabox/metaboxes/location/location.php:69
+#: framework/metabox/metaboxes/business/business.php:77
+#: framework/metabox/metaboxes/location/location.php:75
 #, php-format
 msgid "All %s"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:70
-#: framework/metabox/metaboxes/business/business.php:72
-#: framework/metabox/metaboxes/business/business.php:73
-#: framework/metabox/metaboxes/business/business.php:74
-msgid "Businesss"
-msgstr ""
-
-#: framework/metabox/metaboxes/business/business.php:71
-#: framework/metabox/metaboxes/location/location.php:70
+#: framework/metabox/metaboxes/business/business.php:78
+#: framework/metabox/metaboxes/business/business.php:107
+#: framework/metabox/metaboxes/location/location.php:76
+#: framework/metabox/metaboxes/location/location.php:105
 #, php-format
 msgid "View %s"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:72
-#: framework/metabox/metaboxes/location/location.php:71
+#: framework/metabox/metaboxes/business/business.php:79
+#: framework/metabox/metaboxes/location/location.php:77
 msgid "Search %a"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:73
-#: framework/metabox/metaboxes/location/location.php:72
+#: framework/metabox/metaboxes/business/business.php:80
+#: framework/metabox/metaboxes/location/location.php:78
 #, php-format
 msgid "No %s Found"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:74
-#: framework/metabox/metaboxes/location/location.php:73
+#: framework/metabox/metaboxes/business/business.php:81
+#: framework/metabox/metaboxes/location/location.php:79
 #, php-format
 msgid "No %s Found In Trash"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:76
-#: framework/metabox/metaboxes/business/business.php:78
-msgid "Business Directory"
+#: framework/metabox/metaboxes/business/business.php:160
+msgid "Image"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:96
-#: framework/metabox/metaboxes/business/business.php:97
-#: framework/metabox/metaboxes/business/business.php:102
-msgid "Business Group"
+#: framework/metabox/metaboxes/business/business.php:161
+msgid "Content File"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:98
-#: framework/metabox/metaboxes/location/location.php:98
-msgid "Add New"
+#: framework/metabox/metaboxes/business/business.php:162
+msgid "Content File & Video"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:99
-#: framework/metabox/metaboxes/location/location.php:99
-msgid "Edit Post"
+#: framework/metabox/metaboxes/business/business.php:163
+msgid "Video file"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:100
-#: framework/metabox/metaboxes/location/location.php:100
-msgid "View Post"
+#: framework/metabox/metaboxes/business/business.php:164
+msgid "Youtube video"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:101
-msgid "Add New Business Group"
-msgstr ""
-
-#: framework/metabox/metaboxes/business/business.php:201
+#: framework/metabox/metaboxes/business/business.php:171
 msgid "Address"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:202
+#: framework/metabox/metaboxes/business/business.php:172
 msgid "Address of the office."
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:203
+#: framework/metabox/metaboxes/business/business.php:173
 msgid "Exam: Jax Tyres Noosaville, 139 Eumundi Noosa Road, Noosaville QLD 4566"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:209
-#: framework/metabox/metaboxes/location/location.php:209
+#: framework/metabox/metaboxes/business/business.php:179
+#: framework/metabox/metaboxes/location/location.php:163
 msgid "Contact Number"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:210
+#: framework/metabox/metaboxes/business/business.php:180
 msgid "Contact Number of the office."
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:211
+#: framework/metabox/metaboxes/business/business.php:181
 msgid "Exam: (07) 5473 3776"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:217
-#: framework/metabox/metaboxes/location/location.php:66
-#: framework/metabox/metaboxes/location/location.php:67
-#: framework/metabox/metaboxes/location/location.php:68
-#: framework/metabox/metaboxes/location/location.php:70
-#: framework/metabox/metaboxes/location/location.php:285
-msgid "Location"
+#: framework/metabox/metaboxes/business/business.php:187
+#: framework/metabox/metaboxes/location/location.php:171
+msgid "Email Address"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:224
+#: framework/metabox/metaboxes/business/business.php:188
+#: framework/metabox/metaboxes/location/location.php:172
+msgid "Email address of the office."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:189
+#: framework/metabox/metaboxes/location/location.php:173
+msgid "Exam: hoangcaovuong92@gmail.com"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:195
+msgid "Website"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:196
+msgid "."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:197
+msgid "Exam: ifindsystem.com"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:210
 msgid "Logo"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:225
+#: framework/metabox/metaboxes/business/business.php:211
 msgid "Recommend size: 150x150 px"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:231
+#: framework/metabox/metaboxes/business/business.php:217
 msgid "Small Banner"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:232
+#: framework/metabox/metaboxes/business/business.php:218
 msgid "Recommend size: 1080x360 px. Banner appears on header slider."
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:238
+#: framework/metabox/metaboxes/business/business.php:224
 msgid "Large Banner"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:239
+#: framework/metabox/metaboxes/business/business.php:225
 msgid ""
 "Recommend size: 1080x1920 px. Banner appears on popup slider fullscreen."
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:245
-msgid "Info Banner"
+#: framework/metabox/metaboxes/business/business.php:231
+msgid "Info Banner Type"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:246
+#: framework/metabox/metaboxes/business/business.php:232
+msgid "Select the content will be displayed when click to business."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:239
+msgid "Info Banner Image"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:240
 msgid "Recommend size: 1036x736 px. Banner appears when click logo image."
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:251
-msgid "Youtube Video ID"
+#: framework/metabox/metaboxes/business/business.php:245
+msgid "Info Banner Content File"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:252
-msgid "Video appears when click logo image instead of info banner."
+#: framework/metabox/metaboxes/business/business.php:246
+msgid "Choose a html file ..."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:248
+msgid "Select HTML File"
 msgstr ""
 
 #: framework/metabox/metaboxes/business/business.php:253
+msgid "Video File"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:254
+#: framework/metabox/metaboxes/business/business.php:262
+msgid "Video appears when click logo image instead of info banner."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:255
+msgid "Exam: www.ifindsystem.com/test.mp4"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:256
+msgid "Select Video File"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:261
+msgid "Youtube Video ID"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/business.php:263
 msgid "Exam: HHmidNM2sOM"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:267
-msgid "Enter the Business name here"
+#: framework/metabox/metaboxes/business/business.php:331
+#: framework/metabox/metaboxes/location/location.php:288
+#, php-format
+msgid "Enter the %s name here"
 msgstr ""
 
-#: framework/metabox/metaboxes/business/business.php:273
-msgid "Business Items"
+#: framework/metabox/metaboxes/business/business.php:337
+#: framework/metabox/metaboxes/location/location.php:294
+#, php-format
+msgid "%s Items"
 msgstr ""
 
 #: framework/metabox/metaboxes/business/metabox_category.php:24
@@ -570,99 +891,70 @@ msgid "Banner Image"
 msgstr ""
 
 #: framework/metabox/metaboxes/business/metabox_category.php:34
-msgid "Recommend size: 558x228 px. Display on business tabs."
+msgid "Recommend size: 750x300 px. Display on business tabs."
 msgstr ""
 
 #: framework/metabox/metaboxes/business/metabox_category.php:38
-msgid "Index"
+msgid "Avatar Image"
 msgstr ""
 
 #: framework/metabox/metaboxes/business/metabox_category.php:39
+msgid "Recommend size: 150x150 px. Display on business tabs."
+msgstr ""
+
+#: framework/metabox/metaboxes/business/metabox_category.php:43
+msgid "Font Icon Class"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/metabox_category.php:44
+msgid "Exam: fa fa-pagelines"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/metabox_category.php:49
+msgid "Index"
+msgstr ""
+
+#: framework/metabox/metaboxes/business/metabox_category.php:50
 msgid "Business Group order number, lower number will be pre-ordered on tabs."
 msgstr ""
 
-#: framework/metabox/metaboxes/location/location.php:63
-msgctxt "post type general name"
-msgid "Locations"
-msgstr ""
-
-#: framework/metabox/metaboxes/location/location.php:64
-msgctxt "post type singular name"
-msgid "Locations"
-msgstr ""
-
-#: framework/metabox/metaboxes/location/location.php:65
-msgctxt "Location"
-msgid "Add Location"
-msgstr ""
-
-#: framework/metabox/metaboxes/location/location.php:69
-#: framework/metabox/metaboxes/location/location.php:71
-#: framework/metabox/metaboxes/location/location.php:72
-#: framework/metabox/metaboxes/location/location.php:73
-#: framework/metabox/metaboxes/location/location.php:75
-#: framework/metabox/metaboxes/location/location.php:77
-msgid "Locations"
-msgstr ""
-
-#: framework/metabox/metaboxes/location/location.php:96
-#: framework/metabox/metaboxes/location/location.php:102
-msgid "Categories Location"
-msgstr ""
-
-#: framework/metabox/metaboxes/location/location.php:97
-msgid "Category Location"
-msgstr ""
-
-#: framework/metabox/metaboxes/location/location.php:101
-msgid "Add New Category Location"
-msgstr ""
-
-#: framework/metabox/metaboxes/location/location.php:193
+#: framework/metabox/metaboxes/location/location.php:147
 msgid "Slogan"
 msgstr ""
 
-#: framework/metabox/metaboxes/location/location.php:201
+#: framework/metabox/metaboxes/location/location.php:155
 msgid "Office Hours"
 msgstr ""
 
-#: framework/metabox/metaboxes/location/location.php:217
+#: framework/metabox/metaboxes/location/location.php:179
 msgid "Max Distance"
 msgstr ""
 
-#: framework/metabox/metaboxes/location/location.php:218
+#: framework/metabox/metaboxes/location/location.php:180
 msgid ""
 "If the distance from location to business exceeds \"Max distance\", it will "
 "not be displayed. Unit: km"
 msgstr ""
 
-#: framework/metabox/metaboxes/location/location.php:219
+#: framework/metabox/metaboxes/location/location.php:181
 msgid "Set -1 or leave blank to remove this limit."
 msgstr ""
 
-#: framework/metabox/metaboxes/location/location.php:225
+#: framework/metabox/metaboxes/location/location.php:187
 msgid "List Business"
 msgstr ""
 
-#: framework/metabox/metaboxes/location/location.php:233
+#: framework/metabox/metaboxes/location/location.php:195
 msgid "Location Address"
 msgstr ""
 
-#: framework/metabox/metaboxes/location/location.php:235
+#: framework/metabox/metaboxes/location/location.php:197
 msgid "Enter a location"
 msgstr ""
 
-#: framework/metabox/metaboxes/location/location.php:262
+#: framework/metabox/metaboxes/location/location.php:224
 #, php-format
 msgid "Please add data for \"%s\" before"
-msgstr ""
-
-#: framework/metabox/metaboxes/location/location.php:272
-msgid "Enter the location name here"
-msgstr ""
-
-#: framework/metabox/metaboxes/location/location.php:278
-msgid "location Items"
 msgstr ""
 
 #: framework/wpdance/supports/theme_option/wd_theme_options.php:93
@@ -693,81 +985,81 @@ msgstr ""
 msgid "Google API"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:11
+#: framework/wpdance/supports/theme_option/parts/options_general.php:12
 msgid "Google Map API Key"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:19
+#: framework/wpdance/supports/theme_option/parts/options_general.php:20
 msgid "Map Zoom"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:28
+#: framework/wpdance/supports/theme_option/parts/options_general.php:29
 msgid "Weather API"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:36
+#: framework/wpdance/supports/theme_option/parts/options_general.php:38
 msgid "Openweathermap API Key"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:44
+#: framework/wpdance/supports/theme_option/parts/options_general.php:46
 msgid "Auto Update Time"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:46
-#: framework/wpdance/supports/theme_option/parts/options_general.php:63
-#: framework/wpdance/supports/theme_option/parts/options_general.php:71
-#: framework/wpdance/supports/theme_option/parts/options_general.php:79
-#: framework/wpdance/supports/theme_option/parts/options_general.php:95
-#: framework/wpdance/supports/theme_option/parts/options_general.php:103
+#: framework/wpdance/supports/theme_option/parts/options_general.php:48
+#: framework/wpdance/supports/theme_option/parts/options_general.php:66
+#: framework/wpdance/supports/theme_option/parts/options_general.php:74
+#: framework/wpdance/supports/theme_option/parts/options_general.php:82
+#: framework/wpdance/supports/theme_option/parts/options_general.php:98
+#: framework/wpdance/supports/theme_option/parts/options_general.php:106
 msgid "Unit: ms (1000ms = 1s)"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:53
+#: framework/wpdance/supports/theme_option/parts/options_general.php:55
 msgid "Slider Settings"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:61
+#: framework/wpdance/supports/theme_option/parts/options_general.php:64
 msgid "Show Popup After"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:62
-#: framework/wpdance/supports/theme_option/parts/options_general.php:70
+#: framework/wpdance/supports/theme_option/parts/options_general.php:65
+#: framework/wpdance/supports/theme_option/parts/options_general.php:73
 msgid "Waiting time before show large popup slider."
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:69
+#: framework/wpdance/supports/theme_option/parts/options_general.php:72
 msgid "Show Popup After (When watching information)"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:77
+#: framework/wpdance/supports/theme_option/parts/options_general.php:80
 msgid "Popup Delay"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:78
+#: framework/wpdance/supports/theme_option/parts/options_general.php:81
 msgid "Time delay after slider break."
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:85
+#: framework/wpdance/supports/theme_option/parts/options_general.php:88
 msgid "Break Popup Slider After Item"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:86
+#: framework/wpdance/supports/theme_option/parts/options_general.php:89
 msgid "Slider will break after number slide."
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:93
+#: framework/wpdance/supports/theme_option/parts/options_general.php:96
 msgid "Popup Slider Autoplay Speed"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:101
+#: framework/wpdance/supports/theme_option/parts/options_general.php:104
 msgid "Top Slider Autoplay Speed"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:109
+#: framework/wpdance/supports/theme_option/parts/options_general.php:112
 msgid "Footer Slider Items"
 msgstr ""
 
-#: framework/wpdance/supports/theme_option/parts/options_general.php:110
+#: framework/wpdance/supports/theme_option/parts/options_general.php:113
 msgid "Slide number of footer slider."
 msgstr ""
 
@@ -785,7 +1077,7 @@ msgid "http://ifindmedia.com"
 msgstr ""
 
 #. Author of the theme
-msgid "tvlgiao"
+msgid "Cao Vuong"
 msgstr ""
 
 #. Author URI of the theme

@@ -62,7 +62,7 @@ if (!class_exists('iFind_Admin_Page')) {
 							<th scope="row"></th>
 							<td>
 							<label><input type="checkbox" checked name="attachment" value="0" />
-								<?php esc_html_e("Attachment (PDF):", 'ifind'); ?></label>
+								<?php esc_html_e("Attachment (PDF)", 'ifind'); ?></label>
 							</td>
 							<td><p id="attachment_link"></p></td>
 							<td>

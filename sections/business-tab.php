@@ -38,7 +38,7 @@ $list_business_id = $location_meta_data['list_business'];
             require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/map-directions.php";
             require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/tab-nav.php";
             require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/tab-content.php";
-            require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/video-player.php";
+            require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/iframes.php";
             require_once TVLGIAO_WPDANCE_THEME_DIR."/sections/tabs/contact-form.php";
             ?>
     </div>

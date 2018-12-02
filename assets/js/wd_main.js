@@ -225,7 +225,6 @@ if (typeof ifind_preload_business_video != 'function') {
 	}
 }
 
-
 if (typeof ifind_fancybox_close != 'function') {
 	function ifind_fancybox_close() {
 		jQuery(".fancybox-close").click();
@@ -234,9 +233,12 @@ if (typeof ifind_fancybox_close != 'function') {
 	}
 }
 
-
 if (typeof ifind_fancybox_script != 'function') {
 	function ifind_fancybox_script() {
+		var long_waiting_time = option_object.ifind_slider_timerShowPopupViewingInfo;
+		var mid_waiting_time = 30000;
+		var short_waiting_time = 10000;
+
 		jQuery(".ifind-fancybox-image").fancybox({
 			openEffect: 'fade',
 			closeEffect: 'fade',
@@ -265,13 +267,13 @@ if (typeof ifind_fancybox_script != 'function') {
 			},
 			afterLoad: function () {
 				var timer;
-				jQuery(document).on('mousemove touchstart click', function (event) {
+				jQuery('.fancybox-wrap').on('mousemove touchstart click', function (event) {
 					event.preventDefault();
 					if (timer) clearTimeout(timer);
 					timer = setTimeout(function () {
 						ifind_fancybox_close();
 						ifind_reset_system();
-					}, 10000);
+					}, short_waiting_time);
 				});
 			}
 		});
@@ -305,13 +307,13 @@ if (typeof ifind_fancybox_script != 'function') {
 			},
 			afterLoad: function () {
 				var timer;
-				jQuery(document).on('mousemove touchstart click', function (event) {
+				jQuery('.fancybox-wrap').on('mousemove touchstart click', function (event) {
 					event.preventDefault();
 					if (timer) clearTimeout(timer);
 					timer = setTimeout(function () {
 						ifind_fancybox_close();
 						ifind_reset_system();
-					}, 10000);
+					}, short_waiting_time);
 				});
 			}
 		});
@@ -474,15 +476,14 @@ if (typeof ifind_fancybox_script != 'function') {
 					//jQuery("body").css({'overflow-y':'hidden'});
 				},
 				afterLoad: function () {
-					var timerShowPopupViewingInfo = option_object.ifind_slider_timerShowPopupViewingInfo; //time show large popup slider
 					var timer;
-					jQuery(document).on('mousemove touchstart click', function (event) {
+					jQuery('.fancybox-wrap').on('mousemove touchstart click', function (event) {
 						event.preventDefault();
 						if (timer) clearTimeout(timer);
 						timer = setTimeout(function () {
 							ifind_fancybox_close();
 							ifind_reset_system();
-						}, timerShowPopupViewingInfo);
+						}, long_waiting_time);
 					});
 				}
 			});
@@ -490,70 +491,74 @@ if (typeof ifind_fancybox_script != 'function') {
 
 		jQuery('.fancybox-contact-us').on('click', function (e) {
 			e.preventDefault();
-			var qr_link = jQuery(this).attr('href');
-			var email_to = jQuery(this).data('business-email');
-			var cc_to = jQuery('#ifind-location-position').data('location-email');
+			var _this = jQuery(this);
+			var href = _this.attr('href');
+			var business_email = _this.data('business-email');
+			var location_id = _this.data('location-id');
+			var business_id = _this.data('business-id');
+			var timezone = jQuery('#ifind-location-position').data('timezone');
+			var location_email = jQuery('#ifind-location-position').data('location-email');
 
-			if (qr_link) {
-				jQuery('#ifind-qr-code img').attr('src', qr_link).show();
+			if (business_email && href) {
+				jQuery.ajax({
+					type: 'POST',
+					url: ajax_object.ajax_url,
+					data: {
+						action: "send_mail_contact",
+						business_email: business_email,
+						location_id: location_id,
+						business_id: business_id,
+						timezone: timezone,
+						location_email: location_email,
+					},
+					beforeSend: function () {},
+					success: function (data) {}
+				});
+
+				jQuery.fancybox({
+					openEffect: 'fade',
+					closeEffect: 'fade',
+					margin: [0, 0, 0, 0],
+					padding: 7,
+					width: 1038,
+					height: '100%',
+					fitToView: true,
+					autoSize: false,
+					closeBtn: false,
+					arrows: false,
+					type: 'iframe',
+					scrolling: true,
+					href : href,
+					helpers: {
+						overlay: {
+							css: {
+								'background': 'rgba(58, 42, 45, 0.5)'
+							},
+						}
+					},
+					onComplete: function () {},
+					beforeShow: function () {},
+					afterClose: function () {},
+					afterLoad: function () {
+						var timer;
+						jQuery('.fancybox-wrap').on('mousemove touchstart click', function (event) {
+							event.preventDefault();
+							if (timer) clearTimeout(timer);
+							timer = setTimeout(function () {
+								ifind_fancybox_close();
+								ifind_reset_system();
+							}, long_waiting_time);
+						});
+					}
+				});
 			}else{
-				jQuery('#ifind-qr-code img').hide();
+				swal({
+					title: '',
+					type: 'error',
+					text: 'We will update the contact information ASAP. Sorry for the inconvenience! :(',
+					timer: short_waiting_time
+				});
 			}
-
-			jQuery('#ifind-contact-form input[name="email_to"]').val(email_to);
-			jQuery('#ifind-contact-form input[name="cc_to"]').val(cc_to);
-
-			jQuery('#ifind-contact-form input[name="contact-email"]').val('');
-			jQuery('#ifind-contact-form input[name="contact-phone"]').val('');
-			jQuery('#ifind-contact-form textarea[name="contact-message"]').val('');
-
-			jQuery('#ifind-contact-form ul[role="tablist"] li').removeClass('current done');
-			jQuery('#ifind-contact-form ul[role="tablist"]').find('li.first').addClass('current').find('a').click();
-			
-			swal({
-				title: '',
-				type: 'error',
-				text: 'The function is being upgraded! Please try again later.',
-				timer: 6000
-			});
-
-			// jQuery.fancybox('#ifind-contact-form-wrap', {
-			// 	openEffect: 'fade',
-			// 	closeEffect: 'fade',
-			// 	margin: [0, 0, 0, 0],
-			// 	padding: 0,
-			// 	width: 1080,
-			// 	height: 1920,
-			// 	fitToView: true,
-			// 	autoSize: true,
-			// 	closeBtn: false,
-			// 	arrows: false,
-			// 	autoSize: false,
-			// 	helpers: {
-			// 		overlay: {
-			// 			css: {
-			// 				'background': 'rgba(58, 42, 45, 0.8)'
-			// 			},
-			// 		}
-			// 	},
-			// 	// title: 'We will call you as soon as possible!',
-			// 	onComplete: function () {},
-			// 	beforeShow: function () {
-			// 		//jQuery("body").css({'overflow-y':'hidden'});
-			// 	},
-			// 	afterLoad: function () {
-			// 		var timerShowPopupViewingInfo = option_object.ifind_slider_timerShowPopupViewingInfo; //time show large popup slider
-			// 		var timer;
-			// 		jQuery(document).on('mousemove touchstart click', function (event) {
-			// 			event.preventDefault();
-			// 			if (timer) clearTimeout(timer);
-			// 			timer = setTimeout(function () {
-			// 				ifind_fancybox_close();
-			// 				ifind_reset_system();
-			// 			}, timerShowPopupViewingInfo);
-			// 		});
-			// 	}
-			// });
 		});
 
 		jQuery('.ifind-fancybox-close').on('click', function (e) {
@@ -691,7 +696,7 @@ if (typeof ifind_ajax_auto_reload_browser != 'function') {
 					};
 				}
 			});
-		}, 10000);
+		}, 30000);
 	}
 }
 
